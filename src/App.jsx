@@ -4,7 +4,7 @@ import {
   UtensilsCrossed, Plane, Mountain, Camera, Waves, Hotel,
   Sparkles, ChevronRight, Luggage, Bookmark, Heart, Plus,
   Map, List, LayoutGrid, X, Moon, Sun, ChevronDown, ChevronUp,
-  Coffee, ShoppingBag,
+  Coffee, ShoppingBag, Star,
 } from "lucide-react";
 
 // ─── Daten ────────────────────────────────────────────────────────────────────
@@ -454,6 +454,37 @@ const helperCards = [
   { title: "Bargeld",      text: "Japan ist noch immer teilweise Cash-only. 7-Eleven-ATMs akzeptieren ausländische Karten zuverlässig.", icon: Wallet },
 ];
 
+// ─── Wunschziele ─────────────────────────────────────────────────────────────
+
+const wunschziele = [
+  {
+    city: "Ōsaka",
+    places: [
+      { name: "Kinryu Ramen Nambasennichimae", cat: "Ramen",           rating: 3.7, reviews: "1.456",  q: "Kinryu Ramen Namba-Sennichimae Osaka Japan" },
+      { name: "Shinsekai Kushikatsu Ittoku",   cat: "Kushikatsu",      rating: 4.4, reviews: "1.081",  q: "Shinsekai Kushikatsu Ittoku Osaka Japan" },
+      { name: "551 HORAI in SOTOE",            cat: "Chinesisch",      rating: 4.1, reviews: "756",    q: "551 HORAI SOTOE Osaka Japan" },
+      { name: "Kyabetsu-yaki Namba",           cat: "Okonomiyaki",     rating: 4.1, reviews: "414",    q: "Kyabetsu-yaki Namba Osaka Japan" },
+      { name: "Takoyaki Wanaka Sennichimae",   cat: "Takoyaki",        rating: 4.3, reviews: "4.183",  q: "Takoyaki Wanaka Sennichimae Osaka Japan" },
+      { name: "Chuka-soba Fujii Namba",        cat: "Ramen",           rating: 3.9, reviews: "1.041",  q: "Chuka-soba Fujii Namba Osaka Japan" },
+      { name: "Temmasa",                       cat: "Udon",            rating: 4.2, reviews: "1.545",  q: "Temmasa Udon Osaka Japan" },
+      { name: "Harukoma (Branch Shop)",        cat: "Sushi",           rating: 4.1, reviews: "2.106",  q: "Harukoma Branch Shop Osaka Japan" },
+      { name: "Iseya Honten",                  cat: "Japan-Laden",     rating: 4.4, reviews: "41",     q: "Iseya Honten Osaka Japan" },
+      { name: "Minami Fish Store",             cat: "Meeresfrüchte",   rating: 4.5, reviews: "123",    q: "Minami Fish Store Osaka Japan" },
+      { name: "Kuromon Market",                cat: "Markt",           rating: 4.1, reviews: "20.078", q: "Kuromon Ichiba Market Osaka Japan" },
+    ],
+  },
+  {
+    city: "Kyōto",
+    places: [
+      { name: "Kyoto Ramen Kinzan",            cat: "Ramen",           rating: 3.8, reviews: "250",    q: "Kyoto Ramen Kinzan Kyoto Japan" },
+      { name: "Jiki Miyazawa",                 cat: "Kaiseki",         rating: 4.6, reviews: "310",    q: "Jiki Miyazawa Kyoto Japan" },
+      { name: "365 Sakaba Kyoto Kawaramachi",  cat: "Izakaya",         rating: 4.2, reviews: "163",    q: "365 Sakaba Kyoto Kawaramachi Japan" },
+      { name: "Nishiki-Markt",                 cat: "Markt",           rating: 4.3, reviews: "50.636", q: "Nishiki Market Kyoto Japan" },
+      { name: "をにわ 河原町店",               cat: "Izakaya",         rating: 4.6, reviews: "3.859",  q: "Oniwa Kawaramachi Kyoto Japan" },
+    ],
+  },
+];
+
 const DEFAULT_CHECKLIST = [
   "Reisepässe prüfen (mind. 6 Monate gültig)",
   "eSIM auswählen & einrichten",
@@ -632,6 +663,7 @@ const TABS = [
   { id: "map",       label: "Karte",      icon: Map },
   { id: "checklist", label: "Checkliste", icon: CheckCircle2 },
   { id: "budget",    label: "Budget",     icon: Wallet },
+  { id: "wishlist",  label: "Wunschziele", icon: Star },
 ];
 
 // ─── App ──────────────────────────────────────────────────────────────────────
@@ -1253,6 +1285,62 @@ export default function App() {
                   </div>
                 </div>
 
+              </div>
+            </div>
+          )}
+
+          {/* ── Tab: Wunschziele ────────────────────────────────────────── */}
+          {activeTab === "wishlist" && (
+            <div className="px-5 py-6 md:px-8 md:py-8">
+              <div className="rounded-[28px] border border-black/5 dark:border-white/10 bg-[#fcfbf8] dark:bg-neutral-800 p-5 md:p-6">
+                <SectionTitle
+                  eyebrow="Wunschziele"
+                  title="Orte auf eurer Merkliste"
+                  text="Alle gespeicherten Spots aus eurer Google-Maps-Liste – nach Stadt gruppiert."
+                />
+                <div className="space-y-8">
+                  {wunschziele.map(group => (
+                    <div key={group.city}>
+                      <div className="mb-3 flex items-center gap-3">
+                        <div className="flex h-8 w-8 items-center justify-center rounded-full bg-neutral-900 dark:bg-neutral-600 text-xs font-bold text-white">
+                          <MapPin className="h-3.5 w-3.5" />
+                        </div>
+                        <h3 className="text-lg font-semibold tracking-tight text-neutral-900 dark:text-white">{group.city}</h3>
+                        <span className="rounded-full bg-neutral-100 dark:bg-neutral-700 px-2.5 py-0.5 text-xs text-neutral-500 dark:text-neutral-400">{group.places.length} Orte</span>
+                      </div>
+                      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                        {group.places.map(place => (
+                          <a
+                            key={place.name}
+                            href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(place.q)}`}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="group flex flex-col gap-2 rounded-[20px] border border-black/5 dark:border-white/10 bg-white dark:bg-neutral-700 p-4 shadow-sm shadow-black/5 dark:shadow-black/10 hover:border-red-200 dark:hover:border-red-800 hover:shadow-md transition-all"
+                          >
+                            <div className="flex items-start justify-between gap-2">
+                              <div className="min-w-0">
+                                <div className="text-sm font-semibold text-neutral-900 dark:text-white leading-snug group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors">
+                                  {place.name}
+                                </div>
+                                <span className="mt-1 inline-flex rounded-full bg-red-50 dark:bg-red-950/40 px-2.5 py-0.5 text-xs font-medium text-red-700 dark:text-red-400">
+                                  {place.cat}
+                                </span>
+                              </div>
+                              <div className="shrink-0 rounded-xl bg-neutral-50 dark:bg-neutral-600 p-1.5 text-neutral-400 dark:text-neutral-400 group-hover:bg-red-50 dark:group-hover:bg-red-950/40 group-hover:text-red-500 dark:group-hover:text-red-400 transition-colors">
+                                <MapPin className="h-3.5 w-3.5" />
+                              </div>
+                            </div>
+                            <div className="flex items-center gap-1.5 text-xs text-neutral-500 dark:text-neutral-400">
+                              <Star className="h-3 w-3 fill-amber-400 text-amber-400" />
+                              <span className="font-medium text-neutral-700 dark:text-neutral-200">{place.rating}</span>
+                              <span>({place.reviews})</span>
+                            </div>
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           )}
