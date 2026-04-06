@@ -1183,7 +1183,7 @@ export default function App() {
                           className="flex w-full items-center justify-between gap-3 px-4 py-4 text-left transition hover:bg-black/5 dark:hover:bg-black/25 min-h-[56px]"
                         >
                           <div className="flex items-center gap-3">
-                            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white dark:bg-black/50 text-white">
+                            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-red-600 text-white">
                               <MapPin className="h-3.5 w-3.5" />
                             </div>
                             <span className="text-base font-semibold text-black dark:text-white">{group.city}</span>
