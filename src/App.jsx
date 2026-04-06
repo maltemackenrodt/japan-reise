@@ -733,17 +733,16 @@ const REC_CATEGORIES = [
 // ─── Tabs ─────────────────────────────────────────────────────────────────────
 
 const TABS = [
-  { id: "overview",  label: "Überblick",  icon: LayoutGrid },
-  { id: "itinerary", label: "Tagesplan",  icon: List },
-  { id: "map",       label: "Hotels",     icon: Hotel },
-  { id: "budget",    label: "Budget",     icon: Wallet },
+  { id: "map",       label: "Hotels",      icon: Hotel },
+  { id: "itinerary", label: "Tagesplan",   icon: List },
   { id: "wishlist",  label: "Wunschziele", icon: Star },
+  { id: "budget",    label: "Budget",      icon: Wallet },
 ];
 
 // ─── App ──────────────────────────────────────────────────────────────────────
 
 export default function App() {
-  const [activeTab, setActiveTab]       = useState("overview");
+  const [activeTab, setActiveTab]       = useState("map");
   const [selectedCity, setSelectedCity] = useState("Alle");
   const [activeStop, setActiveStop]     = useState(null);
   const [newItem, setNewItem]           = useState("");
@@ -821,33 +820,17 @@ export default function App() {
         <div className="overflow-hidden bg-white dark:bg-neutral-900 md:rounded-[32px] md:border md:border-black/5 md:dark:border-white/10 md:shadow-xl md:shadow-black/5 md:dark:shadow-black/30">
 
           {/* ── Header ─────────────────────────────────────────────────── */}
-          <div className="border-b border-black/5 dark:border-white/10 bg-[radial-gradient(circle_at_top_left,_rgba(239,68,68,0.15),_transparent_35%),linear-gradient(135deg,#fff,#faf7f3)] dark:bg-neutral-900 px-4 py-5 md:px-8 md:py-8">
-            <div className="flex flex-col gap-4">
-              <div className="max-w-3xl">
-                <div className="flex items-center justify-between gap-4">
-                  <div className="inline-flex items-center gap-2 rounded-full border border-red-100 dark:border-red-900 bg-red-50 dark:bg-red-950/40 px-3 py-1 text-xs font-medium text-red-700 dark:text-red-400">
-                    <Sparkles className="h-3.5 w-3.5" /> persönliche Reise-Webapp
-                  </div>
-                  <button
-                    onClick={() => setDarkMode(d => !d)}
-                    className="flex h-9 w-9 items-center justify-center rounded-2xl border border-black/10 dark:border-white/15 bg-white dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300 shadow-sm hover:bg-neutral-50 dark:hover:bg-neutral-700 transition"
-                    title={darkMode ? "Hellmodus" : "Dunkelmodus"}
-                  >
-                    {darkMode ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-                  </button>
-                </div>
-                <h1 className="mt-3 text-3xl font-semibold tracking-tight text-neutral-950 dark:text-white md:text-5xl">{trip.title}</h1>
-                <p className="mt-3 max-w-2xl text-sm leading-6 text-neutral-600 dark:text-neutral-300 md:text-base">
-                  {trip.subtitle} · {trip.dateRange}
-                </p>
-                <div className="mt-5 flex flex-wrap gap-2">
-                  {trip.focus.map(f => (
-                    <span key={f} className="rounded-full bg-neutral-100 dark:bg-neutral-700 px-3 py-1 text-xs font-medium text-neutral-700 dark:text-neutral-200">{f}</span>
-                  ))}
-                </div>
-              </div>
-
-            </div>
+          <div className="relative flex items-center justify-between border-b border-black/5 dark:border-white/10 bg-white dark:bg-neutral-900 px-5 py-5 md:px-8 md:py-7">
+            {/* Japan-flag circle */}
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-10 w-10 rounded-full bg-red-600 opacity-[0.07] dark:opacity-[0.12] pointer-events-none md:h-14 md:w-14" />
+            <h1 className="text-2xl font-bold tracking-tight text-red-600 md:text-3xl">{trip.title}</h1>
+            <button
+              onClick={() => setDarkMode(d => !d)}
+              className="flex h-9 w-9 items-center justify-center rounded-2xl border border-black/10 dark:border-white/15 bg-white dark:bg-neutral-800 text-neutral-500 dark:text-neutral-300 shadow-sm hover:bg-neutral-50 dark:hover:bg-neutral-700 transition"
+              title={darkMode ? "Hellmodus" : "Dunkelmodus"}
+            >
+              {darkMode ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+            </button>
           </div>
 
           {/* ── Tab Bar ─────────────────────────────────────────────────── */}
@@ -870,37 +853,13 @@ export default function App() {
             </div>
           </div>
 
-          {/* ── Tab: Überblick ──────────────────────────────────────────── */}
-          {activeTab === "overview" && (
-            <div className="px-4 py-5 md:px-8 md:py-8">
-              <div className="rounded-[28px] border border-black/5 dark:border-white/10 bg-[#fcfbf8] dark:bg-neutral-800 p-5 md:p-6">
-                <SectionTitle eyebrow="Überblick" title="Route & Rhythmus" text="Die Reise wechselt bewusst zwischen Stadterkundung und Onsen-/Naturphasen." />
-                <div className="space-y-3">
-                  {stops.map((stop, idx) => (
-                    <div key={stop.id} className="flex items-start gap-4 rounded-2xl bg-white dark:bg-neutral-700 p-4 shadow-sm shadow-black/5 dark:shadow-black/10">
-                      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-neutral-900 dark:bg-neutral-500 text-sm font-semibold text-white">{idx + 1}</div>
-                      <div className="min-w-0 flex-1">
-                        <div className="flex flex-wrap items-center gap-2">
-                          <h3 className="text-base font-semibold text-neutral-900 dark:text-white">{stop.city}</h3>
-                          <span className="rounded-full bg-red-50 dark:bg-red-950/50 px-2.5 py-0.5 text-xs font-medium text-red-700 dark:text-red-400">{stop.range}</span>
-                          <span className="rounded-full bg-neutral-100 dark:bg-neutral-600 px-2.5 py-0.5 text-xs text-neutral-600 dark:text-neutral-200">{stop.nights} Nächte</span>
-                        </div>
-                        <p className="mt-1 text-sm text-neutral-600 dark:text-neutral-300">{stop.hotel}</p>
-                      </div>
-                      {idx < stops.length - 1 && <ChevronRight className="mt-1 hidden h-4 w-4 text-neutral-400 dark:text-neutral-500 md:block" />}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          )}
 
           {/* ── Tab: Tagesplan ──────────────────────────────────────────── */}
           {activeTab === "itinerary" && (
             <div className="px-4 py-5 md:px-8 md:py-8">
               <div className="rounded-[28px] border border-black/5 dark:border-white/10 bg-[#fcfbf8] dark:bg-neutral-800 p-5 md:p-6">
                 <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-                  <SectionTitle eyebrow="Tagesplan" title="Eure Reise Tag für Tag" text="Alle Etappen mit Aufenthaltsort, Transfer, Highlights und Empfehlungen." />
+                  <SectionTitle eyebrow="Tagesplan" title="Eure Reise Tag für Tag" />
                   <div>
                     <label className="mb-2 block text-xs font-semibold uppercase tracking-[0.18em] text-neutral-500 dark:text-neutral-400">Stadt filtern</label>
                     <select
@@ -922,12 +881,12 @@ export default function App() {
                       <div key={item.day} className="rounded-[24px] border border-black/5 dark:border-white/10 bg-white dark:bg-neutral-700 p-5 shadow-sm shadow-black/5 dark:shadow-black/10">
                         <div className="mb-4 flex items-start justify-between gap-3">
                           <div>
-                            <div className="text-xs font-semibold uppercase tracking-[0.18em] text-red-600 dark:text-red-400">Tag {item.day} · {item.date}</div>
+                            <div className="text-xs font-semibold uppercase tracking-[0.18em] text-red-600 dark:text-red-400">{item.date}</div>
                             <h3 className="mt-1 text-xl font-semibold tracking-tight text-neutral-900 dark:text-white">{item.title}</h3>
                             <div className="mt-2 inline-flex rounded-full bg-neutral-100 dark:bg-neutral-600 px-3 py-1 text-xs text-neutral-700 dark:text-neutral-200">{item.vibe}</div>
                           </div>
-                          <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-red-50 dark:bg-red-950/50 text-red-600 dark:text-red-400">
-                            <Icon className="h-5 w-5" />
+                          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-red-600 text-sm font-bold text-white">
+                            {item.day}
                           </div>
                         </div>
 
@@ -947,21 +906,12 @@ export default function App() {
                           ))}
                         </div>
 
-                        <div className="mt-4">
-                          <div className="mb-2 text-sm font-medium text-neutral-900 dark:text-white">Highlights</div>
-                          <div className="flex flex-wrap gap-2">
-                            {item.highlights.map(h => (
-                              <span key={h} className="rounded-full border border-black/5 dark:border-white/10 bg-[#fcfbf8] dark:bg-neutral-600 px-3 py-1.5 text-xs text-neutral-700 dark:text-neutral-200">{h}</span>
-                            ))}
-                          </div>
-                        </div>
-
                         {/* Recommendations toggle */}
                         {recs && (
                           <div className="mt-4">
                             <button
                               onClick={() => toggleDay(item.day)}
-                              className="flex w-full items-center justify-between rounded-2xl bg-neutral-50 dark:bg-neutral-600 px-4 py-3 text-sm font-medium text-neutral-700 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-500 transition"
+                              className="flex w-full items-center justify-between rounded-2xl bg-red-600 hover:bg-red-700 px-4 py-3 text-sm font-medium text-white transition"
                             >
                               <span>Empfehlungen für diesen Tag</span>
                               {expanded ? <ChevronUp className="h-4 w-4 shrink-0" /> : <ChevronDown className="h-4 w-4 shrink-0" />}
