@@ -574,13 +574,13 @@ const DARK_KEY     = "japan2026_dark";
 
 function StatCard({ icon: Icon, label, value, sub }) {
   return (
-    <div className="rounded-3xl border border-black/5 dark:border-white/10 bg-white dark:bg-neutral-800 p-5 shadow-sm shadow-black/5 dark:shadow-black/20">
-      <div className="mb-3 flex h-11 w-11 items-center justify-center rounded-2xl bg-red-50 dark:bg-red-950/40 text-red-600 dark:text-red-400">
+    <div className="rounded-3xl border border-black/25 dark:border-white/25 bg-white dark:bg-black/[0.06] p-5 shadow-sm shadow-black/25 dark:shadow-black/20">
+      <div className="mb-3 flex h-11 w-11 items-center justify-center rounded-2xl bg-red-600/[0.08] dark:bg-red-600/25 text-red-600 dark:text-red-600">
         <Icon className="h-5 w-5" />
       </div>
-      <div className="text-sm text-neutral-500 dark:text-neutral-400">{label}</div>
-      <div className="mt-1 text-xl font-semibold tracking-tight text-neutral-900 dark:text-white">{value}</div>
-      {sub && <div className="mt-1 text-sm text-neutral-500 dark:text-neutral-400">{sub}</div>}
+      <div className="text-sm text-black/50 dark:text-black/50">{label}</div>
+      <div className="mt-1 text-xl font-semibold tracking-tight text-black dark:text-white">{value}</div>
+      {sub && <div className="mt-1 text-sm text-black/50 dark:text-black/50">{sub}</div>}
     </div>
   );
 }
@@ -588,9 +588,9 @@ function StatCard({ icon: Icon, label, value, sub }) {
 function SectionTitle({ eyebrow, title, text, dark = false }) {
   return (
     <div className="mb-6 flex flex-col gap-2">
-      <div className={`text-xs font-semibold uppercase tracking-[0.22em] ${dark ? "text-red-300" : "text-red-600 dark:text-red-400"}`}>{eyebrow}</div>
-      <h2 className={`text-2xl font-semibold tracking-tight ${dark ? "text-white" : "text-neutral-900 dark:text-white"}`}>{title}</h2>
-      {text && <p className={`text-sm leading-6 ${dark ? "text-white/60" : "text-neutral-500 dark:text-neutral-400"}`}>{text}</p>}
+      <div className={`text-xs font-semibold uppercase tracking-[0.22em] ${dark ? "text-red-600/75" : "text-red-600"}`}>{eyebrow}</div>
+      <h2 className={`text-2xl font-semibold tracking-tight ${dark ? "text-white" : "text-black"}`}>{title}</h2>
+      {text && <p className={`text-sm leading-6 ${dark ? "text-white/50" : "text-black/50"}`}>{text}</p>}
     </div>
   );
 }
@@ -611,7 +611,7 @@ function SvgMap({ activeStop, onSelect }) {
   const polyline = pts.map((p, i) => `${i === 0 ? "M" : "L"} ${p[0].toFixed(1)} ${p[1].toFixed(1)}`).join(" ");
 
   return (
-    <div className="overflow-hidden rounded-[20px] border border-black/5 dark:border-white/10 bg-[#f0ede8] dark:bg-neutral-800">
+    <div className="overflow-hidden rounded-[20px] border border-black/25 dark:border-white/25 bg-[#f0ede8] dark:bg-black/[0.06]">
       <svg viewBox={`0 0 ${W} ${H}`} className="w-full" style={{ display: "block" }}>
         <rect x="0" y="0" width={W} height={H} fill="#e8e3db" />
         <text x="12" y="20" fontSize="10" fill="#b0a89a" fontFamily="sans-serif">Japan · Mai 2026</text>
@@ -630,23 +630,23 @@ function SvgMap({ activeStop, onSelect }) {
       </svg>
 
       {activeStop !== null && (
-        <div className="border-t border-black/5 dark:border-white/10 bg-white dark:bg-neutral-700 px-4 py-3">
+        <div className="border-t border-black/25 dark:border-white/25 bg-white dark:bg-black/[0.08] px-4 py-3">
           <div className="flex items-center gap-3">
             <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-red-600 text-xs font-bold text-white">
               {activeStop + 1}
             </div>
             <div className="min-w-0 flex-1">
-              <div className="font-semibold text-neutral-900 dark:text-white">{stops[activeStop].city}</div>
-              <div className="truncate text-sm text-neutral-500 dark:text-neutral-300">{stops[activeStop].hotel}</div>
+              <div className="font-semibold text-black dark:text-white">{stops[activeStop].city}</div>
+              <div className="truncate text-sm text-black/50 dark:text-white/75">{stops[activeStop].hotel}</div>
             </div>
-            <span className="rounded-full bg-red-50 dark:bg-red-950/50 px-2.5 py-0.5 text-xs font-medium text-red-700 dark:text-red-400">
+            <span className="rounded-full bg-red-600/[0.08] dark:bg-red-600/25 px-2.5 py-0.5 text-xs font-medium text-red-600 dark:text-red-600">
               {stops[activeStop].range}
             </span>
             <a
               href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(stops[activeStop].hotel + " " + stops[activeStop].city + " Japan")}`}
               target="_blank"
               rel="noreferrer"
-              className="shrink-0 rounded-full bg-neutral-100 dark:bg-neutral-600 px-3 py-1 text-xs font-medium text-neutral-700 dark:text-neutral-200 hover:bg-neutral-200 dark:hover:bg-neutral-500"
+              className="shrink-0 rounded-full bg-black/[0.07] dark:bg-black/25 px-3 py-1 text-xs font-medium text-black/75 dark:text-white/75 hover:bg-black/[0.12] dark:hover:bg-black/50"
             >
               Maps ↗
             </a>
@@ -724,10 +724,10 @@ function usePersistedChecklist() {
 // ─── Recommendation Categories ───────────────────────────────────────────────
 
 const REC_CATEGORIES = [
-  { key: "sightseeing", label: "Sightseeing", Icon: Camera,          bg: "bg-blue-50 dark:bg-blue-950/40",      text: "text-blue-700 dark:text-blue-400" },
-  { key: "kultur",      label: "Kultur",      Icon: Landmark,        bg: "bg-purple-50 dark:bg-purple-950/40",  text: "text-purple-700 dark:text-purple-400" },
-  { key: "essen",       label: "Essen",        Icon: UtensilsCrossed, bg: "bg-amber-50 dark:bg-amber-950/40",    text: "text-amber-700 dark:text-amber-400" },
-  { key: "shopping",    label: "Shopping",     Icon: ShoppingBag,     bg: "bg-emerald-50 dark:bg-emerald-950/40",text: "text-emerald-700 dark:text-emerald-400" },
+  { key: "sightseeing", label: "Sightseeing", Icon: Camera,          bg: "bg-black/5 dark:bg-white/5",   text: "text-black/75 dark:text-white/75" },
+  { key: "kultur",      label: "Kultur",      Icon: Landmark,        bg: "bg-black/5 dark:bg-white/5",   text: "text-black/75 dark:text-white/75" },
+  { key: "essen",       label: "Essen",        Icon: UtensilsCrossed, bg: "bg-black/5 dark:bg-white/5",   text: "text-black/75 dark:text-white/75" },
+  { key: "shopping",    label: "Shopping",     Icon: ShoppingBag,     bg: "bg-black/5 dark:bg-white/5",   text: "text-black/75 dark:text-white/75" },
 ];
 
 // ─── Tabs ─────────────────────────────────────────────────────────────────────
@@ -821,18 +821,18 @@ export default function App() {
   const mapsUrl = (q) => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`;
 
   return (
-    <div className="min-h-screen bg-[#f7f3ee] dark:bg-neutral-950 text-neutral-900 dark:text-white pb-safe" style={{ paddingBottom: "env(safe-area-inset-bottom)" }}>
+    <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white pb-safe" style={{ paddingBottom: "env(safe-area-inset-bottom)" }}>
       <div className="md:mx-auto md:max-w-7xl md:px-6 md:py-8">
-        <div className="overflow-hidden bg-white dark:bg-neutral-900 md:rounded-[32px] md:border md:border-black/5 md:dark:border-white/10 md:shadow-xl md:shadow-black/5 md:dark:shadow-black/30">
+        <div className="overflow-hidden bg-white dark:bg-white md:rounded-[32px] md:border md:border-black/25 md:dark:border-white/25 md:shadow-xl md:shadow-black/25 md:dark:shadow-black/50">
 
           {/* ── Header ─────────────────────────────────────────────────── */}
-          <div className="relative flex items-center justify-between border-b border-black/5 dark:border-white/10 bg-white dark:bg-neutral-900 px-5 py-5 md:px-8 md:py-7">
+          <div className="relative flex items-center justify-between border-b border-black/25 dark:border-white/25 bg-white dark:bg-white px-5 py-5 md:px-8 md:py-7">
             {/* Japan-flag circle */}
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-10 w-10 rounded-full bg-red-600 opacity-[0.07] dark:opacity-[0.12] pointer-events-none md:h-14 md:w-14" />
             <h1 className="text-2xl font-bold tracking-tight text-red-600 md:text-3xl">{trip.title}</h1>
             <button
               onClick={() => setDarkMode(d => !d)}
-              className="flex h-9 w-9 items-center justify-center rounded-2xl border border-black/10 dark:border-white/15 bg-white dark:bg-neutral-800 text-neutral-500 dark:text-neutral-300 shadow-sm hover:bg-neutral-50 dark:hover:bg-neutral-700 transition"
+              className="flex h-9 w-9 items-center justify-center rounded-2xl border border-black/25 dark:border-white/25 bg-white dark:bg-black/[0.06] text-black/50 dark:text-white/75 shadow-sm hover:bg-black/5 dark:hover:bg-black/[0.08] transition"
               title={darkMode ? "Hellmodus" : "Dunkelmodus"}
             >
               {darkMode ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
@@ -840,7 +840,7 @@ export default function App() {
           </div>
 
           {/* ── Tab Bar ─────────────────────────────────────────────────── */}
-          <div className="sticky top-0 z-10 border-b border-black/5 dark:border-white/10 bg-white/95 dark:bg-neutral-900/95 backdrop-blur px-2 md:px-8">
+          <div className="sticky top-0 z-10 border-b border-black/25 dark:border-white/25 bg-white/95 dark:bg-white/95 backdrop-blur px-2 md:px-8">
             <div className="flex gap-0.5 overflow-x-auto py-2 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
               {TABS.map(tab => {
                 const Icon = tab.icon;
@@ -849,7 +849,7 @@ export default function App() {
                   <button
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id)}
-                    className={`flex shrink-0 items-center gap-1.5 rounded-xl px-3 py-2.5 text-sm font-medium transition min-h-[44px] md:px-4 ${active ? "bg-red-50 dark:bg-red-950/50 text-red-700 dark:text-red-400" : "text-neutral-500 dark:text-neutral-400 hover:bg-neutral-50 dark:hover:bg-neutral-800 hover:text-neutral-700 dark:hover:text-neutral-200"}`}
+                    className={`flex shrink-0 items-center gap-1.5 rounded-xl px-3 py-2.5 text-sm font-medium transition min-h-[44px] md:px-4 ${active ? "bg-red-600/[0.08] dark:bg-red-600/25 text-red-600 dark:text-red-600" : "text-black/50 dark:text-black/50 hover:bg-black/5 dark:hover:bg-black/[0.06] hover:text-black/75 dark:hover:text-white/75"}`}
                   >
                     <Icon className="h-4 w-4 shrink-0" />
                     {tab.label}
@@ -863,15 +863,15 @@ export default function App() {
           {/* ── Tab: Tagesplan ──────────────────────────────────────────── */}
           {activeTab === "itinerary" && (
             <div className="px-4 py-5 md:px-8 md:py-8">
-              <div className="rounded-[28px] border border-black/5 dark:border-white/10 bg-[#fcfbf8] dark:bg-neutral-800 p-5 md:p-6">
+              <div className="rounded-[28px] border border-black/25 dark:border-white/25 bg-black/5 dark:bg-black/[0.06] p-5 md:p-6">
                 <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
                   <SectionTitle eyebrow="Tagesplan" title="Eure Reise Tag für Tag" />
                   <div>
-                    <label className="mb-2 block text-xs font-semibold uppercase tracking-[0.18em] text-neutral-500 dark:text-neutral-400">Stadt filtern</label>
+                    <label className="mb-2 block text-xs font-semibold uppercase tracking-[0.18em] text-black/50 dark:text-black/50">Stadt filtern</label>
                     <select
                       value={selectedCity}
                       onChange={e => setSelectedCity(e.target.value)}
-                      className="w-full rounded-2xl border border-black/10 dark:border-white/10 bg-white dark:bg-neutral-700 dark:text-white px-4 py-3 text-sm outline-none md:min-w-[220px]"
+                      className="w-full rounded-2xl border border-black/25 dark:border-white/25 bg-white dark:bg-black/[0.08] dark:text-white px-4 py-3 text-sm outline-none md:min-w-[220px]"
                     >
                       {cities.map(c => <option key={c} value={c}>{c}</option>)}
                     </select>
@@ -884,28 +884,28 @@ export default function App() {
                     const recs = dayRecs[item.day];
                     const expanded = expandedDays.has(item.day);
                     return (
-                      <div key={item.day} className="rounded-[24px] border border-black/5 dark:border-white/10 bg-white dark:bg-neutral-700 p-5 shadow-sm shadow-black/5 dark:shadow-black/10">
+                      <div key={item.day} className="rounded-[24px] border border-black/25 dark:border-white/25 bg-white dark:bg-black/[0.08] p-5 shadow-sm shadow-black/25 dark:shadow-black/25">
                         <div className="mb-4 flex items-start justify-between gap-3">
                           <div>
-                            <div className="text-xs font-semibold uppercase tracking-[0.18em] text-red-600 dark:text-red-400">{item.date}</div>
-                            <h3 className="mt-1 text-xl font-semibold tracking-tight text-neutral-900 dark:text-white">{item.title}</h3>
-                            <div className="mt-2 inline-flex rounded-full bg-neutral-100 dark:bg-neutral-600 px-3 py-1 text-xs text-neutral-700 dark:text-neutral-200">{item.vibe}</div>
+                            <div className="text-xs font-semibold uppercase tracking-[0.18em] text-red-600 dark:text-red-600">{item.date}</div>
+                            <h3 className="mt-1 text-xl font-semibold tracking-tight text-black dark:text-white">{item.title}</h3>
+                            <div className="mt-2 inline-flex rounded-full bg-black/[0.07] dark:bg-black/25 px-3 py-1 text-xs text-black/75 dark:text-white/75">{item.vibe}</div>
                           </div>
                           <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-red-600 text-sm font-bold text-white">
                             {item.day}
                           </div>
                         </div>
 
-                        <div className="grid gap-3 text-sm text-neutral-600 dark:text-neutral-300">
+                        <div className="grid gap-3 text-sm text-black/75 dark:text-white/75">
                           {[
                             [MapPin, "Ort",       item.city],
                             [Train,  "Transport", item.transport],
                             [Hotel,  "Hotel",     item.hotel],
                           ].map(([Ic, label, val]) => (
-                            <div key={label} className="flex items-start gap-3 rounded-2xl bg-neutral-50 dark:bg-neutral-600 p-3">
-                              <Ic className="mt-0.5 h-4 w-4 text-neutral-400 dark:text-neutral-400 shrink-0" />
+                            <div key={label} className="flex items-start gap-3 rounded-2xl bg-black/5 dark:bg-black/25 p-3">
+                              <Ic className="mt-0.5 h-4 w-4 text-black/50 dark:text-black/50 shrink-0" />
                               <div>
-                                <div className="font-medium text-neutral-900 dark:text-white">{label}</div>
+                                <div className="font-medium text-black dark:text-white">{label}</div>
                                 <div>{val}</div>
                               </div>
                             </div>
@@ -917,7 +917,7 @@ export default function App() {
                           <div className="mt-4">
                             <button
                               onClick={() => toggleDay(item.day)}
-                              className="flex w-full items-center justify-between rounded-2xl bg-red-600 hover:bg-red-700 px-4 py-3 text-sm font-medium text-white transition"
+                              className="flex w-full items-center justify-between rounded-2xl bg-red-600 hover:bg-red-600 px-4 py-3 text-sm font-medium text-white transition"
                             >
                               <span>Empfehlungen für diesen Tag</span>
                               {expanded ? <ChevronUp className="h-4 w-4 shrink-0" /> : <ChevronDown className="h-4 w-4 shrink-0" />}
@@ -926,31 +926,31 @@ export default function App() {
                             {expanded && (
                               <div className="mt-3 space-y-3">
                                 {REC_CATEGORIES.filter(cat => recs[cat.key] && recs[cat.key].length > 0).map(({ key, label, Icon: CatIcon, bg, text }) => (
-                                  <div key={key} className={`rounded-2xl border border-black/5 dark:border-white/10 ${bg} p-3`}>
+                                  <div key={key} className={`rounded-2xl border border-black/25 dark:border-white/25 ${bg} p-3`}>
                                     <div className={`mb-2 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] ${text}`}>
                                       <CatIcon className="h-3.5 w-3.5" /> {label}
                                     </div>
                                     <div className="space-y-2">
                                       {recs[key].map((rec, i) => (
-                                        <div key={i} className="flex items-start justify-between gap-3 rounded-xl bg-white dark:bg-neutral-700 px-3 py-2.5">
+                                        <div key={i} className="flex items-start justify-between gap-3 rounded-xl bg-white dark:bg-black/[0.08] px-3 py-2.5">
                                           <div className="min-w-0 flex-1">
                                             <div className="flex flex-wrap items-center gap-1.5">
-                                              <div className="text-sm font-medium text-neutral-900 dark:text-white leading-tight">{rec.name}</div>
+                                              <div className="text-sm font-medium text-black dark:text-white leading-tight">{rec.name}</div>
                                               {rec.time && (
                                                 <span className={`shrink-0 rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide ${
-                                                  rec.time === "morgens" ? "bg-orange-100 dark:bg-orange-900/40 text-orange-700 dark:text-orange-300" :
-                                                  rec.time === "mittags" ? "bg-sky-100 dark:bg-sky-900/40 text-sky-700 dark:text-sky-300" :
-                                                  "bg-indigo-100 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-300"
+                                                  rec.time === "morgens" ? "bg-black/[0.07] dark:bg-black/25 text-black/75 dark:text-red-600" :
+                                                  rec.time === "mittags" ? "bg-black/[0.07] dark:bg-black/25 text-black/75 dark:text-white/75" :
+                                                  "bg-black/[0.07] dark:bg-black/25 text-black/75 dark:text-white/75"
                                                 }`}>{rec.time}</span>
                                               )}
                                             </div>
-                                            <div className="mt-0.5 text-xs text-neutral-500 dark:text-neutral-400 leading-snug">{rec.desc}</div>
+                                            <div className="mt-0.5 text-xs text-black/50 dark:text-black/50 leading-snug">{rec.desc}</div>
                                           </div>
                                           <a
                                             href={mapsUrl(rec.q)}
                                             target="_blank"
                                             rel="noreferrer"
-                                            className="shrink-0 rounded-full bg-red-50 dark:bg-red-950/50 px-2.5 py-1 text-xs font-medium text-red-700 dark:text-red-400 hover:bg-red-100 dark:hover:bg-red-900/50 transition"
+                                            className="shrink-0 rounded-full bg-red-600/[0.08] dark:bg-red-600/25 px-2.5 py-1 text-xs font-medium text-red-600 dark:text-red-600 hover:bg-red-600/25 dark:hover:bg-red-600/50 transition"
                                           >
                                             Maps ↗
                                           </a>
@@ -974,35 +974,35 @@ export default function App() {
           {/* ── Tab: Hotels ─────────────────────────────────────────────── */}
           {activeTab === "map" && (
             <div className="px-4 py-5 md:px-8 md:py-8">
-              <div className="rounded-[28px] border border-black/5 dark:border-white/10 bg-[#fcfbf8] dark:bg-neutral-800 p-5 md:p-6">
+              <div className="rounded-[28px] border border-black/25 dark:border-white/25 bg-black/5 dark:bg-black/[0.06] p-5 md:p-6">
                 <SectionTitle eyebrow="Hotels" title="Unterkünfte der Reise" text="Alle Hotels mit Check-in und Check-out Zeiten auf einen Blick." />
                 <div className="mt-4 grid gap-3 md:grid-cols-2 xl:grid-cols-4">
                   {stops.map((stop, i) => (
                     <div
                       key={stop.id}
-                      className="rounded-[20px] border border-black/5 dark:border-white/10 bg-white dark:bg-neutral-700 p-4"
+                      className="rounded-[20px] border border-black/25 dark:border-white/25 bg-white dark:bg-black/[0.08] p-4"
                     >
                       <div className="flex items-start justify-between gap-2">
-                        <div className="text-xs font-semibold uppercase tracking-[0.16em] text-red-600 dark:text-red-400">Hotel {i + 1}</div>
+                        <div className="text-xs font-semibold uppercase tracking-[0.16em] text-red-600 dark:text-red-600">Hotel {i + 1}</div>
                         <a
                           href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(stop.hotel + " " + stop.city + " Japan")}`}
                           target="_blank"
                           rel="noreferrer"
-                          className="shrink-0 flex items-center justify-center h-7 w-7 rounded-full bg-red-50 dark:bg-red-950/50 text-red-600 dark:text-red-400 hover:bg-red-100 dark:hover:bg-red-900/50 transition"
+                          className="shrink-0 flex items-center justify-center h-7 w-7 rounded-full bg-red-600/[0.08] dark:bg-red-600/25 text-red-600 dark:text-red-600 hover:bg-red-600/25 dark:hover:bg-red-600/50 transition"
                           title="Auf Google Maps öffnen"
                         >
                           <MapPin className="h-3.5 w-3.5" />
                         </a>
                       </div>
-                      <div className="mt-1 text-sm font-semibold text-neutral-900 dark:text-white">{stop.city}</div>
-                      <div className="mt-0.5 text-sm text-neutral-600 dark:text-neutral-300 leading-snug">{stop.hotel}</div>
-                      <div className="mt-1 text-xs text-neutral-500 dark:text-neutral-400">{stop.range} · {stop.nights} Nächte</div>
+                      <div className="mt-1 text-sm font-semibold text-black dark:text-white">{stop.city}</div>
+                      <div className="mt-0.5 text-sm text-black/75 dark:text-white/75 leading-snug">{stop.hotel}</div>
+                      <div className="mt-1 text-xs text-black/50 dark:text-black/50">{stop.range} · {stop.nights} Nächte</div>
                       <div className="mt-2 flex gap-3 text-xs">
-                        <span className="flex items-center gap-1 text-emerald-600 dark:text-emerald-400 font-medium">
-                          <span className="text-neutral-400">Check-in</span> {stop.checkin} Uhr
+                        <span className="flex items-center gap-1 text-red-600 dark:text-red-600 font-medium">
+                          <span className="text-black/50">Check-in</span> {stop.checkin} Uhr
                         </span>
-                        <span className="flex items-center gap-1 text-orange-600 dark:text-orange-400 font-medium">
-                          <span className="text-neutral-400">Check-out</span> {stop.checkout} Uhr
+                        <span className="flex items-center gap-1 text-red-600 dark:text-red-600 font-medium">
+                          <span className="text-black/50">Check-out</span> {stop.checkout} Uhr
                         </span>
                       </div>
                     </div>
@@ -1019,7 +1019,7 @@ export default function App() {
               <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
 
                 {/* Category tracker */}
-                <div className="rounded-[28px] border border-black/5 dark:border-white/10 bg-[#fcfbf8] dark:bg-neutral-800 p-5 md:p-6">
+                <div className="rounded-[28px] border border-black/25 dark:border-white/25 bg-black/5 dark:bg-black/[0.06] p-5 md:p-6">
                   <SectionTitle eyebrow="Budget-Tracker" title="Ausgaben erfassen" text="Füge beliebig viele Einträge pro Kategorie hinzu – alles wird dauerhaft gespeichert." />
                   <div className="space-y-4">
                     {budgetPlan.map(({ key, label, planned, icon: Icon }) => {
@@ -1029,24 +1029,24 @@ export default function App() {
                       const over = actual > planned;
                       const inp = newBudgetInputs[key] || {};
                       return (
-                        <div key={key} className="rounded-2xl border border-black/5 dark:border-white/10 bg-white dark:bg-neutral-700 p-4">
+                        <div key={key} className="rounded-2xl border border-black/25 dark:border-white/25 bg-white dark:bg-black/[0.08] p-4">
                           {/* Header */}
                           <div className="mb-3 flex items-center justify-between gap-3">
                             <div className="flex items-center gap-3">
-                              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-red-50 dark:bg-red-950/50 text-red-600 dark:text-red-400">
+                              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-red-600/[0.08] dark:bg-red-600/25 text-red-600 dark:text-red-600">
                                 <Icon className="h-4 w-4" />
                               </div>
                               <div>
-                                <div className="text-sm font-semibold text-neutral-900 dark:text-white">{label}</div>
-                                <div className="text-xs text-neutral-500 dark:text-neutral-400">Geplant: {planned.toLocaleString("de-DE")} € · Gesamt: <span className={`font-semibold ${over ? "text-red-500" : "text-emerald-600 dark:text-emerald-400"}`}>{actual.toLocaleString("de-DE")} €</span></div>
+                                <div className="text-sm font-semibold text-black dark:text-white">{label}</div>
+                                <div className="text-xs text-black/50 dark:text-black/50">Geplant: {planned.toLocaleString("de-DE")} € · Gesamt: <span className={`font-semibold ${over ? "text-red-600" : "text-red-600 dark:text-red-600"}`}>{actual.toLocaleString("de-DE")} €</span></div>
                               </div>
                             </div>
                           </div>
 
                           {/* Progress bar */}
-                          <div className="mb-3 h-1.5 overflow-hidden rounded-full bg-neutral-100 dark:bg-neutral-600">
+                          <div className="mb-3 h-1.5 overflow-hidden rounded-full bg-black/[0.07] dark:bg-black/25">
                             <div
-                              className={`h-1.5 rounded-full transition-all duration-500 ${over ? "bg-red-500" : "bg-emerald-500"}`}
+                              className={`h-1.5 rounded-full transition-all duration-500 ${over ? "bg-red-600/[0.08]0" : "bg-black/50"}`}
                               style={{ width: `${pct}%` }}
                             />
                           </div>
@@ -1055,11 +1055,11 @@ export default function App() {
                           {entries.length > 0 && (
                             <div className="mb-3 space-y-1.5">
                               {entries.map(e => (
-                                <div key={e.id} className="flex items-center justify-between gap-2 rounded-xl bg-neutral-50 dark:bg-neutral-600 px-3 py-2">
-                                  <span className="text-sm text-neutral-700 dark:text-neutral-200">{e.label || "Ausgabe"}</span>
+                                <div key={e.id} className="flex items-center justify-between gap-2 rounded-xl bg-black/5 dark:bg-black/25 px-3 py-2">
+                                  <span className="text-sm text-black/75 dark:text-white/75">{e.label || "Ausgabe"}</span>
                                   <div className="flex items-center gap-2">
-                                    <span className="text-sm font-medium text-neutral-900 dark:text-white">{parseFloat(e.amount).toLocaleString("de-DE")} €</span>
-                                    <button onClick={() => removeBudgetEntry(key, e.id)} className="rounded-full p-0.5 text-neutral-300 dark:text-neutral-500 hover:text-red-400 transition">
+                                    <span className="text-sm font-medium text-black dark:text-white">{parseFloat(e.amount).toLocaleString("de-DE")} €</span>
+                                    <button onClick={() => removeBudgetEntry(key, e.id)} className="rounded-full p-0.5 text-white/75 dark:text-black/50 hover:text-red-600 transition">
                                       <X className="h-3.5 w-3.5" />
                                     </button>
                                   </div>
@@ -1075,7 +1075,7 @@ export default function App() {
                               value={inp.label || ""}
                               onChange={e => setNewBudgetInputs(prev => ({ ...prev, [key]: { ...inp, label: e.target.value } }))}
                               placeholder="Bezeichnung …"
-                              className="min-w-0 flex-1 rounded-xl border border-black/10 dark:border-white/10 bg-neutral-50 dark:bg-neutral-600 px-3 py-2.5 text-sm text-neutral-900 dark:text-white outline-none focus:border-red-300 dark:focus:border-red-700"
+                              className="min-w-0 flex-1 rounded-xl border border-black/25 dark:border-white/25 bg-black/5 dark:bg-black/25 px-3 py-2.5 text-sm text-black dark:text-white outline-none focus:border-red-600/50 dark:focus:border-red-600"
                             />
                             <div className="flex gap-2">
                               <input
@@ -1086,11 +1086,11 @@ export default function App() {
                                 onChange={e => setNewBudgetInputs(prev => ({ ...prev, [key]: { ...inp, amount: e.target.value } }))}
                                 onKeyDown={e => e.key === "Enter" && addBudgetEntry(key)}
                                 placeholder="€"
-                                className="min-w-0 flex-1 sm:w-24 sm:flex-none rounded-xl border border-black/10 dark:border-white/10 bg-neutral-50 dark:bg-neutral-600 px-3 py-2.5 text-right text-sm font-medium text-neutral-900 dark:text-white outline-none focus:border-red-300 dark:focus:border-red-700"
+                                className="min-w-0 flex-1 sm:w-24 sm:flex-none rounded-xl border border-black/25 dark:border-white/25 bg-black/5 dark:bg-black/25 px-3 py-2.5 text-right text-sm font-medium text-black dark:text-white outline-none focus:border-red-600/50 dark:focus:border-red-600"
                               />
                               <button
                                 onClick={() => addBudgetEntry(key)}
-                                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-red-600 text-white hover:bg-red-700 transition"
+                                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-red-600 text-white hover:bg-red-600 transition"
                               >
                                 <Plus className="h-4 w-4" />
                               </button>
@@ -1098,7 +1098,7 @@ export default function App() {
                           </div>
 
                           {actual > 0 && (
-                            <div className={`mt-2 text-right text-xs font-medium ${over ? "text-red-600 dark:text-red-400" : "text-emerald-600 dark:text-emerald-400"}`}>
+                            <div className={`mt-2 text-right text-xs font-medium ${over ? "text-red-600 dark:text-red-600" : "text-red-600 dark:text-red-600"}`}>
                               {over ? `+${(actual - planned).toLocaleString("de-DE")} € über Budget` : `${(planned - actual).toLocaleString("de-DE")} € noch verfügbar`}
                             </div>
                           )}
@@ -1110,16 +1110,16 @@ export default function App() {
 
                 {/* Summary */}
                 <div className="space-y-6">
-                  <div className="rounded-[28px] border border-black/5 dark:border-white/10 bg-neutral-950 p-5 md:p-6 text-white">
+                  <div className="rounded-[28px] border border-black/25 dark:border-white/25 bg-black p-5 md:p-6 text-white">
                     <SectionTitle eyebrow="Gesamtübersicht" title="Dein Budgetstatus" dark />
                     <div className="space-y-4">
                       {[
-                        { label: "Geplant gesamt", value: totalPlanned, color: "text-white/70" },
-                        { label: "Ausgegeben bisher", value: totalActual, color: totalActual > totalPlanned ? "text-red-400" : "text-emerald-400" },
-                        { label: "Verbleibend", value: totalPlanned - totalActual, color: totalActual > totalPlanned ? "text-red-400" : "text-emerald-400" },
+                        { label: "Geplant gesamt", value: totalPlanned, color: "text-white/75" },
+                        { label: "Ausgegeben bisher", value: totalActual, color: totalActual > totalPlanned ? "text-red-600" : "text-red-600" },
+                        { label: "Verbleibend", value: totalPlanned - totalActual, color: totalActual > totalPlanned ? "text-red-600" : "text-red-600" },
                       ].map(({ label, value, color }) => (
                         <div key={label} className="flex items-center justify-between rounded-2xl bg-white/5 px-4 py-3">
-                          <span className="text-sm text-white/60">{label}</span>
+                          <span className="text-sm text-white/50">{label}</span>
                           <span className={`text-lg font-semibold ${color}`}>
                             {value < 0 ? "-" : ""}{Math.abs(value).toLocaleString("de-DE")} €
                           </span>
@@ -1134,7 +1134,7 @@ export default function App() {
                       </div>
                       <div className="h-3 overflow-hidden rounded-full bg-white/10">
                         <div
-                          className={`h-3 rounded-full transition-all duration-700 ${totalActual > totalPlanned ? "bg-red-500" : "bg-emerald-500"}`}
+                          className={`h-3 rounded-full transition-all duration-700 ${totalActual > totalPlanned ? "bg-red-600/[0.08]0" : "bg-black/50"}`}
                           style={{ width: `${Math.min((totalActual / totalPlanned) * 100, 100)}%` }}
                         />
                       </div>
@@ -1142,7 +1142,7 @@ export default function App() {
                   </div>
 
                   {/* Budget tips */}
-                  <div className="rounded-[28px] border border-black/5 dark:border-white/10 bg-white dark:bg-neutral-800 p-5 md:p-6">
+                  <div className="rounded-[28px] border border-black/25 dark:border-white/25 bg-white dark:bg-black/[0.06] p-5 md:p-6">
                     <SectionTitle eyebrow="Tipps" title="Budget-Hinweise" />
                     <div className="space-y-3 text-sm">
                       {[
@@ -1151,9 +1151,9 @@ export default function App() {
                         ["JR Pass", "Bereits vor Reiseantritt online kaufen – in Japan teurer oder nicht erhältlich."],
                         ["Konbini spart", "Frühstück und Snacks im Konbini: ~10–15 € pro Tag statt 30 € im Café."],
                       ].map(([t, desc]) => (
-                        <div key={t} className="rounded-2xl bg-neutral-50 dark:bg-neutral-700 px-4 py-3">
-                          <div className="font-medium text-neutral-900 dark:text-white">{t}</div>
-                          <div className="mt-0.5 text-neutral-600 dark:text-neutral-300">{desc}</div>
+                        <div key={t} className="rounded-2xl bg-black/5 dark:bg-black/[0.08] px-4 py-3">
+                          <div className="font-medium text-black dark:text-white">{t}</div>
+                          <div className="mt-0.5 text-black/75 dark:text-white/75">{desc}</div>
                         </div>
                       ))}
                     </div>
@@ -1167,7 +1167,7 @@ export default function App() {
           {/* ── Tab: Wunschziele ────────────────────────────────────────── */}
           {activeTab === "wishlist" && (
             <div className="px-4 py-5 md:px-8 md:py-8">
-              <div className="rounded-[28px] border border-black/5 dark:border-white/10 bg-[#fcfbf8] dark:bg-neutral-800 p-5 md:p-6">
+              <div className="rounded-[28px] border border-black/25 dark:border-white/25 bg-black/5 dark:bg-black/[0.06] p-5 md:p-6">
                 <SectionTitle
                   eyebrow="Wunschziele"
                   title="Orte auf eurer Merkliste"
@@ -1177,23 +1177,23 @@ export default function App() {
                   {wunschziele.map(group => {
                     const open = expandedCities.has(group.city);
                     return (
-                      <div key={group.city} className="overflow-hidden rounded-[20px] border border-black/5 dark:border-white/10 bg-white dark:bg-neutral-700">
+                      <div key={group.city} className="overflow-hidden rounded-[20px] border border-black/25 dark:border-white/25 bg-white dark:bg-black/[0.08]">
                         <button
                           onClick={() => toggleCity(group.city)}
-                          className="flex w-full items-center justify-between gap-3 px-4 py-4 text-left transition hover:bg-neutral-50 dark:hover:bg-neutral-600 min-h-[56px]"
+                          className="flex w-full items-center justify-between gap-3 px-4 py-4 text-left transition hover:bg-black/5 dark:hover:bg-black/25 min-h-[56px]"
                         >
                           <div className="flex items-center gap-3">
-                            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-neutral-900 dark:bg-neutral-500 text-white">
+                            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white dark:bg-black/50 text-white">
                               <MapPin className="h-3.5 w-3.5" />
                             </div>
-                            <span className="text-base font-semibold text-neutral-900 dark:text-white">{group.city}</span>
-                            <span className="rounded-full bg-neutral-100 dark:bg-neutral-600 px-2.5 py-0.5 text-xs text-neutral-500 dark:text-neutral-400">{group.places.length} Orte</span>
+                            <span className="text-base font-semibold text-black dark:text-white">{group.city}</span>
+                            <span className="rounded-full bg-black/[0.07] dark:bg-black/25 px-2.5 py-0.5 text-xs text-black/50 dark:text-black/50">{group.places.length} Orte</span>
                           </div>
-                          {open ? <ChevronUp className="h-4 w-4 shrink-0 text-neutral-400" /> : <ChevronDown className="h-4 w-4 shrink-0 text-neutral-400" />}
+                          {open ? <ChevronUp className="h-4 w-4 shrink-0 text-black/50" /> : <ChevronDown className="h-4 w-4 shrink-0 text-black/50" />}
                         </button>
 
                         {open && (
-                          <div className="border-t border-black/5 dark:border-white/10 p-4">
+                          <div className="border-t border-black/25 dark:border-white/25 p-4">
                             <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                               {group.places.map(place => (
                                 <a
@@ -1201,24 +1201,24 @@ export default function App() {
                                   href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(place.q)}`}
                                   target="_blank"
                                   rel="noreferrer"
-                                  className="group flex flex-col gap-2 rounded-[16px] border border-black/5 dark:border-white/10 bg-neutral-50 dark:bg-neutral-600 p-4 hover:border-red-200 dark:hover:border-red-800 hover:shadow-md transition-all"
+                                  className="group flex flex-col gap-2 rounded-[16px] border border-black/25 dark:border-white/25 bg-black/5 dark:bg-black/25 p-4 hover:border-red-600/50 dark:hover:border-red-600/75 hover:shadow-md transition-all"
                                 >
                                   <div className="flex items-start justify-between gap-2">
                                     <div className="min-w-0">
-                                      <div className="text-sm font-semibold text-neutral-900 dark:text-white leading-snug group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors">
+                                      <div className="text-sm font-semibold text-black dark:text-white leading-snug group-hover:text-red-600 dark:group-hover:text-red-600 transition-colors">
                                         {place.name}
                                       </div>
-                                      <span className="mt-1 inline-flex rounded-full bg-red-50 dark:bg-red-950/40 px-2.5 py-0.5 text-xs font-medium text-red-700 dark:text-red-400">
+                                      <span className="mt-1 inline-flex rounded-full bg-red-600/[0.08] dark:bg-red-600/25 px-2.5 py-0.5 text-xs font-medium text-red-600 dark:text-red-600">
                                         {place.cat}
                                       </span>
                                     </div>
-                                    <div className="shrink-0 rounded-xl bg-white dark:bg-neutral-500 p-1.5 text-neutral-400 group-hover:bg-red-50 dark:group-hover:bg-red-950/40 group-hover:text-red-500 dark:group-hover:text-red-400 transition-colors">
+                                    <div className="shrink-0 rounded-xl bg-white dark:bg-black/50 p-1.5 text-black/50 group-hover:bg-red-600/[0.08] dark:group-hover:bg-red-600/25 group-hover:text-red-600 dark:group-hover:text-red-600 transition-colors">
                                       <MapPin className="h-3.5 w-3.5" />
                                     </div>
                                   </div>
-                                  <div className="flex items-center gap-1.5 text-xs text-neutral-500 dark:text-neutral-400">
-                                    <Star className="h-3 w-3 fill-amber-400 text-amber-400" />
-                                    <span className="font-medium text-neutral-700 dark:text-neutral-200">{place.rating}</span>
+                                  <div className="flex items-center gap-1.5 text-xs text-black/50 dark:text-black/50">
+                                    <Star className="h-3 w-3 fill-red-600 text-red-600" />
+                                    <span className="font-medium text-black/75 dark:text-white/75">{place.rating}</span>
                                     <span>({place.reviews})</span>
                                   </div>
                                 </a>
