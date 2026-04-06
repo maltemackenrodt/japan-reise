@@ -70,3 +70,4 @@ japan-reise-app/
 
 Alle Reisedaten (Stopps, Tagesplan, Budget, Foodspots, Checkliste) sind als Konstanten
 am Anfang von `src/App.jsx` definiert – einfach direkt bearbeiten.
+# japan-reise
