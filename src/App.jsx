@@ -816,12 +816,12 @@ export default function App() {
   const mapsUrl = (q) => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`;
 
   return (
-    <div className="min-h-screen bg-[#f7f3ee] dark:bg-neutral-950 text-neutral-900 dark:text-white">
-      <div className="mx-auto max-w-7xl px-4 py-6 md:px-6 md:py-8">
-        <div className="overflow-hidden rounded-[32px] border border-black/5 dark:border-white/10 bg-white dark:bg-neutral-900 shadow-xl shadow-black/5 dark:shadow-black/30">
+    <div className="min-h-screen bg-[#f7f3ee] dark:bg-neutral-950 text-neutral-900 dark:text-white pb-safe" style={{ paddingBottom: "env(safe-area-inset-bottom)" }}>
+      <div className="md:mx-auto md:max-w-7xl md:px-6 md:py-8">
+        <div className="overflow-hidden bg-white dark:bg-neutral-900 md:rounded-[32px] md:border md:border-black/5 md:dark:border-white/10 md:shadow-xl md:shadow-black/5 md:dark:shadow-black/30">
 
           {/* ── Header ─────────────────────────────────────────────────── */}
-          <div className="border-b border-black/5 dark:border-white/10 bg-[radial-gradient(circle_at_top_left,_rgba(239,68,68,0.15),_transparent_35%),linear-gradient(135deg,#fff,#faf7f3)] dark:bg-neutral-900 px-5 py-6 md:px-8 md:py-8">
+          <div className="border-b border-black/5 dark:border-white/10 bg-[radial-gradient(circle_at_top_left,_rgba(239,68,68,0.15),_transparent_35%),linear-gradient(135deg,#fff,#faf7f3)] dark:bg-neutral-900 px-4 py-5 md:px-8 md:py-8">
             <div className="flex flex-col gap-4">
               <div className="max-w-3xl">
                 <div className="flex items-center justify-between gap-4">
@@ -851,8 +851,8 @@ export default function App() {
           </div>
 
           {/* ── Tab Bar ─────────────────────────────────────────────────── */}
-          <div className="sticky top-0 z-10 border-b border-black/5 dark:border-white/10 bg-white/95 dark:bg-neutral-900/95 backdrop-blur px-5 md:px-8">
-            <div className="flex gap-1 overflow-x-auto py-2">
+          <div className="sticky top-0 z-10 border-b border-black/5 dark:border-white/10 bg-white/95 dark:bg-neutral-900/95 backdrop-blur px-2 md:px-8">
+            <div className="flex gap-0.5 overflow-x-auto py-2 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
               {TABS.map(tab => {
                 const Icon = tab.icon;
                 const active = activeTab === tab.id;
@@ -860,9 +860,9 @@ export default function App() {
                   <button
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id)}
-                    className={`flex shrink-0 items-center gap-2 rounded-xl px-4 py-2 text-sm font-medium transition ${active ? "bg-red-50 dark:bg-red-950/50 text-red-700 dark:text-red-400" : "text-neutral-500 dark:text-neutral-400 hover:bg-neutral-50 dark:hover:bg-neutral-800 hover:text-neutral-700 dark:hover:text-neutral-200"}`}
+                    className={`flex shrink-0 items-center gap-1.5 rounded-xl px-3 py-2.5 text-sm font-medium transition min-h-[44px] md:px-4 ${active ? "bg-red-50 dark:bg-red-950/50 text-red-700 dark:text-red-400" : "text-neutral-500 dark:text-neutral-400 hover:bg-neutral-50 dark:hover:bg-neutral-800 hover:text-neutral-700 dark:hover:text-neutral-200"}`}
                   >
-                    <Icon className="h-4 w-4" />
+                    <Icon className="h-4 w-4 shrink-0" />
                     {tab.label}
                   </button>
                 );
@@ -872,7 +872,7 @@ export default function App() {
 
           {/* ── Tab: Überblick ──────────────────────────────────────────── */}
           {activeTab === "overview" && (
-            <div className="px-5 py-6 md:px-8 md:py-8">
+            <div className="px-4 py-5 md:px-8 md:py-8">
               <div className="rounded-[28px] border border-black/5 dark:border-white/10 bg-[#fcfbf8] dark:bg-neutral-800 p-5 md:p-6">
                 <SectionTitle eyebrow="Überblick" title="Route & Rhythmus" text="Die Reise wechselt bewusst zwischen Stadterkundung und Onsen-/Naturphasen." />
                 <div className="space-y-3">
@@ -897,7 +897,7 @@ export default function App() {
 
           {/* ── Tab: Tagesplan ──────────────────────────────────────────── */}
           {activeTab === "itinerary" && (
-            <div className="px-5 py-6 md:px-8 md:py-8">
+            <div className="px-4 py-5 md:px-8 md:py-8">
               <div className="rounded-[28px] border border-black/5 dark:border-white/10 bg-[#fcfbf8] dark:bg-neutral-800 p-5 md:p-6">
                 <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
                   <SectionTitle eyebrow="Tagesplan" title="Eure Reise Tag für Tag" text="Alle Etappen mit Aufenthaltsort, Transfer, Highlights und Empfehlungen." />
@@ -1017,7 +1017,7 @@ export default function App() {
 
           {/* ── Tab: Hotels ─────────────────────────────────────────────── */}
           {activeTab === "map" && (
-            <div className="px-5 py-6 md:px-8 md:py-8">
+            <div className="px-4 py-5 md:px-8 md:py-8">
               <div className="rounded-[28px] border border-black/5 dark:border-white/10 bg-[#fcfbf8] dark:bg-neutral-800 p-5 md:p-6">
                 <SectionTitle eyebrow="Hotels" title="Unterkünfte der Reise" text="Alle Hotels mit Check-in und Check-out Zeiten auf einen Blick." />
                 <div className="mt-4 grid gap-3 md:grid-cols-2 xl:grid-cols-4">
@@ -1059,7 +1059,7 @@ export default function App() {
 
           {/* ── Tab: Budget ─────────────────────────────────────────────── */}
           {activeTab === "budget" && (
-            <div className="px-5 py-6 md:px-8 md:py-8">
+            <div className="px-4 py-5 md:px-8 md:py-8">
               <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
 
                 {/* Category tracker */}
@@ -1113,30 +1113,32 @@ export default function App() {
                           )}
 
                           {/* Add entry */}
-                          <div className="flex gap-2">
+                          <div className="flex flex-col gap-2 sm:flex-row">
                             <input
                               type="text"
                               value={inp.label || ""}
                               onChange={e => setNewBudgetInputs(prev => ({ ...prev, [key]: { ...inp, label: e.target.value } }))}
                               placeholder="Bezeichnung …"
-                              className="min-w-0 flex-1 rounded-xl border border-black/10 dark:border-white/10 bg-neutral-50 dark:bg-neutral-600 px-3 py-2 text-sm text-neutral-900 dark:text-white outline-none focus:border-red-300 dark:focus:border-red-700"
+                              className="min-w-0 flex-1 rounded-xl border border-black/10 dark:border-white/10 bg-neutral-50 dark:bg-neutral-600 px-3 py-2.5 text-sm text-neutral-900 dark:text-white outline-none focus:border-red-300 dark:focus:border-red-700"
                             />
-                            <input
-                              type="number"
-                              min="0"
-                              step="1"
-                              value={inp.amount || ""}
-                              onChange={e => setNewBudgetInputs(prev => ({ ...prev, [key]: { ...inp, amount: e.target.value } }))}
-                              onKeyDown={e => e.key === "Enter" && addBudgetEntry(key)}
-                              placeholder="€"
-                              className="w-20 rounded-xl border border-black/10 dark:border-white/10 bg-neutral-50 dark:bg-neutral-600 px-3 py-2 text-right text-sm font-medium text-neutral-900 dark:text-white outline-none focus:border-red-300 dark:focus:border-red-700"
-                            />
-                            <button
-                              onClick={() => addBudgetEntry(key)}
-                              className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-red-600 text-white hover:bg-red-700 transition"
-                            >
-                              <Plus className="h-4 w-4" />
-                            </button>
+                            <div className="flex gap-2">
+                              <input
+                                type="number"
+                                min="0"
+                                step="1"
+                                value={inp.amount || ""}
+                                onChange={e => setNewBudgetInputs(prev => ({ ...prev, [key]: { ...inp, amount: e.target.value } }))}
+                                onKeyDown={e => e.key === "Enter" && addBudgetEntry(key)}
+                                placeholder="€"
+                                className="min-w-0 flex-1 sm:w-24 sm:flex-none rounded-xl border border-black/10 dark:border-white/10 bg-neutral-50 dark:bg-neutral-600 px-3 py-2.5 text-right text-sm font-medium text-neutral-900 dark:text-white outline-none focus:border-red-300 dark:focus:border-red-700"
+                              />
+                              <button
+                                onClick={() => addBudgetEntry(key)}
+                                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-red-600 text-white hover:bg-red-700 transition"
+                              >
+                                <Plus className="h-4 w-4" />
+                              </button>
+                            </div>
                           </div>
 
                           {actual > 0 && (
@@ -1208,7 +1210,7 @@ export default function App() {
 
           {/* ── Tab: Wunschziele ────────────────────────────────────────── */}
           {activeTab === "wishlist" && (
-            <div className="px-5 py-6 md:px-8 md:py-8">
+            <div className="px-4 py-5 md:px-8 md:py-8">
               <div className="rounded-[28px] border border-black/5 dark:border-white/10 bg-[#fcfbf8] dark:bg-neutral-800 p-5 md:p-6">
                 <SectionTitle
                   eyebrow="Wunschziele"
