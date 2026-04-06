@@ -661,7 +661,6 @@ const TABS = [
   { id: "overview",  label: "Überblick",  icon: LayoutGrid },
   { id: "itinerary", label: "Tagesplan",  icon: List },
   { id: "map",       label: "Karte",      icon: Map },
-  { id: "checklist", label: "Checkliste", icon: CheckCircle2 },
   { id: "budget",    label: "Budget",     icon: Wallet },
   { id: "wishlist",  label: "Wunschziele", icon: Star },
 ];
@@ -796,11 +795,6 @@ export default function App() {
                   >
                     <Icon className="h-4 w-4" />
                     {tab.label}
-                    {tab.id === "checklist" && (
-                      <span className={`rounded-full px-1.5 py-0.5 text-xs font-semibold ${active ? "bg-red-100 dark:bg-red-900 text-red-700 dark:text-red-300" : "bg-neutral-100 dark:bg-neutral-700 text-neutral-500 dark:text-neutral-400"}`}>
-                        {completed}/{items.length}
-                      </span>
-                    )}
                   </button>
                 );
               })}
@@ -1042,103 +1036,6 @@ export default function App() {
             </div>
           )}
 
-          {/* ── Tab: Checkliste ─────────────────────────────────────────── */}
-          {activeTab === "checklist" && (
-            <div className="grid gap-6 px-5 py-6 md:px-8 md:py-8 lg:grid-cols-[0.95fr_1.05fr]">
-              <div className="space-y-6">
-
-                {/* Checklist */}
-                <div className="rounded-[28px] border border-black/5 dark:border-white/10 bg-white dark:bg-neutral-800 p-5 md:p-6">
-                  <SectionTitle eyebrow="Planung" title="Checkliste vor Abflug" text="Interaktiv abhaken – wird im Browser gespeichert." />
-                  <div className="mb-4 rounded-2xl bg-red-50 dark:bg-red-950/40 px-4 py-3 text-sm text-red-700 dark:text-red-400">
-                    {completed} von {items.length} Punkten erledigt
-                  </div>
-
-                  <div className="mb-4 h-2 overflow-hidden rounded-full bg-neutral-100 dark:bg-neutral-700">
-                    <div
-                      className="h-2 rounded-full bg-red-500 transition-all duration-500"
-                      style={{ width: `${items.length ? (completed / items.length) * 100 : 0}%` }}
-                    />
-                  </div>
-
-                  <div className="space-y-1">
-                    {items.map((item, index) => {
-                      const done = !!checks[index];
-                      return (
-                        <div key={`${item}-${index}`} className="group flex items-center gap-2 rounded-2xl px-3 py-2.5 transition hover:bg-neutral-50 dark:hover:bg-neutral-700">
-                          <button onClick={() => toggle(index)} className="flex flex-1 items-center gap-3 text-left">
-                            {done
-                              ? <CheckCircle2 className="h-5 w-5 shrink-0 text-red-600 dark:text-red-400" />
-                              : <Circle className="h-5 w-5 shrink-0 text-neutral-300 dark:text-neutral-500" />}
-                            <span className={done ? "text-sm text-neutral-400 dark:text-neutral-500 line-through" : "text-sm text-neutral-700 dark:text-neutral-200"}>{item}</span>
-                          </button>
-                          <button
-                            onClick={() => removeItem(index)}
-                            className="shrink-0 rounded-full p-1 text-neutral-300 dark:text-neutral-600 opacity-0 transition hover:text-red-400 group-hover:opacity-100"
-                          >
-                            <X className="h-3.5 w-3.5" />
-                          </button>
-                        </div>
-                      );
-                    })}
-                  </div>
-
-                  <div className="mt-4 flex gap-2">
-                    <input
-                      value={newItem}
-                      onChange={e => setNewItem(e.target.value)}
-                      onKeyDown={e => e.key === "Enter" && handleAddItem()}
-                      placeholder="Eigenen Punkt hinzufügen …"
-                      className="flex-1 rounded-2xl border border-black/10 dark:border-white/10 bg-neutral-50 dark:bg-neutral-700 dark:text-white px-4 py-2.5 text-sm outline-none focus:border-red-300 dark:focus:border-red-700 focus:ring-2 focus:ring-red-100 dark:focus:ring-red-900/50"
-                    />
-                    <button
-                      onClick={handleAddItem}
-                      className="flex h-10 w-10 items-center justify-center rounded-2xl bg-red-600 text-white transition hover:bg-red-700"
-                    >
-                      <Plus className="h-4 w-4" />
-                    </button>
-                  </div>
-                </div>
-
-                {/* Packlist */}
-                <div className="rounded-[28px] border border-black/5 dark:border-white/10 bg-white dark:bg-neutral-800 p-5 md:p-6">
-                  <SectionTitle eyebrow="Packen" title="Mini-Packliste für diese Route" text="Besonders sinnvoll für Städte, Onsen und längere Zugfahrten." />
-                  <div className="grid gap-3 sm:grid-cols-2">
-                    {[
-                      "leichte Sneaker für Stadttage",
-                      "kleine Daybag für Fotozeug",
-                      "kompakte Regenjacke (Mai!)",
-                      "Powerbank & Ladekabel",
-                      "Adapter (Typ A, kein Erd.)",
-                      "Onsen-taugliche Basics",
-                      "Schichtlook für Küste & Berge",
-                      "Medikamente im Handgepäck",
-                    ].map(item => (
-                      <div key={item} className="flex items-center gap-3 rounded-2xl bg-neutral-50 dark:bg-neutral-700 px-4 py-3 text-sm text-neutral-700 dark:text-neutral-200">
-                        <Luggage className="h-4 w-4 shrink-0 text-neutral-400 dark:text-neutral-500" /> {item}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* Helper cards */}
-              <div className="rounded-[28px] border border-black/5 dark:border-white/10 bg-[#fcfbf8] dark:bg-neutral-800 p-5 md:p-6">
-                <SectionTitle eyebrow="Praktisch" title="Japan-Helfer für unterwegs" text="Kleine Erinnerungen, die euch während der Reise helfen." />
-                <div className="grid gap-4 md:grid-cols-2">
-                  {helperCards.map(({ title, text, icon: Icon }) => (
-                    <div key={title} className="rounded-[24px] bg-white dark:bg-neutral-700 p-5 shadow-sm shadow-black/5 dark:shadow-black/10">
-                      <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-2xl bg-red-50 dark:bg-red-950/50 text-red-600 dark:text-red-400">
-                        <Icon className="h-5 w-5" />
-                      </div>
-                      <div className="text-base font-semibold text-neutral-900 dark:text-white">{title}</div>
-                      <p className="mt-2 text-sm leading-6 text-neutral-600 dark:text-neutral-300">{text}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          )}
 
           {/* ── Tab: Budget ─────────────────────────────────────────────── */}
           {activeTab === "budget" && (
