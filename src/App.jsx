@@ -70,425 +70,425 @@ const itinerary = [
 const dayRecs = {
   1: {
     sightseeing: [
-      { name: "Shibuya Scramble Crossing", desc: "Weltweit berühmteste Kreuzung – zu Fuß überqueren und die Energie spüren", q: "Shibuya Scramble Crossing Tokyo" },
-      { name: "Shibuya Sky Rooftop", desc: "Höchstes Rooftop-Deck Shibuy as bei Nacht – Ticket vorab buchen!", q: "Shibuya Sky observation deck Tokyo" },
-      { name: "Hachikō-Statue & Platz", desc: "Treue-Symbol Tokios – der perfekte erste Orientierungspunkt", q: "Hachiko statue Shibuya Tokyo" },
+      { name: "Shibuya Scramble Crossing", desc: "Weltweit berühmteste Kreuzung – zu Fuß überqueren und die Energie spüren", q: "Shibuya Scramble Crossing Tokyo", time: "mittags" },
+      { name: "Shibuya Sky Rooftop", desc: "Höchstes Rooftop-Deck Shibuyas bei Nacht – Ticket vorab buchen!", q: "Shibuya Sky observation deck Tokyo", time: "abends" },
+      { name: "Hachikō-Statue & Platz", desc: "Treue-Symbol Tokios – der perfekte erste Orientierungspunkt", q: "Hachiko statue Shibuya Tokyo", time: "mittags" },
     ],
     kultur: [
-      { name: "Meiji-Jingū Abendstimmung", desc: "Großer Shinto-Schrein im Wald – falls noch Energie für den kurzen Besuch", q: "Meiji Shrine Tokyo" },
-      { name: "Konbini-Erlebnis 7-Eleven", desc: "IC-Card besorgen, Onigiri probieren – die japanische Kultur im Kleinen", q: "7-Eleven Haneda Airport Tokyo" },
+      { name: "Meiji-Jingū Abendstimmung", desc: "Großer Shinto-Schrein im Wald – falls noch Energie für den kurzen Besuch", q: "Meiji Shrine Tokyo", time: "mittags" },
+      { name: "Konbini-Erlebnis 7-Eleven", desc: "IC-Card besorgen, Onigiri probieren – die japanische Kultur im Kleinen", q: "7-Eleven Haneda Airport Tokyo", time: "morgens" },
     ],
     essen: [
-      { name: "Haneda Terminal 3 Food Court", desc: "Frisches Onigiri & Soba direkt nach der Landung, bevor der Hunger kommt", q: "Haneda Airport Terminal 3 food court Tokyo" },
-      { name: "Ichiran Ramen Shibuya", desc: "Legendäre Solo-Ramen-Kabine – unvergessliches erstes Ramen-Erlebnis", q: "Ichiran Ramen Shibuya Tokyo" },
-      { name: "Nonbei Yokocho Izakaya", desc: "Gemütliche Izakaya-Gässchen, ruhiger als Golden Gai – ideal für den ersten Abend", q: "Nonbei Yokocho Shibuya Tokyo" },
+      { name: "Haneda Terminal 3 Food Court", desc: "Frisches Onigiri & Soba direkt nach der Landung, bevor der Hunger kommt", q: "Haneda Airport Terminal 3 food court Tokyo", time: "morgens" },
+      { name: "Ichiran Ramen Shibuya", desc: "Legendäre Solo-Ramen-Kabine – unvergessliches erstes Ramen-Erlebnis", q: "Ichiran Ramen Shibuya Tokyo", time: "mittags" },
+      { name: "Nonbei Yokocho Izakaya", desc: "Gemütliche Izakaya-Gässchen, ruhiger als Golden Gai – ideal für den ersten Abend", q: "Nonbei Yokocho Shibuya Tokyo", time: "abends" },
     ],
     shopping: [
-      { name: "Tokyu Hands Shibuya", desc: "7 Stockwerke japanischer Design- & Alltagskultur – unverzichtbar", q: "Tokyu Hands Shibuya Tokyo" },
-      { name: "Don Quijote Shibuya", desc: "Buntes Kaufhaus für Souvenirs, Snacks und japanische Kosmetik", q: "Don Quijote Shibuya Tokyo" },
+      { name: "Tokyu Hands Shibuya", desc: "7 Stockwerke japanischer Design- & Alltagskultur – unverzichtbar", q: "Tokyu Hands Shibuya Tokyo", time: "mittags" },
+      { name: "Don Quijote Shibuya", desc: "Buntes Kaufhaus für Souvenirs, Snacks und japanische Kosmetik", q: "Don Quijote Shibuya Tokyo", time: "abends" },
     ],
   },
   2: {
     sightseeing: [
-      { name: "Yoyogi-Park Morgenspaziergang", desc: "Tokios grüne Lunge – früh morgens mit Joggern, Picknick-Gruppen und Ruhe", q: "Yoyogi Park Tokyo" },
-      { name: "Shinjuku Gyoen Nationalpark", desc: "Formalgarten mitten in der Metropole – Teehäuschen und Blütenpanorama", q: "Shinjuku Gyoen National Garden Tokyo" },
-      { name: "Tokyo Metropolitan Gov. Building", desc: "Kostenloser Aussichtsturm – Panoramablick über ganz Tokio, offen bis 22:30 h", q: "Tokyo Metropolitan Government Building observation deck" },
+      { name: "Yoyogi-Park Morgenspaziergang", desc: "Tokios grüne Lunge – früh morgens mit Joggern, Picknick-Gruppen und Ruhe", q: "Yoyogi Park Tokyo", time: "morgens" },
+      { name: "Shinjuku Gyoen Nationalpark", desc: "Formalgarten mitten in der Metropole – Teehäuschen und Blütenpanorama", q: "Shinjuku Gyoen National Garden Tokyo", time: "mittags" },
+      { name: "Tokyo Metropolitan Gov. Building", desc: "Kostenloser Aussichtsturm – Panoramablick über ganz Tokio, offen bis 22:30 h", q: "Tokyo Metropolitan Government Building observation deck", time: "abends" },
     ],
     kultur: [
-      { name: "Meiji-Schrein (6–8 Uhr)", desc: "Vor der Touristenmasse – Waldweg und Toriii im Morgenlicht unvergesslich", q: "Meiji Shrine Tokyo" },
-      { name: "Design Festa Gallery Harajuku", desc: "Indie-Kunstgalerie mit wechselnden experimentellen Ausstellungen", q: "Design Festa Gallery Harajuku Tokyo" },
+      { name: "Meiji-Schrein (6–8 Uhr)", desc: "Vor der Touristenmasse – Waldweg und Torii im Morgenlicht unvergesslich", q: "Meiji Shrine Tokyo", time: "morgens" },
+      { name: "Design Festa Gallery Harajuku", desc: "Indie-Kunstgalerie mit wechselnden experimentellen Ausstellungen", q: "Design Festa Gallery Harajuku Tokyo", time: "mittags" },
     ],
     essen: [
-      { name: "Fuglen Tokyo (Kaffee)", desc: "Norwegisches Specialty-Café in Tomigaya – einer der besten Kaffees der Stadt", q: "Fuglen Tokyo Tomigaya" },
-      { name: "Maisen Tonkatsu Omotesandō", desc: "Legende für Schweinekotelett – in einer umgebauten alten Badeanstalt", q: "Tonkatsu Maisen Omotesando Tokyo" },
-      { name: "Shinjuku Golden Gai Yakitori", desc: "200+ winzige Bars & Restaurants – legendäre Nacht-Atmosphäre in Shinjuku", q: "Shinjuku Golden Gai Tokyo" },
+      { name: "Fuglen Tokyo (Kaffee)", desc: "Norwegisches Specialty-Café in Tomigaya – einer der besten Kaffees der Stadt", q: "Fuglen Tokyo Tomigaya", time: "morgens" },
+      { name: "Maisen Tonkatsu Omotesandō", desc: "Legende für Schweinekotelett – in einer umgebauten alten Badeanstalt", q: "Tonkatsu Maisen Omotesando Tokyo", time: "mittags" },
+      { name: "Shinjuku Golden Gai Yakitori", desc: "200+ winzige Bars & Restaurants – legendäre Nacht-Atmosphäre in Shinjuku", q: "Shinjuku Golden Gai Tokyo", time: "abends" },
     ],
     shopping: [
-      { name: "Takeshita-dōri Harajuku", desc: "Bunter Streetstyle-Boulevard – Crepes, Vintage und japanische Jugendkultur", q: "Takeshita-dori Harajuku Tokyo" },
-      { name: "Omotesandō Flagship Stores", desc: "Tokios schönste Einkaufsstraße – internationale und japanische Designermarken", q: "Omotesando shopping Tokyo" },
-      { name: "Isetan Shinjuku Depachika", desc: "Untergeschoss-Lebensmittelparadies mit Wagashi, Bento und Feinkost", q: "Isetan Shinjuku food basement Tokyo" },
+      { name: "Takeshita-dōri Harajuku", desc: "Bunter Streetstyle-Boulevard – Crepes, Vintage und japanische Jugendkultur", q: "Takeshita-dori Harajuku Tokyo", time: "mittags" },
+      { name: "Omotesandō Flagship Stores", desc: "Tokios schönste Einkaufsstraße – internationale und japanische Designermarken", q: "Omotesando shopping Tokyo", time: "mittags" },
+      { name: "Isetan Shinjuku Depachika", desc: "Untergeschoss-Lebensmittelparadies mit Wagashi, Bento und Feinkost", q: "Isetan Shinjuku food basement Tokyo", time: "abends" },
     ],
   },
   3: {
     sightseeing: [
-      { name: "Sumida-Fluss-Spaziergang", desc: "Uferweg zwischen Asakusa und Skytree – tolle Skyline-Perspektive", q: "Sumida River walk Asakusa Tokyo" },
-      { name: "Tokyo Skytree (634 m)", desc: "Höchstes Bauwerk Japans – Aussicht auf die gesamte Kantō-Ebene", q: "Tokyo Skytree observation deck" },
-      { name: "Akihabara Electric Town Nacht", desc: "LED-Leuchtreklamen, Arcades, Anime – einzigartiger Neon-Abend", q: "Akihabara Electric Town Tokyo" },
+      { name: "Sumida-Fluss-Spaziergang", desc: "Uferweg zwischen Asakusa und Skytree – tolle Skyline-Perspektive", q: "Sumida River walk Asakusa Tokyo", time: "morgens" },
+      { name: "Tokyo Skytree (634 m)", desc: "Höchstes Bauwerk Japans – Aussicht auf die gesamte Kantō-Ebene", q: "Tokyo Skytree observation deck", time: "mittags" },
+      { name: "Akihabara Electric Town Nacht", desc: "LED-Leuchtreklamen, Arcades, Anime – einzigartiger Neon-Abend", q: "Akihabara Electric Town Tokyo", time: "abends" },
     ],
     kultur: [
-      { name: "Sensō-ji früh morgens (6–7 h)", desc: "Tokios ältester Tempel im Morgennebel – fast menschenleer und magisch", q: "Senso-ji Temple Asakusa Tokyo" },
-      { name: "Tokyo National Museum Ueno", desc: "Größtes Museum Japans mit Samurai-Rüstungen, Keramik und buddhistischer Kunst", q: "Tokyo National Museum Ueno Japan" },
-      { name: "Edo-Tokyo Museum", desc: "Beeindruckende Zeitreise durch 400 Jahre Stadtgeschichte im Maßstab 1:1", q: "Edo Tokyo Museum Japan" },
+      { name: "Sensō-ji früh morgens (6–7 h)", desc: "Tokios ältester Tempel im Morgennebel – fast menschenleer und magisch", q: "Senso-ji Temple Asakusa Tokyo", time: "morgens" },
+      { name: "Tokyo National Museum Ueno", desc: "Größtes Museum Japans mit Samurai-Rüstungen, Keramik und buddhistischer Kunst", q: "Tokyo National Museum Ueno Japan", time: "mittags" },
+      { name: "Edo-Tokyo Museum", desc: "Beeindruckende Zeitreise durch 400 Jahre Stadtgeschichte im Maßstab 1:1", q: "Edo Tokyo Museum Japan", time: "mittags" },
     ],
     essen: [
-      { name: "Komagataya Dorayaki (seit 1895)", desc: "Süße Bohnenpfannkuchen – Tokios ältestes Dorayaki-Erlebnis in Asakusa", q: "Komagataya Dorayaki Asakusa Tokyo" },
-      { name: "Ameyoko Markt Street Food", desc: "Lebhafter Außenmarkt unter der Hochbahn – Takoyaki, Fisch und Grillspieße", q: "Ameyoko Market Ueno Tokyo" },
-      { name: "Sometaro Okonomiyaki (selbst grillen)", desc: "Rustikales Erlebnis: japanischen Pfannkuchen am Tisch selbst zubereiten", q: "Sometaro Okonomiyaki Asakusa Tokyo" },
+      { name: "Komagataya Dorayaki (seit 1895)", desc: "Süße Bohnenpfannkuchen – Tokios ältestes Dorayaki-Erlebnis in Asakusa", q: "Komagataya Dorayaki Asakusa Tokyo", time: "morgens" },
+      { name: "Ameyoko Markt Street Food", desc: "Lebhafter Außenmarkt unter der Hochbahn – Takoyaki, Fisch und Grillspieße", q: "Ameyoko Market Ueno Tokyo", time: "mittags" },
+      { name: "Sometaro Okonomiyaki (selbst grillen)", desc: "Rustikales Erlebnis: japanischen Pfannkuchen am Tisch selbst zubereiten", q: "Sometaro Okonomiyaki Asakusa Tokyo", time: "abends" },
     ],
     shopping: [
-      { name: "Nakamise-dōri Souvenirs", desc: "Traditionelle Süßigkeiten, Fächer und Omamori in der Tempelgasse", q: "Nakamise-dori Asakusa Tokyo" },
-      { name: "Super Potato Retro Games", desc: "7-stöckiges Retro-Videospiel-Paradies – SNES, Famicom, Sega-Nostalgie pur", q: "Super Potato Akihabara Tokyo" },
-      { name: "Akihabara Yodobashi Camera", desc: "Größtes Elektronikeinkaufszentrum der Welt – 9 Stockwerke Technik", q: "Yodobashi Camera Akihabara Tokyo" },
+      { name: "Nakamise-dōri Souvenirs", desc: "Traditionelle Süßigkeiten, Fächer und Omamori in der Tempelgasse", q: "Nakamise-dori Asakusa Tokyo", time: "morgens" },
+      { name: "Super Potato Retro Games", desc: "7-stöckiges Retro-Videospiel-Paradies – SNES, Famicom, Sega-Nostalgie pur", q: "Super Potato Akihabara Tokyo", time: "abends" },
+      { name: "Akihabara Yodobashi Camera", desc: "Größtes Elektronikeinkaufszentrum der Welt – 9 Stockwerke Technik", q: "Yodobashi Camera Akihabara Tokyo", time: "mittags" },
     ],
   },
   4: {
     sightseeing: [
-      { name: "Odaiba Seaside Park", desc: "Strandpromenade mit freiem Blick auf Rainbow Bridge und Tokio-Skyline", q: "Odaiba Seaside Park Tokyo" },
-      { name: "Rainbow Bridge Fußweg", desc: "Illuminierter Spaziergang über die Hängebrücke bei Nacht – kostenlos", q: "Rainbow Bridge walking path Tokyo" },
-      { name: "Unicorn Gundam Statue DiverCity", desc: "18 m großer Gundam transformiert stündlich – Fotomoment garantiert", q: "Unicorn Gundam DiverCity Odaiba Tokyo" },
+      { name: "Odaiba Seaside Park", desc: "Strandpromenade mit freiem Blick auf Rainbow Bridge und Tokio-Skyline", q: "Odaiba Seaside Park Tokyo", time: "mittags" },
+      { name: "Rainbow Bridge Fußweg", desc: "Illuminierter Spaziergang über die Hängebrücke bei Nacht – kostenlos", q: "Rainbow Bridge walking path Tokyo", time: "abends" },
+      { name: "Unicorn Gundam Statue DiverCity", desc: "18 m großer Gundam transformiert stündlich – Fotomoment garantiert", q: "Unicorn Gundam DiverCity Odaiba Tokyo", time: "mittags" },
     ],
     kultur: [
-      { name: "teamLab Planets (Frühticket)", desc: "Immersive Wasserkunstinstallationen – unbedingt vorab buchen, früh ruhiger", q: "teamLab Planets Toyosu Tokyo" },
-      { name: "Miraikan Wissenschaftsmuseum", desc: "Nationalmuseum für Technologie: Roboter, VR und interaktive Zukunftsexponate", q: "Miraikan National Museum of Emerging Science Tokyo" },
+      { name: "teamLab Planets (Frühticket)", desc: "Immersive Wasserkunstinstallationen – unbedingt vorab buchen, früh ruhiger", q: "teamLab Planets Toyosu Tokyo", time: "morgens" },
+      { name: "Miraikan Wissenschaftsmuseum", desc: "Nationalmuseum für Technologie: Roboter, VR und interaktive Zukunftsexponate", q: "Miraikan National Museum of Emerging Science Tokyo", time: "mittags" },
     ],
     essen: [
-      { name: "Aqua City Odaiba Restaurants", desc: "Direkter Blick auf Rainbow Bridge und Skyline beim Mittag- oder Abendessen", q: "Aqua City Odaiba restaurant Tokyo" },
-      { name: "Yurikamome-Linie Konbini-Picknick", desc: "Konbini-Bento kaufen und auf der vollautomatischen Hochbahn genießen", q: "Yurikamome line Tokyo" },
-      { name: "DiverCity Tokyo Food Court", desc: "Großes Angebot direkt neben dem Gundam – praktisch und vielfältig", q: "DiverCity Tokyo Plaza food court Odaiba" },
+      { name: "Aqua City Odaiba Restaurants", desc: "Direkter Blick auf Rainbow Bridge und Skyline beim Mittag- oder Abendessen", q: "Aqua City Odaiba restaurant Tokyo", time: "mittags" },
+      { name: "Yurikamome-Linie Konbini-Picknick", desc: "Konbini-Bento kaufen und auf der vollautomatischen Hochbahn genießen", q: "Yurikamome line Tokyo", time: "morgens" },
+      { name: "DiverCity Tokyo Food Court", desc: "Großes Angebot direkt neben dem Gundam – praktisch und vielfältig", q: "DiverCity Tokyo Plaza food court Odaiba", time: "mittags" },
     ],
     shopping: [
-      { name: "Venus Fort Outlet Odaiba", desc: "Europäisch gestaltetes Einkaufszentrum mit Outlet-Bereich auf Odaiba", q: "Venus Fort Odaiba shopping Tokyo" },
-      { name: "Palette Town Stores", desc: "Großflächige Mall mit japanischen Modeketten und Souvenir-Shops", q: "Palette Town Odaiba Tokyo" },
+      { name: "Venus Fort Outlet Odaiba", desc: "Europäisch gestaltetes Einkaufszentrum mit Outlet-Bereich auf Odaiba", q: "Venus Fort Odaiba shopping Tokyo", time: "mittags" },
+      { name: "Palette Town Stores", desc: "Großflächige Mall mit japanischen Modeketten und Souvenir-Shops", q: "Palette Town Odaiba Tokyo", time: "abends" },
     ],
   },
   5: {
     sightseeing: [
-      { name: "Nakameguro Meguro River Walk", desc: "Café-gesäumter Flussspaziergang – Tokios schönste und fotogenste Flaniermeile", q: "Nakameguro Meguro River Tokyo" },
-      { name: "Shimokitazawa Straßenszene", desc: "Tokios hippigster Stadtteil – Theaterplakate, Straßenmusiker, Café-Terrassen", q: "Shimokitazawa Tokyo" },
-      { name: "Ebisu Garden Place", desc: "Weitläufige Anlage mit Biergarten-Atmosphäre und schönem Abendlicht", q: "Ebisu Garden Place Tokyo" },
+      { name: "Nakameguro Meguro River Walk", desc: "Café-gesäumter Flussspaziergang – Tokios schönste und fotogenste Flaniermeile", q: "Nakameguro Meguro River Tokyo", time: "mittags" },
+      { name: "Shimokitazawa Straßenszene", desc: "Tokios hippigster Stadtteil – Theaterplakate, Straßenmusiker, Café-Terrassen", q: "Shimokitazawa Tokyo", time: "morgens" },
+      { name: "Ebisu Garden Place", desc: "Weitläufige Anlage mit Biergarten-Atmosphäre und schönem Abendlicht", q: "Ebisu Garden Place Tokyo", time: "abends" },
     ],
     kultur: [
-      { name: "Daikanyama T-Site Buchhandlung", desc: "Traumhafte drei Buchpavillons – japanische Designbücher, Fotografie, Architektur", q: "Daikanyama T-Site Tokyo" },
-      { name: "Toguri Museum of Art", desc: "Ruhiges Museum für japanische und chinesische Keramik in Shibuya", q: "Toguri Museum of Art Shibuya Tokyo" },
+      { name: "Daikanyama T-Site Buchhandlung", desc: "Traumhafte drei Buchpavillons – japanische Designbücher, Fotografie, Architektur", q: "Daikanyama T-Site Tokyo", time: "mittags" },
+      { name: "Toguri Museum of Art", desc: "Ruhiges Museum für japanische und chinesische Keramik in Shibuya", q: "Toguri Museum of Art Shibuya Tokyo", time: "mittags" },
     ],
     essen: [
-      { name: "Bear Pond Espresso", desc: "Legendäres Espresso-Lab in Shimokitazawa – präzisester Kaffee Tokios", q: "Bear Pond Espresso Shimokitazawa Tokyo" },
-      { name: "Saturdays NYC Café Daikanyama", desc: "Surf-Café mit exzellentem Kaffee, Sandwiches und entspannter Terrace", q: "Saturdays NYC Daikanyama Tokyo" },
-      { name: "Anjin Bar im T-Site", desc: "Cocktails umgeben von tausenden Büchern und Schallplatten – einzigartig", q: "Anjin bar Daikanyama T-Site Tokyo" },
+      { name: "Bear Pond Espresso", desc: "Legendäres Espresso-Lab in Shimokitazawa – präzisester Kaffee Tokios", q: "Bear Pond Espresso Shimokitazawa Tokyo", time: "morgens" },
+      { name: "Saturdays NYC Café Daikanyama", desc: "Surf-Café mit exzellentem Kaffee, Sandwiches und entspannter Terrace", q: "Saturdays NYC Daikanyama Tokyo", time: "morgens" },
+      { name: "Anjin Bar im T-Site", desc: "Cocktails umgeben von tausenden Büchern und Schallplatten – einzigartig", q: "Anjin bar Daikanyama T-Site Tokyo", time: "abends" },
     ],
     shopping: [
-      { name: "Shimokitazawa Vintage Läden", desc: "Japans beste Second-Hand-Szene – Vinylplatten, Retro-Klamotten, Kuriositäten", q: "Shimokitazawa vintage shops Tokyo" },
-      { name: "Bonus Track Shimokitazawa", desc: "Neue Mini-Mall mit Ateliers, Buchläden und Craftbier-Bar auf altem Bahngelände", q: "Bonus Track Shimokitazawa Tokyo" },
-      { name: "Log Road Daikanyama", desc: "Stylishe Food- und Lifestyle-Halle auf einem ehemaligen Bahngleis", q: "Log Road Daikanyama Tokyo" },
+      { name: "Shimokitazawa Vintage Läden", desc: "Japans beste Second-Hand-Szene – Vinylplatten, Retro-Klamotten, Kuriositäten", q: "Shimokitazawa vintage shops Tokyo", time: "morgens" },
+      { name: "Bonus Track Shimokitazawa", desc: "Neue Mini-Mall mit Ateliers, Buchläden und Craftbier-Bar auf altem Bahngelände", q: "Bonus Track Shimokitazawa Tokyo", time: "mittags" },
+      { name: "Log Road Daikanyama", desc: "Stylishe Food- und Lifestyle-Halle auf einem ehemaligen Bahngleis", q: "Log Road Daikanyama Tokyo", time: "mittags" },
     ],
   },
   6: {
     sightseeing: [
-      { name: "Yanaka Ginza Shitamachi-Viertel", desc: "Altes Tokio mit Katzen, Tempelgassen und Ziegelhäusern – einzigartiger Charme", q: "Yanaka Ginza shopping street Tokyo" },
-      { name: "Nezu Shrine Torii-Tunnel", desc: "Rote Torii-Gassen wie Mini-Fushimi Inari – ohne die Massen, kaum bekannt", q: "Nezu Shrine Tokyo" },
-      { name: "Tokyo Skytree Solamachi", desc: "Eindrucksvollen Turm noch einmal aus der Nähe sehen und Abschluss-Fotos", q: "Tokyo Skytree Solamachi" },
+      { name: "Yanaka Ginza Shitamachi-Viertel", desc: "Altes Tokio mit Katzen, Tempelgassen und Ziegelhäusern – einzigartiger Charme", q: "Yanaka Ginza shopping street Tokyo", time: "morgens" },
+      { name: "Nezu Shrine Torii-Tunnel", desc: "Rote Torii-Gassen wie Mini-Fushimi Inari – ohne die Massen, kaum bekannt", q: "Nezu Shrine Tokyo", time: "morgens" },
+      { name: "Tokyo Skytree Solamachi", desc: "Eindrucksvollen Turm noch einmal aus der Nähe sehen und Abschluss-Fotos", q: "Tokyo Skytree Solamachi", time: "mittags" },
     ],
     kultur: [
-      { name: "Sensō-ji Nacht-Spaziergang", desc: "Asakusa bei Nacht – der Tempel leuchtet ohne Tagestouristen besonders schön", q: "Senso-ji night Asakusa Tokyo" },
-      { name: "Kissa Neon – Kissaten-Erlebnis", desc: "Klassisches japanisches Kaffeestübchen der 60er Jahre – Zeit wie eingefroren", q: "Kissaten coffee shop Tokyo" },
+      { name: "Sensō-ji Nacht-Spaziergang", desc: "Asakusa bei Nacht – der Tempel leuchtet ohne Tagestouristen besonders schön", q: "Senso-ji night Asakusa Tokyo", time: "abends" },
+      { name: "Kissa Neon – Kissaten-Erlebnis", desc: "Klassisches japanisches Kaffeestübchen der 60er Jahre – Zeit wie eingefroren", q: "Kissaten coffee shop Tokyo", time: "mittags" },
     ],
     essen: [
-      { name: "Lieblingsizakaya nochmal", desc: "Das Restaurant der ersten Woche wiederholen – mit dem Wissen von 6 Tagen besser genießen", q: "Izakaya Shibuya Tokyo" },
-      { name: "Yanaka Ginza Street Food", desc: "Süßkartoffelchips, Menchi-Katsu und Mochi aus den kleinen Läden der Gasse", q: "Yanaka Ginza food Tokyo" },
-      { name: "Omoide Yokocho Yakitori", desc: "Dampfende Spieße in den ältesten Gassen Shinjukus – letzte Nacht in Tokio 1", q: "Omoide Yokocho Memory Lane Shinjuku Tokyo" },
+      { name: "Yanaka Ginza Street Food", desc: "Süßkartoffelchips, Menchi-Katsu und Mochi aus den kleinen Läden der Gasse", q: "Yanaka Ginza food Tokyo", time: "morgens" },
+      { name: "Lieblingsizakaya nochmal", desc: "Das Restaurant der ersten Woche wiederholen – mit dem Wissen von 6 Tagen besser genießen", q: "Izakaya Shibuya Tokyo", time: "abends" },
+      { name: "Omoide Yokocho Yakitori", desc: "Dampfende Spieße in den ältesten Gassen Shinjukus – letzte Nacht in Tokio 1", q: "Omoide Yokocho Memory Lane Shinjuku Tokyo", time: "abends" },
     ],
     shopping: [
-      { name: "Nippori Textile Town", desc: "Größter Stoffmarkt Tokios – Kimono-Stoffe, Handwerksmaterialien, Souvenirs", q: "Nippori Textile Town Tokyo" },
-      { name: "Yanaka craft shops", desc: "Handgemachte Keramik, Tauschuhsohlen, Washi-Papier – echte Kunsthandwerker", q: "Yanaka craft shops Tokyo" },
+      { name: "Nippori Textile Town", desc: "Größter Stoffmarkt Tokios – Kimono-Stoffe, Handwerksmaterialien, Souvenirs", q: "Nippori Textile Town Tokyo", time: "morgens" },
+      { name: "Yanaka craft shops", desc: "Handgemachte Keramik, Tauschuhsohlen, Washi-Papier – echte Kunsthandwerker", q: "Yanaka craft shops Tokyo", time: "morgens" },
     ],
   },
   7: {
     sightseeing: [
-      { name: "Odawara Castle", desc: "10 Minuten Fußweg vom Bahnhof – malerische Burg als Aufwärmprogramm", q: "Odawara Castle Japan" },
-      { name: "Hakone Ropeway Überblick", desc: "Erste Seilbahnfahrt über dampfende Vulkanlandschaft – atemberaubende Kulisse", q: "Hakone ropeway Japan" },
-      { name: "Abend-Spaziergang Gora", desc: "Stille Bergstraßen bei Nacht – kaum Licht, atemberaubender Sternenhimmel", q: "Gora Hakone night walk Japan" },
+      { name: "Odawara Castle", desc: "10 Minuten Fußweg vom Bahnhof – malerische Burg als Aufwärmprogramm", q: "Odawara Castle Japan", time: "morgens" },
+      { name: "Hakone Ropeway Überblick", desc: "Erste Seilbahnfahrt über dampfende Vulkanlandschaft – atemberaubende Kulisse", q: "Hakone ropeway Japan", time: "mittags" },
+      { name: "Abend-Spaziergang Gora", desc: "Stille Bergstraßen bei Nacht – kaum Licht, atemberaubender Sternenhimmel", q: "Gora Hakone night walk Japan", time: "abends" },
     ],
     kultur: [
-      { name: "Suzuhiro Kamaboko Museum", desc: "Fischkuchen-Handwerk hautnah erleben und probieren in Odawara", q: "Suzuhiro Kamaboko Museum Odawara" },
-      { name: "Erstes Onsen-Erlebnis im Ryokan", desc: "Privat-Onsen im Laforet nutzen – das Ritual des Einwaschens kennenlernen", q: "Laforet Hakone outdoor onsen Japan" },
+      { name: "Suzuhiro Kamaboko Museum", desc: "Fischkuchen-Handwerk hautnah erleben und probieren in Odawara", q: "Suzuhiro Kamaboko Museum Odawara", time: "morgens" },
+      { name: "Erstes Onsen-Erlebnis im Ryokan", desc: "Privat-Onsen im Laforet nutzen – das Ritual des Einwaschens kennenlernen", q: "Laforet Hakone outdoor onsen Japan", time: "abends" },
     ],
     essen: [
-      { name: "Odawara Fish Market Café", desc: "Frische Meeresfrüchte direkt am Hafen – perfekter Start in die Hakone-Tage", q: "Odawara fish market cafe Japan" },
-      { name: "Soba Restaurant in Gora", desc: "Hausgemachte Buchweizennudeln nahe dem Ryokan – leichte Ankunftsmahlzeit", q: "Soba restaurant Gora Hakone Japan" },
-      { name: "Ryokan Kaiseki-Dinner", desc: "Das erste mehrgängige Kaiseki-Abendessen – ruhig genießen, kein Hetzen", q: "Laforet Hakone Gora Yunosumika Japan" },
+      { name: "Odawara Fish Market Café", desc: "Frische Meeresfrüchte direkt am Hafen – perfekter Start in die Hakone-Tage", q: "Odawara fish market cafe Japan", time: "morgens" },
+      { name: "Soba Restaurant in Gora", desc: "Hausgemachte Buchweizennudeln nahe dem Ryokan – leichte Ankunftsmahlzeit", q: "Soba restaurant Gora Hakone Japan", time: "mittags" },
+      { name: "Ryokan Kaiseki-Dinner", desc: "Das erste mehrgängige Kaiseki-Abendessen – ruhig genießen, kein Hetzen", q: "Laforet Hakone Gora Yunosumika Japan", time: "abends" },
     ],
     shopping: [
-      { name: "Odawara Kanbutsu-dori", desc: "Traditionelle Ladenzeile mit Fischprodukten, Umeboshi und regionalen Spezialitäten", q: "Odawara traditional shopping Japan" },
-      { name: "Hakone Souvenirladen Gora", desc: "Lokale Töpferwaren, Yosegi-Mosaik-Holzarbeiten und Hakone-spezifische Mitbringsel", q: "Hakone souvenirs Gora Japan" },
+      { name: "Odawara Kanbutsu-dori", desc: "Traditionelle Ladenzeile mit Fischprodukten, Umeboshi und regionalen Spezialitäten", q: "Odawara traditional shopping Japan", time: "morgens" },
+      { name: "Hakone Souvenirladen Gora", desc: "Lokale Töpferwaren, Yosegi-Mosaik-Holzarbeiten und Hakone-spezifische Mitbringsel", q: "Hakone souvenirs Gora Japan", time: "mittags" },
     ],
   },
   8: {
     sightseeing: [
-      { name: "Ashi-See Fähre mit Fuji-Panorama", desc: "Fähre auf dem Vulkankratersee – bei klarem Wetter mit Fuji-Spiegelung", q: "Lake Ashi ferry Hakone Japan" },
-      { name: "Owakudani Schwefelquellen", desc: "Zischende Fumarolen-Landschaft und schwarze Eier kochen seit Jahrhunderten", q: "Owakudani Hakone ropeway Japan" },
-      { name: "Moto-Hakone Zedernallee", desc: "Historische Tokaido-Straße unter jahrhundertealten Kryptomerien – magisches Licht", q: "Moto-Hakone cedar avenue Japan" },
+      { name: "Ashi-See Fähre mit Fuji-Panorama", desc: "Fähre auf dem Vulkankratersee – bei klarem Wetter mit Fuji-Spiegelung", q: "Lake Ashi ferry Hakone Japan", time: "mittags" },
+      { name: "Owakudani Schwefelquellen", desc: "Zischende Fumarolen-Landschaft und schwarze Eier kochen seit Jahrhunderten", q: "Owakudani Hakone ropeway Japan", time: "morgens" },
+      { name: "Moto-Hakone Zedernallee", desc: "Historische Tokaido-Straße unter jahrhundertealten Kryptomerien – magisches Licht", q: "Moto-Hakone cedar avenue Japan", time: "mittags" },
     ],
     kultur: [
-      { name: "Hakone Open-Air Museum", desc: "Skulpturenpark mit Picasso-Galerie – am frühen Morgen fast leer", q: "Hakone Open Air Museum Japan" },
-      { name: "Pola Museum of Art", desc: "Weltklasse-Impressionisten (Monet, Renoir) in einem ruhigen Waldgebäude", q: "Pola Museum of Art Hakone Japan" },
-      { name: "Sternenhimmel-Fotografie Hakone", desc: "Kaum Lichtverschmutzung – Stativ mitbringen, Nachtfotos von Japan auf Bucketlist", q: "Hakone stargazing Japan" },
+      { name: "Hakone Open-Air Museum", desc: "Skulpturenpark mit Picasso-Galerie – am frühen Morgen fast leer", q: "Hakone Open Air Museum Japan", time: "morgens" },
+      { name: "Pola Museum of Art", desc: "Weltklasse-Impressionisten (Monet, Renoir) in einem ruhigen Waldgebäude", q: "Pola Museum of Art Hakone Japan", time: "mittags" },
+      { name: "Sternenhimmel-Fotografie Hakone", desc: "Kaum Lichtverschmutzung – Stativ mitbringen, Nachtfotos von Japan auf Bucketlist", q: "Hakone stargazing Japan", time: "abends" },
     ],
     essen: [
-      { name: "Gora Park Café", desc: "Europäischer Garten mit französischem Café und ruhigem Fuji-Blick", q: "Gora Park Hakone Japan" },
-      { name: "Hakone-en Aquarium Terrasse", desc: "Kleines Aquarium am Ashi-See mit Restaurant-Terrasse direkt am Wasser", q: "Hakone en aquarium Lake Ashi Japan" },
-      { name: "Kaiseki-Dinner im Ryokan (Abend 2)", desc: "Zweites Kaiseki – andere saisonale Komposition, genauso beeindruckend", q: "Laforet Hakone Gora dinner Japan" },
+      { name: "Gora Park Café", desc: "Europäischer Garten mit französischem Café und ruhigem Fuji-Blick", q: "Gora Park Hakone Japan", time: "morgens" },
+      { name: "Hakone-en Aquarium Terrasse", desc: "Kleines Aquarium am Ashi-See mit Restaurant-Terrasse direkt am Wasser", q: "Hakone en aquarium Lake Ashi Japan", time: "mittags" },
+      { name: "Kaiseki-Dinner im Ryokan (Abend 2)", desc: "Zweites Kaiseki – andere saisonale Komposition, genauso beeindruckend", q: "Laforet Hakone Gora dinner Japan", time: "abends" },
     ],
     shopping: [
-      { name: "Yosegi-Zaiku Holzmosaik Workshop", desc: "Hakones berühmtestes Handwerk – traditionelle Holzintarsienmuster als Souvenir", q: "Yosegi zaiku Hakone woodcraft Japan" },
-      { name: "Hakone Craft House", desc: "Töpfereiworkshop oder fertige Keramik aus der vulkanischen Region", q: "Hakone craft pottery Japan" },
+      { name: "Yosegi-Zaiku Holzmosaik Workshop", desc: "Hakones berühmtestes Handwerk – traditionelle Holzintarsienmuster als Souvenir", q: "Yosegi zaiku Hakone woodcraft Japan", time: "mittags" },
+      { name: "Hakone Craft House", desc: "Töpfereiworkshop oder fertige Keramik aus der vulkanischen Region", q: "Hakone craft pottery Japan", time: "mittags" },
     ],
   },
   9: {
     sightseeing: [
-      { name: "Kyoto Station Dachterrasse", desc: "Beeindruckendes Bahnhofsgebäude – kostenlose Dachterrasse mit Stadtpanorama", q: "Kyoto Station rooftop terrace Japan" },
-      { name: "Kamogawa Flussufer Abend", desc: "Abendliche Sitzreihen am Fluss – Kyoto bei Nacht ist romantisch und leise", q: "Kamogawa River Kyoto Japan evening" },
-      { name: "Gion Hanamikoji bei Dämmerung", desc: "Traditionelle Gasse des Geisha-Viertels – beste Stimmung bei Einbruch der Dunkelheit", q: "Hanamikoji Street Gion Kyoto Japan" },
+      { name: "Kyoto Station Dachterrasse", desc: "Beeindruckendes Bahnhofsgebäude – kostenlose Dachterrasse mit Stadtpanorama", q: "Kyoto Station rooftop terrace Japan", time: "mittags" },
+      { name: "Kamogawa Flussufer Abend", desc: "Abendliche Sitzreihen am Fluss – Kyoto bei Nacht ist romantisch und leise", q: "Kamogawa River Kyoto Japan evening", time: "abends" },
+      { name: "Gion Hanamikoji bei Dämmerung", desc: "Traditionelle Gasse des Geisha-Viertels – beste Stimmung bei Einbruch der Dunkelheit", q: "Hanamikoji Street Gion Kyoto Japan", time: "abends" },
     ],
     kultur: [
-      { name: "Ponto-chō Gasse erkunden", desc: "Schmale Gasse parallel zum Kamogawa – alte Gaststätten, Laternen, Jahrhunderttradition", q: "Pontocho Kyoto Japan" },
-      { name: "Fushimi Inari Abend-Kurzvariante", desc: "Untere Torii-Gassen ohne Tagesmasse – abends fast mystisch leer", q: "Fushimi Inari Shrine Kyoto Japan" },
+      { name: "Ponto-chō Gasse erkunden", desc: "Schmale Gasse parallel zum Kamogawa – alte Gaststätten, Laternen, Jahrhunderttradition", q: "Pontocho Kyoto Japan", time: "abends" },
+      { name: "Fushimi Inari Abend-Kurzvariante", desc: "Untere Torii-Gassen ohne Tagesmasse – abends fast mystisch leer", q: "Fushimi Inari Shrine Kyoto Japan", time: "abends" },
     ],
     essen: [
-      { name: "Ekiben im Shinkansen (Odawara)", desc: "Regionale Lunchbox am Bahnhof – japanische Bahnhofstradition erster Klasse", q: "Ekiben bento box Odawara station Japan" },
-      { name: "Nishiki Market Streifzug", desc: "Kyotos Küchengasse: frische Pickles, Yudofu, Tamago und Fischspieße probieren", q: "Nishiki Market Kyoto Japan" },
-      { name: "Dinner in Gion", desc: "Traditionelle Restaurants im Geisha-Viertel – Chance auf Maiko-Sichtung abends", q: "Gion dinner restaurant Kyoto Japan" },
+      { name: "Ekiben im Shinkansen (Odawara)", desc: "Regionale Lunchbox am Bahnhof – japanische Bahnhofstradition erster Klasse", q: "Ekiben bento box Odawara station Japan", time: "morgens" },
+      { name: "Nishiki Market Streifzug", desc: "Kyotos Küchengasse: frische Pickles, Yudofu, Tamago und Fischspieße probieren", q: "Nishiki Market Kyoto Japan", time: "mittags" },
+      { name: "Dinner in Gion", desc: "Traditionelle Restaurants im Geisha-Viertel – Chance auf Maiko-Sichtung abends", q: "Gion dinner restaurant Kyoto Japan", time: "abends" },
     ],
     shopping: [
-      { name: "Nishiki Market Souvenirs", desc: "Kyoto-Pickles, Yuzu-Produkte und Matcha-Spezialitäten direkt auf dem Markt", q: "Nishiki Market Kyoto souvenirs Japan" },
-      { name: "Kyoto Station Isetan Depachika", desc: "Untergeschoss-Feinkost im Bahnhof – ideale Ankunftssnacks und Kyoto-Süßigkeiten", q: "Kyoto Station Isetan food Japan" },
+      { name: "Nishiki Market Souvenirs", desc: "Kyoto-Pickles, Yuzu-Produkte und Matcha-Spezialitäten direkt auf dem Markt", q: "Nishiki Market Kyoto souvenirs Japan", time: "mittags" },
+      { name: "Kyoto Station Isetan Depachika", desc: "Untergeschoss-Feinkost im Bahnhof – ideale Ankunftssnacks und Kyoto-Süßigkeiten", q: "Kyoto Station Isetan food Japan", time: "mittags" },
     ],
   },
   10: {
     sightseeing: [
-      { name: "Fushimi Inari früh morgens (6 Uhr)", desc: "10.000 Torii-Tore ohne Touristenmasse – im Morgenlicht schlicht unvergesslich", q: "Fushimi Inari Shrine Kyoto Japan" },
-      { name: "Kiyomizudera Aussichtsplattform", desc: "Ikone Kyotos – Holzkonstruktion ohne Nägel schwebt über dem Abteigrund", q: "Kiyomizudera Temple Kyoto Japan" },
-      { name: "Sannenzaka & Ninenzaka", desc: "Kopfsteinpflastergassen mit Teehäusern – der schönste Spaziergang in Kyoto", q: "Sannenzaka Ninenzaka Kyoto Japan" },
+      { name: "Fushimi Inari früh morgens (6 Uhr)", desc: "10.000 Torii-Tore ohne Touristenmasse – im Morgenlicht schlicht unvergesslich", q: "Fushimi Inari Shrine Kyoto Japan", time: "morgens" },
+      { name: "Kiyomizudera Aussichtsplattform", desc: "Ikone Kyotos – Holzkonstruktion ohne Nägel schwebt über dem Abteigrund", q: "Kiyomizudera Temple Kyoto Japan", time: "mittags" },
+      { name: "Sannenzaka & Ninenzaka", desc: "Kopfsteinpflastergassen mit Teehäusern – der schönste Spaziergang in Kyoto", q: "Sannenzaka Ninenzaka Kyoto Japan", time: "mittags" },
     ],
     kultur: [
-      { name: "Tofukuji Zen-Tempel & Garten", desc: "Ruhiger Zen-Tempel auf dem Weg – kaiserlicher Garten, kaum Besucher morgens", q: "Tofukuji Temple Kyoto Japan" },
-      { name: "Gion Geisha-Viertel-Tour", desc: "Abends durch Hanamikoji schlendern – echte Geiko/Maiko sind erkennbar", q: "Gion Geisha district Kyoto Japan" },
+      { name: "Tofukuji Zen-Tempel & Garten", desc: "Ruhiger Zen-Tempel auf dem Weg – kaiserlicher Garten, kaum Besucher morgens", q: "Tofukuji Temple Kyoto Japan", time: "morgens" },
+      { name: "Gion Geisha-Viertel-Tour", desc: "Abends durch Hanamikoji schlendern – echte Geiko/Maiko sind erkennbar", q: "Gion Geisha district Kyoto Japan", time: "abends" },
     ],
     essen: [
-      { name: "Inarizushi Frühstück (Fushimi)", desc: "Reistasche in Tofuhülle – authentisches lokales Frühstück rund um den Schrein", q: "Inarizushi Fushimi Kyoto Japan" },
-      { name: "Kasagi-ya Dessert-Café Ninenzaka", desc: "Ältestes Dessert-Café der Gegend – süßer Matcha-Abschluss des Nachmittags", q: "Kasagi-ya Ninenzaka Kyoto Japan" },
-      { name: "Kichi Kichi Omurice", desc: "Legendäres Omlett-Reisgericht mit Show-Cooking – unbedingt reservieren!", q: "Kichi Kichi Omurice Kyoto Japan" },
+      { name: "Inarizushi Frühstück (Fushimi)", desc: "Reistasche in Tofuhülle – authentisches lokales Frühstück rund um den Schrein", q: "Inarizushi Fushimi Kyoto Japan", time: "morgens" },
+      { name: "Kasagi-ya Dessert-Café Ninenzaka", desc: "Ältestes Dessert-Café der Gegend – süßer Matcha-Abschluss des Nachmittags", q: "Kasagi-ya Ninenzaka Kyoto Japan", time: "mittags" },
+      { name: "Kichi Kichi Omurice", desc: "Legendäres Omlett-Reisgericht mit Show-Cooking – unbedingt reservieren!", q: "Kichi Kichi Omurice Kyoto Japan", time: "abends" },
     ],
     shopping: [
-      { name: "Kiyomizuyaki Keramik-Shops", desc: "Lokale Töpfer verkaufen direkt – charakteristische Kyoto-Keramik als Souvenir", q: "Kiyomizuyaki pottery Kyoto Japan" },
-      { name: "Sannenzaka Traditionsladen", desc: "Handgemachte Holzkamm, Wagasa-Papierschirme, Washi – echtes Handwerk", q: "Sannenzaka traditional crafts Kyoto Japan" },
-      { name: "Gion Boutiquen", desc: "Exklusive kleine Läden für Kimono-Accessoires, Noren-Vorhänge und Seide", q: "Gion boutique shopping Kyoto Japan" },
+      { name: "Kiyomizuyaki Keramik-Shops", desc: "Lokale Töpfer verkaufen direkt – charakteristische Kyoto-Keramik als Souvenir", q: "Kiyomizuyaki pottery Kyoto Japan", time: "mittags" },
+      { name: "Sannenzaka Traditionsladen", desc: "Handgemachte Holzkamm, Wagasa-Papierschirme, Washi – echtes Handwerk", q: "Sannenzaka traditional crafts Kyoto Japan", time: "mittags" },
+      { name: "Gion Boutiquen", desc: "Exklusive kleine Läden für Kimono-Accessoires, Noren-Vorhänge und Seide", q: "Gion boutique shopping Kyoto Japan", time: "abends" },
     ],
   },
   11: {
     sightseeing: [
-      { name: "Bambuswald Arashiyama (6–7 Uhr)", desc: "Morgenmagie: Bambusstämme rauschen im Wind, kaum Menschen, bestes Licht", q: "Bamboo Grove Arashiyama Kyoto Japan" },
-      { name: "Togetsukyō-Brücke Panorama", desc: "Malerische Bogenbrücke mit Arashiyama-Bergen im Hintergrund – Postkartenblick", q: "Togetsukyō Bridge Arashiyama Kyoto Japan" },
-      { name: "Sagano Romantic Train", desc: "25 Minuten Panoramafahrt durch die Hozu-Schlucht am Fluss entlang", q: "Sagano Romantic Train Arashiyama Kyoto Japan" },
+      { name: "Bambuswald Arashiyama (6–7 Uhr)", desc: "Morgenmagie: Bambusstämme rauschen im Wind, kaum Menschen, bestes Licht", q: "Bamboo Grove Arashiyama Kyoto Japan", time: "morgens" },
+      { name: "Togetsukyō-Brücke Panorama", desc: "Malerische Bogenbrücke mit Arashiyama-Bergen im Hintergrund – Postkartenblick", q: "Togetsukyō Bridge Arashiyama Kyoto Japan", time: "morgens" },
+      { name: "Sagano Romantic Train", desc: "25 Minuten Panoramafahrt durch die Hozu-Schlucht am Fluss entlang", q: "Sagano Romantic Train Arashiyama Kyoto Japan", time: "mittags" },
     ],
     kultur: [
-      { name: "Tenryū-ji Zen-Garten (UNESCO)", desc: "Weltklasse-Karesansui-Garten im ältesten Zen-Tempel Arashiyamas", q: "Tenryu-ji Temple Garden Arashiyama Kyoto Japan" },
-      { name: "Jojakko-ji Moos-Waldtempel", desc: "Versteckter Tempel mit Moosstufen und Bergpfad – kaum bekannt, wunderschön", q: "Jojakko-ji Temple Arashiyama Kyoto Japan" },
-      { name: "Fushimi Sake-Brauerei Tour", desc: "Nishino Sake Brewery öffnet für Verkostungen – Fushimi ist Japans Sake-Hauptstadt", q: "Fushimi sake brewery Kyoto Japan" },
+      { name: "Tenryū-ji Zen-Garten (UNESCO)", desc: "Weltklasse-Karesansui-Garten im ältesten Zen-Tempel Arashiyamas", q: "Tenryu-ji Temple Garden Arashiyama Kyoto Japan", time: "morgens" },
+      { name: "Jojakko-ji Moos-Waldtempel", desc: "Versteckter Tempel mit Moosstufen und Bergpfad – kaum bekannt, wunderschön", q: "Jojakko-ji Temple Arashiyama Kyoto Japan", time: "morgens" },
+      { name: "Fushimi Sake-Brauerei Tour", desc: "Nishino Sake Brewery öffnet für Verkostungen – Fushimi ist Japans Sake-Hauptstadt", q: "Fushimi sake brewery Kyoto Japan", time: "mittags" },
     ],
     essen: [
-      { name: "Yudofu Restaurant Arashiyama", desc: "Kyotos Spezialität: seidenweiches Tofu-Kaiseki am Waldrand der Bergtempel", q: "Yudofu restaurant Arashiyama Kyoto Japan" },
-      { name: "Nishiki Market Abend-Tour", desc: "Letzter Abend-Einkauf und Probieren in Kyotos langer Küchengasse", q: "Nishiki Market Kyoto Japan" },
-      { name: "Izakaya nahe WAYFARER Gojo", desc: "Entspannter letzter Kyoto-Abend – kleine Gerichte, lokales Sake, keine Eile", q: "Izakaya Gojo Kyoto Japan" },
+      { name: "Yudofu Restaurant Arashiyama", desc: "Kyotos Spezialität: seidenweiches Tofu-Kaiseki am Waldrand der Bergtempel", q: "Yudofu restaurant Arashiyama Kyoto Japan", time: "mittags" },
+      { name: "Nishiki Market Abend-Tour", desc: "Letzter Abend-Einkauf und Probieren in Kyotos langer Küchengasse", q: "Nishiki Market Kyoto Japan", time: "abends" },
+      { name: "Izakaya nahe WAYFARER Gojo", desc: "Entspannter letzter Kyoto-Abend – kleine Gerichte, lokales Sake, keine Eile", q: "Izakaya Gojo Kyoto Japan", time: "abends" },
     ],
     shopping: [
-      { name: "Arashiyama Bambus-Souvenirs", desc: "Lokale Läden verkaufen handgefertigte Bambus-Produkte direkt aus dem Wald", q: "Arashiyama bamboo crafts souvenirs Japan" },
-      { name: "Kagizen Yoshifusa Wagashi", desc: "Seit 1716 – ältestes Süßwarenhaus Kyotos, berühmt für elegante Mochi-Kreationen", q: "Kagizen Yoshifusa Kyoto Japan" },
+      { name: "Arashiyama Bambus-Souvenirs", desc: "Lokale Läden verkaufen handgefertigte Bambus-Produkte direkt aus dem Wald", q: "Arashiyama bamboo crafts souvenirs Japan", time: "mittags" },
+      { name: "Kagizen Yoshifusa Wagashi", desc: "Seit 1716 – ältestes Süßwarenhaus Kyotos, berühmt für elegante Mochi-Kreationen", q: "Kagizen Yoshifusa Kyoto Japan", time: "morgens" },
     ],
   },
   12: {
     sightseeing: [
-      { name: "Dōtonbori Neon-Spaziergang", desc: "Leuchtende Schilder, Glico-Mann, Kanalbrücke – Osaka bei Nacht unübertroffen", q: "Dotonbori night Osaka Japan" },
-      { name: "Hozenji Yokocho Gasse", desc: "Moosbewachsener Brunnen, Laternen, Izakayas – ruhiger Kontrast zu Dōtonbori", q: "Hozenji Yokocho Osaka Japan" },
-      { name: "Shinsaibashi Abend-Flanieren", desc: "Überdachte Einkaufsstraße bei Nacht – Menschenmassen und Neon-Schaufenster", q: "Shinsaibashi Osaka Japan" },
+      { name: "Dōtonbori Neon-Spaziergang", desc: "Leuchtende Schilder, Glico-Mann, Kanalbrücke – Osaka bei Nacht unübertroffen", q: "Dotonbori night Osaka Japan", time: "abends" },
+      { name: "Hozenji Yokocho Gasse", desc: "Moosbewachsener Brunnen, Laternen, Izakayas – ruhiger Kontrast zu Dōtonbori", q: "Hozenji Yokocho Osaka Japan", time: "abends" },
+      { name: "Shinsaibashi Abend-Flanieren", desc: "Überdachte Einkaufsstraße bei Nacht – Menschenmassen und Neon-Schaufenster", q: "Shinsaibashi Osaka Japan", time: "abends" },
     ],
     kultur: [
-      { name: "Ryoanji Steingarten Kyoto (kurz)", desc: "Weltberühmter Zen-Steingarten früh morgens vor der Abfahrt – fast leer", q: "Ryoanji Temple stone garden Kyoto Japan" },
-      { name: "Sumiyoshi Taisha Großschrein", desc: "Ältester Schrein Osakas mit einzigartigem Bogenbau-Stil – sehr ruhig", q: "Sumiyoshi Taisha Shrine Osaka Japan" },
+      { name: "Ryoanji Steingarten Kyoto (kurz)", desc: "Weltberühmter Zen-Steingarten früh morgens vor der Abfahrt – fast leer", q: "Ryoanji Temple stone garden Kyoto Japan", time: "morgens" },
+      { name: "Sumiyoshi Taisha Großschrein", desc: "Ältester Schrein Osakas mit einzigartigem Bogenbau-Stil – sehr ruhig", q: "Sumiyoshi Taisha Shrine Osaka Japan", time: "mittags" },
     ],
     essen: [
-      { name: "Takoyaki Wanaka Sennichimae", desc: "Gleich nach Ankunft: knusprige Original-Kraken-Bällchen mit schmelzendem Kern", q: "Takoyaki Wanaka Namba Osaka Japan" },
-      { name: "Kuromon Ichiba Marktbesuch", desc: "Osakas Küchen-Markt: frische Austern am Stand, Thunfisch, Frühfrüchte", q: "Kuromon Ichiba Market Osaka Japan" },
-      { name: "Ajinoya Okonomiyaki", desc: "Hausgemachtes Osaka-Okonomiyaki aus dem alten Haus seit Jahrzehnten", q: "Ajinoya Okonomiyaki Osaka Japan" },
+      { name: "Takoyaki Wanaka Sennichimae", desc: "Gleich nach Ankunft: knusprige Original-Kraken-Bällchen mit schmelzendem Kern", q: "Takoyaki Wanaka Namba Osaka Japan", time: "mittags" },
+      { name: "Kuromon Ichiba Marktbesuch", desc: "Osakas Küchen-Markt: frische Austern am Stand, Thunfisch, Frühfrüchte", q: "Kuromon Ichiba Market Osaka Japan", time: "mittags" },
+      { name: "Ajinoya Okonomiyaki", desc: "Hausgemachtes Osaka-Okonomiyaki aus dem alten Haus seit Jahrzehnten", q: "Ajinoya Okonomiyaki Osaka Japan", time: "abends" },
     ],
     shopping: [
-      { name: "Shinsaibashi Einkaufsmeile", desc: "Überdachte 600 m Fußgängerzone – japonische und internationale Modeketten", q: "Shinsaibashi shopping arcade Osaka Japan" },
-      { name: "Amerika Mura Vintage-Viertel", desc: "Osakas Vintage-Szene mit Second-Hand-Klamotten und Street-Art-Flair", q: "America Mura Osaka Japan" },
+      { name: "Shinsaibashi Einkaufsmeile", desc: "Überdachte 600 m Fußgängerzone – japanische und internationale Modeketten", q: "Shinsaibashi shopping arcade Osaka Japan", time: "mittags" },
+      { name: "Amerika Mura Vintage-Viertel", desc: "Osakas Vintage-Szene mit Second-Hand-Klamotten und Street-Art-Flair", q: "America Mura Osaka Japan", time: "mittags" },
     ],
   },
   13: {
     sightseeing: [
-      { name: "Osaka Castle Morgenrunde", desc: "Burg im Morgenicht – beste Fotos ohne Touristenwellen, Park dazu kostenlos", q: "Osaka Castle Japan" },
-      { name: "Umeda Sky Building Sunset", desc: "Floating Garden Observatory – spektakulärer Sonnenuntergang über der Stadt", q: "Umeda Sky Building Floating Garden Observatory Osaka Japan" },
-      { name: "Nakanoshima Park am Wasser", desc: "Grüne Halbinsel zwischen zwei Flüssen – beliebter Spazierweg Osakas", q: "Nakanoshima Park Osaka Japan" },
+      { name: "Osaka Castle Morgenrunde", desc: "Burg im Morgenlicht – beste Fotos ohne Touristenwellen, Park dazu kostenlos", q: "Osaka Castle Japan", time: "morgens" },
+      { name: "Umeda Sky Building Sunset", desc: "Floating Garden Observatory – spektakulärer Sonnenuntergang über der Stadt", q: "Umeda Sky Building Floating Garden Observatory Osaka Japan", time: "abends" },
+      { name: "Nakanoshima Park am Wasser", desc: "Grüne Halbinsel zwischen zwei Flüssen – beliebter Spazierweg Osakas", q: "Nakanoshima Park Osaka Japan", time: "mittags" },
     ],
     kultur: [
-      { name: "Osaka Museum of History", desc: "10. Stock mit Direktblick auf die Burg und 1400 Jahre Stadtgeschichte", q: "Osaka Museum of History Japan" },
-      { name: "Ohatsu Tenjin Liebesschrein", desc: "Kleiner Schrein mit bewegender Geschichte – bekannt für Wunschzettel-Bäume", q: "Ohatsu Tenjin Shrine Osaka Japan" },
+      { name: "Osaka Museum of History", desc: "10. Stock mit Direktblick auf die Burg und 1400 Jahre Stadtgeschichte", q: "Osaka Museum of History Japan", time: "morgens" },
+      { name: "Ohatsu Tenjin Liebesschrein", desc: "Kleiner Schrein mit bewegender Geschichte – bekannt für Wunschzettel-Bäume", q: "Ohatsu Tenjin Shrine Osaka Japan", time: "mittags" },
     ],
     essen: [
-      { name: "Kani Doraku Dotonbori", desc: "Das Krabben-Wahrzeichen Osakas – riesige animierte Laufkrabbe, frische Krabbengerichte", q: "Kani Doraku Dotonbori Osaka Japan" },
-      { name: "Grand Front Osaka Restaurants", desc: "Moderner Komplex neben Umeda mit breitem Angebot von japanisch bis international", q: "Grand Front Osaka restaurants Japan" },
-      { name: "Lucua Food Hall Osaka Station", desc: "Unterirdische Food Hall direkt im Bahnhof – über 50 Restaurants unter einem Dach", q: "Lucua food hall Osaka station Japan" },
+      { name: "Kani Doraku Dotonbori", desc: "Das Krabben-Wahrzeichen Osakas – riesige animierte Laufkrabbe, frische Krabbengerichte", q: "Kani Doraku Dotonbori Osaka Japan", time: "mittags" },
+      { name: "Grand Front Osaka Restaurants", desc: "Moderner Komplex neben Umeda mit breitem Angebot von japanisch bis international", q: "Grand Front Osaka restaurants Japan", time: "abends" },
+      { name: "Lucua Food Hall Osaka Station", desc: "Unterirdische Food Hall direkt im Bahnhof – über 50 Restaurants unter einem Dach", q: "Lucua food hall Osaka station Japan", time: "abends" },
     ],
     shopping: [
-      { name: "Grand Front Osaka", desc: "Hochwertige Mall neben dem Bahnhof mit japanischen Designermarken und Tech", q: "Grand Front Osaka shopping Japan" },
-      { name: "Osaka Loft Shinsaibashi", desc: "Japans größte Lifestyle-Kaufhauskette – Design, Kosmetik, Geschenke auf 6 Etagen", q: "Loft Shinsaibashi Osaka Japan" },
+      { name: "Grand Front Osaka", desc: "Hochwertige Mall neben dem Bahnhof mit japanischen Designermarken und Tech", q: "Grand Front Osaka shopping Japan", time: "mittags" },
+      { name: "Osaka Loft Shinsaibashi", desc: "Japans größte Lifestyle-Kaufhauskette – Design, Kosmetik, Geschenke auf 6 Etagen", q: "Loft Shinsaibashi Osaka Japan", time: "mittags" },
     ],
   },
   14: {
     sightseeing: [
-      { name: "Shinsekai Retro-Neon-Viertel", desc: "Nachbau von Paris und New York aus den 1920ern – nostalgisches Tokio-Flair", q: "Shinsekai Osaka Japan" },
-      { name: "Tsūtenkaku Tower bei Nacht", desc: "Retro-Turm mit bunter Illumination – der Kitsch-König Osakas in voller Pracht", q: "Tsutenkaku Tower night Osaka Japan" },
-      { name: "Jan Jan Yokocho Spielhallen-Gasse", desc: "Enge Gasse neben Shinsekai – Pachinko, Mahjong und echte Osaka-Alltagskultur", q: "Jan Jan Yokocho Osaka Japan" },
+      { name: "Shinsekai Retro-Neon-Viertel", desc: "Nachbau von Paris und New York aus den 1920ern – nostalgisches Osaka-Flair", q: "Shinsekai Osaka Japan", time: "mittags" },
+      { name: "Tsūtenkaku Tower bei Nacht", desc: "Retro-Turm mit bunter Illumination – der Kitsch-König Osakas in voller Pracht", q: "Tsutenkaku Tower night Osaka Japan", time: "abends" },
+      { name: "Jan Jan Yokocho Spielhallen-Gasse", desc: "Enge Gasse neben Shinsekai – Pachinko, Mahjong und echte Osaka-Alltagskultur", q: "Jan Jan Yokocho Osaka Japan", time: "abends" },
     ],
     kultur: [
-      { name: "Housing & Living Museum Osaka", desc: "Zeitreise durch 400 Jahre Osaka – originalgetreue Edo-Straßenrekonstruktion im 10. OG", q: "Osaka Housing and Living Museum Japan" },
-      { name: "Tenjibashi-suji Shoppingallee", desc: "Japans längste überdachte Einkaufsstraße – 2,6 km Alltag und Tradition", q: "Tenjibashi-suji shopping arcade Osaka Japan" },
+      { name: "Housing & Living Museum Osaka", desc: "Zeitreise durch 400 Jahre Osaka – originalgetreue Edo-Straßenrekonstruktion im 10. OG", q: "Osaka Housing and Living Museum Japan", time: "morgens" },
+      { name: "Tenjibashi-suji Shoppingallee", desc: "Japans längste überdachte Einkaufsstraße – 2,6 km Alltag und Tradition", q: "Tenjibashi-suji shopping arcade Osaka Japan", time: "morgens" },
     ],
     essen: [
-      { name: "Kushikatsu Daruma Shinsekai", desc: "Original Frittier-Spieße im heißen Öl – die No-Double-Dip-Regel unbedingt beachten!", q: "Kushikatsu Daruma Osaka Japan" },
-      { name: "Kuromon Ichiba frische Austern", desc: "Gegrillte Austern direkt am Stand des Markts – das Meeresfrüchte-Erlebnis schlechthin", q: "Kuromon Ichiba Market oyster Osaka Japan" },
-      { name: "Shinsekai Mittagessen Teishoku", desc: "Einfache Tagesmenüs im Retro-Ambiente – günstig, sättigend, authentisch", q: "Shinsekai Osaka lunch Japan" },
+      { name: "Kuromon Ichiba frische Austern", desc: "Gegrillte Austern direkt am Stand des Markts – das Meeresfrüchte-Erlebnis schlechthin", q: "Kuromon Ichiba Market oyster Osaka Japan", time: "morgens" },
+      { name: "Shinsekai Mittagessen Teishoku", desc: "Einfache Tagesmenüs im Retro-Ambiente – günstig, sättigend, authentisch", q: "Shinsekai Osaka lunch Japan", time: "mittags" },
+      { name: "Kushikatsu Daruma Shinsekai", desc: "Original Frittier-Spieße im heißen Öl – die No-Double-Dip-Regel unbedingt beachten!", q: "Kushikatsu Daruma Osaka Japan", time: "abends" },
     ],
     shopping: [
-      { name: "Den Den Town Elektronik-Viertel", desc: "Osakas Antwort auf Akihabara – Anime, Manga, Elektronik und Retrogames", q: "Den Den Town Osaka Japan" },
-      { name: "Tenjibashi-suji Souvenirläden", desc: "Lokale Alltagsläden, Küchen-Accessoires und günstige Mitbringsel in der Gasse", q: "Tenjibashi-suji Osaka souvenirs Japan" },
+      { name: "Den Den Town Elektronik-Viertel", desc: "Osakas Antwort auf Akihabara – Anime, Manga, Elektronik und Retrogames", q: "Den Den Town Osaka Japan", time: "mittags" },
+      { name: "Tenjibashi-suji Souvenirläden", desc: "Lokale Alltagsläden, Küchen-Accessoires und günstige Mitbringsel in der Gasse", q: "Tenjibashi-suji Osaka souvenirs Japan", time: "morgens" },
     ],
   },
   15: {
     sightseeing: [
-      { name: "San'in-Küstenpanorama (Zugfenster)", desc: "Zug fährt entlang der japanischen Meerküste durch Hyogo – atemberaubende Aussicht", q: "San'in coast train Japan" },
-      { name: "Kanalspaziergang Yuraaruki in Yukata", desc: "Weidensäumter Kanal – in Yukata spazieren wie im Japan des 19. Jahrhunderts", q: "Kinosaki Onsen canal walk Japan" },
-      { name: "Onsen-Street bei Nacht", desc: "Illuminierter Hauptkanal – romantischste Atmosphäre der gesamten Reise", q: "Kinosaki Onsen night lantern Japan" },
+      { name: "San'in-Küstenpanorama (Zugfenster)", desc: "Zug fährt entlang der japanischen Meerküste durch Hyogo – atemberaubende Aussicht", q: "San'in coast train Japan", time: "morgens" },
+      { name: "Kanalspaziergang Yuraaruki in Yukata", desc: "Weidensäumter Kanal – in Yukata spazieren wie im Japan des 19. Jahrhunderts", q: "Kinosaki Onsen canal walk Japan", time: "mittags" },
+      { name: "Onsen-Street bei Nacht", desc: "Illuminierter Hauptkanal – romantischste Atmosphäre der gesamten Reise", q: "Kinosaki Onsen night lantern Japan", time: "abends" },
     ],
     kultur: [
-      { name: "Kinosaki Sotoyu-Hopping beginnen", desc: "7 öffentliche Bäder mit dem Yuraaruki-Pass – Onsen-Kultur in Reinform erleben", q: "Kinosaki Onsen sotoyu public baths Japan" },
-      { name: "Yukata anlegen & Ritual lernen", desc: "Ryokan-Mitarbeiter zeigen die korrekte Yukata-Anlegetechnik – Teil der Kultur", q: "Kinosaki Onsen yukata Japan" },
+      { name: "Kinosaki Sotoyu-Hopping beginnen", desc: "7 öffentliche Bäder mit dem Yuraaruki-Pass – Onsen-Kultur in Reinform erleben", q: "Kinosaki Onsen sotoyu public baths Japan", time: "mittags" },
+      { name: "Yukata anlegen & Ritual lernen", desc: "Ryokan-Mitarbeiter zeigen die korrekte Yukata-Anlegetechnik – Teil der Kultur", q: "Kinosaki Onsen yukata Japan", time: "mittags" },
     ],
     essen: [
-      { name: "Osaka-Bento im Zug", desc: "Letzter Osaka-Bento am Bahnhof – Wehmut und Vorfreude beim Kauen", q: "Osaka station bento Eki-Ben Japan" },
-      { name: "Kaiseki-Dinner Onishiya Suishoen", desc: "Mehrgängiges Kaiseki mit saisonalem Matsuba-Krabben-Fokus – Abendmenü royale", q: "Onishiya Suishoen Kaiseki dinner Japan" },
-      { name: "Kani-Miso am Kanalstand", desc: "Krabbenpaste auf Toast – der typische Snack in Kinosaki, frisch und intensiv", q: "Kani miso Kinosaki Onsen Japan" },
+      { name: "Osaka-Bento im Zug", desc: "Letzter Osaka-Bento am Bahnhof – Wehmut und Vorfreude beim Kauen", q: "Osaka station bento Eki-Ben Japan", time: "morgens" },
+      { name: "Kani-Miso am Kanalstand", desc: "Krabbenpaste auf Toast – der typische Snack in Kinosaki, frisch und intensiv", q: "Kani miso Kinosaki Onsen Japan", time: "mittags" },
+      { name: "Kaiseki-Dinner Onishiya Suishoen", desc: "Mehrgängiges Kaiseki mit saisonalem Matsuba-Krabben-Fokus – Abendmenü royale", q: "Onishiya Suishoen Kaiseki dinner Japan", time: "abends" },
     ],
     shopping: [
-      { name: "Kinosaki Souvenirladen Hauptgasse", desc: "Yukatageschäfte, Onsen-Badeartikel, lokale Meeresfrüchte-Konserven als Mitbringsel", q: "Kinosaki Onsen souvenir shopping Japan" },
+      { name: "Kinosaki Souvenirladen Hauptgasse", desc: "Yukatageschäfte, Onsen-Badeartikel, lokale Meeresfrüchte-Konserven als Mitbringsel", q: "Kinosaki Onsen souvenir shopping Japan", time: "mittags" },
     ],
   },
   16: {
     sightseeing: [
-      { name: "Mandaraji Tempel-Wanderung", desc: "Kurzer Aufstieg über Kinosaki – Weitsicht auf die Stadt, den Kanal und das Meer", q: "Mandaraji Temple Kinosaki Onsen Japan" },
-      { name: "Morgen-Onsen bei Sonnenaufgang", desc: "Früh aufstehen für den Outdoor-Rotenburo im Morgengrauen – unvergesslich", q: "Kinosaki Onsen outdoor bath morning Japan" },
-      { name: "Nacht-Fotosession am Kanal", desc: "Langzeitbelichtung der Laternen im stillen Kanalwasser – traumhaftes Ergebnis", q: "Kinosaki Onsen night photography canal Japan" },
+      { name: "Morgen-Onsen bei Sonnenaufgang", desc: "Früh aufstehen für den Outdoor-Rotenburo im Morgengrauen – unvergesslich", q: "Kinosaki Onsen outdoor bath morning Japan", time: "morgens" },
+      { name: "Mandaraji Tempel-Wanderung", desc: "Kurzer Aufstieg über Kinosaki – Weitsicht auf die Stadt, den Kanal und das Meer", q: "Mandaraji Temple Kinosaki Onsen Japan", time: "morgens" },
+      { name: "Nacht-Fotosession am Kanal", desc: "Langzeitbelichtung der Laternen im stillen Kanalwasser – traumhaftes Ergebnis", q: "Kinosaki Onsen night photography canal Japan", time: "abends" },
     ],
     kultur: [
-      { name: "Kinosaki Onsen Museum", desc: "Kleine Ausstellung zur Geschichte der Bäder, des Heilwassers und des Viertels", q: "Kinosaki Onsen history museum Japan" },
-      { name: "Sato-no-yu Hauptbad besuchen", desc: "Das beeindruckendste der 7 Bäder mit verschiedenen Themenräumen und Rotenburo", q: "Sato no yu Kinosaki Onsen Japan" },
+      { name: "Kinosaki Onsen Museum", desc: "Kleine Ausstellung zur Geschichte der Bäder, des Heilwassers und des Viertels", q: "Kinosaki Onsen history museum Japan", time: "mittags" },
+      { name: "Sato-no-yu Hauptbad besuchen", desc: "Das beeindruckendste der 7 Bäder mit verschiedenen Themenräumen und Rotenburo", q: "Sato no yu Kinosaki Onsen Japan", time: "abends" },
     ],
     essen: [
-      { name: "Ryokan-Frühstück auf Tatami", desc: "Traditionelles Frühstück mit gegrilltem Lachs, Miso, eingelegtem Gemüse und Tofu", q: "Onishiya Suishoen breakfast Japan" },
-      { name: "Tonosama-no-yu & Café danach", desc: "Elegantes öffentliches Bad, danach Kaffee im kleinen Café am Kanal", q: "Tonosama no yu Kinosaki Onsen Japan" },
-      { name: "Kaiseki-Abschluss-Dinner", desc: "Letztes Kaiseki in Kinosaki – Abschied von der ruhigsten Etappe der Reise", q: "Kinosaki Onsen Kaiseki dinner Japan" },
+      { name: "Ryokan-Frühstück auf Tatami", desc: "Traditionelles Frühstück mit gegrilltem Lachs, Miso, eingelegtem Gemüse und Tofu", q: "Onishiya Suishoen breakfast Japan", time: "morgens" },
+      { name: "Tonosama-no-yu & Café danach", desc: "Elegantes öffentliches Bad, danach Kaffee im kleinen Café am Kanal", q: "Tonosama no yu Kinosaki Onsen Japan", time: "mittags" },
+      { name: "Kaiseki-Abschluss-Dinner", desc: "Letztes Kaiseki in Kinosaki – Abschied von der ruhigsten Etappe der Reise", q: "Kinosaki Onsen Kaiseki dinner Japan", time: "abends" },
     ],
     shopping: [
-      { name: "Lokale Meeresfrüchte-Konserven", desc: "Matsuba-Krabbe getrocknet und eingelegt – das Kinosaki-Souvenir schlechthin", q: "Kinosaki Onsen seafood souvenirs Japan" },
-      { name: "Regionalkeramik & Onsen-Accessoires", desc: "Kleine Töpfereien und Badeartikel aus der Region – handgefertigt und einzigartig", q: "Kinosaki Onsen craft shops Japan" },
+      { name: "Lokale Meeresfrüchte-Konserven", desc: "Matsuba-Krabbe getrocknet und eingelegt – das Kinosaki-Souvenir schlechthin", q: "Kinosaki Onsen seafood souvenirs Japan", time: "mittags" },
+      { name: "Regionalkeramik & Onsen-Accessoires", desc: "Kleine Töpfereien und Badeartikel aus der Region – handgefertigt und einzigartig", q: "Kinosaki Onsen craft shops Japan", time: "mittags" },
     ],
   },
   17: {
     sightseeing: [
-      { name: "Hiroshima Castle Außenansicht bei Nacht", desc: "Burg nach Einbruch der Dunkelheit illuminiert – kurzer und eindrucksvoller Spaziergang", q: "Hiroshima Castle night Japan" },
-      { name: "Hondōri Einkaufsstraße Abend", desc: "Überdachte Fußgängerzone nach Check-in – erste Orientierung in Hiroshima", q: "Hondori shopping street Hiroshima Japan" },
-      { name: "Nagarekawa Nachtspaziergang", desc: "Hiroshimas belebtes Ausgehviertel zum Ankommen und ersten Entspannen", q: "Nagarekawa Hiroshima Japan" },
+      { name: "Hondōri Einkaufsstraße Abend", desc: "Überdachte Fußgängerzone nach Check-in – erste Orientierung in Hiroshima", q: "Hondori shopping street Hiroshima Japan", time: "mittags" },
+      { name: "Hiroshima Castle Außenansicht bei Nacht", desc: "Burg nach Einbruch der Dunkelheit illuminiert – kurzer und eindrucksvoller Spaziergang", q: "Hiroshima Castle night Japan", time: "abends" },
+      { name: "Nagarekawa Nachtspaziergang", desc: "Hiroshimas belebtes Ausgehviertel zum Ankommen und ersten Entspannen", q: "Nagarekawa Hiroshima Japan", time: "abends" },
     ],
     kultur: [
-      { name: "Okonomimura – Hiroshima Kulinarik", desc: "6-stöckiges Gebäude voller Okonomiyaki-Restaurants – Hiroshima-Stil mit Nudeln", q: "Okonomimura Hiroshima Japan" },
-      { name: "Shukkeien Garten (optional)", desc: "300 Jahre alter Strollingarten im Edo-Stil – Stille nach der langen Reise", q: "Shukkeien Garden Hiroshima Japan" },
+      { name: "Shukkeien Garten (optional)", desc: "300 Jahre alter Strollingarten im Edo-Stil – Stille nach der langen Reise", q: "Shukkeien Garden Hiroshima Japan", time: "mittags" },
+      { name: "Okonomimura – Hiroshima Kulinarik", desc: "6-stöckiges Gebäude voller Okonomiyaki-Restaurants – Hiroshima-Stil mit Nudeln", q: "Okonomimura Hiroshima Japan", time: "abends" },
     ],
     essen: [
-      { name: "Kinosaki-Bento im Zug", desc: "Bento vom Kinosaki-Bahnhof für die lange Strecke – letztes Erinnerungs-Bento", q: "Kinosaki Onsen train station bento Japan" },
-      { name: "Hiroshima-Ramen lokal", desc: "Lokaler Ramen-Stil: dicke Udon-Nudeln mit Soja-Brühe – anders als Tokio", q: "Ramen Hiroshima Japan" },
-      { name: "Okonomiyaki Hiroshima-Stil", desc: "Schichtweise aufgebaut mit Nudeln statt verrührt – der Hauptunterschied zu Osaka", q: "Okonomiyaki Hiroshima style Japan" },
+      { name: "Kinosaki-Bento im Zug", desc: "Bento vom Kinosaki-Bahnhof für die lange Strecke – letztes Erinnerungs-Bento", q: "Kinosaki Onsen train station bento Japan", time: "morgens" },
+      { name: "Hiroshima-Ramen lokal", desc: "Lokaler Ramen-Stil: dicke Udon-Nudeln mit Soja-Brühe – anders als Tokio", q: "Ramen Hiroshima Japan", time: "mittags" },
+      { name: "Okonomiyaki Hiroshima-Stil", desc: "Schichtweise aufgebaut mit Nudeln statt verrührt – der Hauptunterschied zu Osaka", q: "Okonomiyaki Hiroshima style Japan", time: "abends" },
     ],
     shopping: [
-      { name: "Hondōri Shopping Arcade", desc: "Überdachte Einkaufsmeile Hiroshimas – Mode, Süßigkeiten und regionale Spezialitäten", q: "Hondori Hiroshima shopping Japan" },
-      { name: "Momiji-Manju Vorbestellung", desc: "Ahornblatt-Kuchen-Bäckerei – morgen auf Miyajima als Mitbringsel kaufen", q: "Momiji manju Hiroshima Japan" },
+      { name: "Hondōri Shopping Arcade", desc: "Überdachte Einkaufsmeile Hiroshimas – Mode, Süßigkeiten und regionale Spezialitäten", q: "Hondori Hiroshima shopping Japan", time: "mittags" },
+      { name: "Momiji-Manju Vorbestellung", desc: "Ahornblatt-Kuchen-Bäckerei – morgen auf Miyajima als Mitbringsel kaufen", q: "Momiji manju Hiroshima Japan", time: "mittags" },
     ],
   },
   18: {
     sightseeing: [
-      { name: "Friedensgedenkpark (vor 9 Uhr)", desc: "Am ruhigsten früh morgens – emotionale Stille, würdige Atmosphäre und kaum Besucher", q: "Hiroshima Peace Memorial Park Japan" },
-      { name: "Genbaku Dome UNESCO-Mahnmal", desc: "Das Welterbemonument schlechthin – einziges Gebäude der Innenstadt das standerhielt", q: "Atomic Bomb Dome Hiroshima Japan" },
-      { name: "Ōta-Fluss Ufer Spaziergang", desc: "Mehrere Flussarme durchziehen die Stadt – ruhiger Gegenpol zum dichten Stadtzentrum", q: "Ota River Hiroshima Japan" },
+      { name: "Friedensgedenkpark (vor 9 Uhr)", desc: "Am ruhigsten früh morgens – emotionale Stille, würdige Atmosphäre und kaum Besucher", q: "Hiroshima Peace Memorial Park Japan", time: "morgens" },
+      { name: "Genbaku Dome UNESCO-Mahnmal", desc: "Das Welterbemonument schlechthin – einziges Gebäude der Innenstadt das standhielt", q: "Atomic Bomb Dome Hiroshima Japan", time: "morgens" },
+      { name: "Ōta-Fluss Ufer Spaziergang", desc: "Mehrere Flussarme durchziehen die Stadt – ruhiger Gegenpol zum dichten Stadtzentrum", q: "Ota River Hiroshima Japan", time: "mittags" },
     ],
     kultur: [
-      { name: "Hiroshima Peace Memorial Museum", desc: "Tiefgehendes, wichtiges Museum – 2–3 Stunden einplanen, emotional und erhellend", q: "Hiroshima Peace Memorial Museum Japan" },
-      { name: "Hiroshima Castle & Stadtgeschichte", desc: "Wiederaufgebaute Burg mit Museum zu Hiroshima vor und nach 1945", q: "Hiroshima Castle museum Japan" },
+      { name: "Hiroshima Peace Memorial Museum", desc: "Tiefgehendes, wichtiges Museum – 2–3 Stunden einplanen, emotional und erhellend", q: "Hiroshima Peace Memorial Museum Japan", time: "morgens" },
+      { name: "Hiroshima Castle & Stadtgeschichte", desc: "Wiederaufgebaute Burg mit Museum zu Hiroshima vor und nach 1945", q: "Hiroshima Castle museum Japan", time: "mittags" },
     ],
     essen: [
-      { name: "Teishoku-Restaurant nahe Friedenspark", desc: "Günstiges Lunchset nach dem emotionalen Museumsbesuch – Kraft tanken", q: "Teishoku lunch Hiroshima Peace Park Japan" },
-      { name: "Izakaya Oyster Hiroshima Kai", desc: "Hiroshima ist Japans Austernhauptstadt – frische Austern beim Fischer gegrillt", q: "Oyster izakaya Hiroshima Japan" },
-      { name: "Abendessen Hilton Umgebung", desc: "Restaurants rund um das Hilton – entspannter Abschluss eines intensiven Tages", q: "Hilton Hiroshima restaurant Japan" },
+      { name: "Teishoku-Restaurant nahe Friedenspark", desc: "Günstiges Lunchset nach dem emotionalen Museumsbesuch – Kraft tanken", q: "Teishoku lunch Hiroshima Peace Park Japan", time: "mittags" },
+      { name: "Izakaya Oyster Hiroshima Kai", desc: "Hiroshima ist Japans Austernhauptstadt – frische Austern beim Fischer gegrillt", q: "Oyster izakaya Hiroshima Japan", time: "abends" },
+      { name: "Abendessen Hilton Umgebung", desc: "Restaurants rund um das Hilton – entspannter Abschluss eines intensiven Tages", q: "Hilton Hiroshima restaurant Japan", time: "abends" },
     ],
     shopping: [
-      { name: "Friedenspark Museumsshop", desc: "Geschmackvolle Erinnerungsstücke und Bücher – niveauvolles Souvenir zum Thema", q: "Hiroshima Peace Museum shop Japan" },
-      { name: "Hondōri letzte Einkäufe", desc: "Hiroshima-spezifische Produkte: Momiji-Manju, Oyster-Saucen, Regionale Keramik", q: "Hondori Hiroshima souvenirs Japan" },
+      { name: "Friedenspark Museumsshop", desc: "Geschmackvolle Erinnerungsstücke und Bücher – niveauvolles Souvenir zum Thema", q: "Hiroshima Peace Museum shop Japan", time: "morgens" },
+      { name: "Hondōri letzte Einkäufe", desc: "Hiroshima-spezifische Produkte: Momiji-Manju, Oyster-Saucen, Regionale Keramik", q: "Hondori Hiroshima souvenirs Japan", time: "mittags" },
     ],
   },
   19: {
     sightseeing: [
-      { name: "JR-Fähre nach Miyajima (früh)", desc: "Gezeitenzeit prüfen – schwimmendes Torii-Tor bei Flut aus dem Wasser ragend", q: "Miyajima Ferry JR Hiroshima Japan" },
-      { name: "Tori-Tor bei Ebbe zu Fuß", desc: "Bei Ebbe direkt durch Watt zum Tori-Tor laufen und berühren – einmaliges Erlebnis", q: "Itsukushima torii gate walk low tide Japan" },
-      { name: "Mount Misen Seilbahn + Wanderung", desc: "Seilbahn hoch, zu Fuß runter – Ausblick über die Seto-Inlandsee bleibt im Gedächtnis", q: "Mount Misen ropeway Miyajima Japan" },
+      { name: "JR-Fähre nach Miyajima (früh)", desc: "Gezeitenzeit prüfen – schwimmendes Torii-Tor bei Flut aus dem Wasser ragend", q: "Miyajima Ferry JR Hiroshima Japan", time: "morgens" },
+      { name: "Tori-Tor bei Ebbe zu Fuß", desc: "Bei Ebbe direkt durch Watt zum Tori-Tor laufen und berühren – einmaliges Erlebnis", q: "Itsukushima torii gate walk low tide Japan", time: "morgens" },
+      { name: "Mount Misen Seilbahn + Wanderung", desc: "Seilbahn hoch, zu Fuß runter – Ausblick über die Seto-Inlandsee bleibt im Gedächtnis", q: "Mount Misen ropeway Miyajima Japan", time: "mittags" },
     ],
     kultur: [
-      { name: "Itsukushima-Schrein UNESCO", desc: "Oranger Schrein auf Stelzen über dem Meer – eines der bekanntesten Bilder Japans", q: "Itsukushima Shrine Miyajima Japan" },
-      { name: "Daishoin Tempel Miyajima", desc: "Ruhiger Tempel mit 500 Steinlaternen und Moosgarten am Fuß des Misen", q: "Daishoin Temple Miyajima Japan" },
+      { name: "Itsukushima-Schrein UNESCO", desc: "Oranger Schrein auf Stelzen über dem Meer – eines der bekanntesten Bilder Japans", q: "Itsukushima Shrine Miyajima Japan", time: "morgens" },
+      { name: "Daishoin Tempel Miyajima", desc: "Ruhiger Tempel mit 500 Steinlaternen und Moosgarten am Fuß des Misen", q: "Daishoin Temple Miyajima Japan", time: "morgens" },
     ],
     essen: [
-      { name: "Anagoman Conger-Aal Brötchen", desc: "Miyajimas Spezialität: weiches Brötchen mit gegrillt-süßem Meeresaal gefüllt", q: "Anagoman Miyajima Japan" },
-      { name: "Ekiben im Shinkansen Hiroshima–Tokio", desc: "Letzter Ekiben der Reise im Nozomi – drei Wochen Japan im Rückblick", q: "Ekiben Shinkansen bento Japan" },
-      { name: "Momiji-Manju frisch gebacken", desc: "Ahornblatt-Kuchen direkt an der Backstube probieren – warm am besten", q: "Momiji manju Miyajima Hiroshima Japan" },
+      { name: "Anagoman Conger-Aal Brötchen", desc: "Miyajimas Spezialität: weiches Brötchen mit gegrillt-süßem Meeresaal gefüllt", q: "Anagoman Miyajima Japan", time: "morgens" },
+      { name: "Momiji-Manju frisch gebacken", desc: "Ahornblatt-Kuchen direkt an der Backstube probieren – warm am besten", q: "Momiji manju Miyajima Hiroshima Japan", time: "mittags" },
+      { name: "Ekiben im Shinkansen Hiroshima–Tokio", desc: "Letzter Ekiben der Reise im Nozomi – drei Wochen Japan im Rückblick", q: "Ekiben Shinkansen bento Japan", time: "abends" },
     ],
     shopping: [
-      { name: "Miyajima Holzlöffel (Shamoji)", desc: "Traditionelles Miyajima-Souvenir: handgefertigte Holzlöffel in allen Größen", q: "Miyajima shamoji wooden spatula Japan" },
-      { name: "Momiji-Manju Kartons für Zuhause", desc: "Ahornkuchen-Kartons als Heimatmitbringsel – verschiedene Füllungen", q: "Momiji manju souvenir Miyajima Japan" },
+      { name: "Miyajima Holzlöffel (Shamoji)", desc: "Traditionelles Miyajima-Souvenir: handgefertigte Holzlöffel in allen Größen", q: "Miyajima shamoji wooden spatula Japan", time: "morgens" },
+      { name: "Momiji-Manju Kartons für Zuhause", desc: "Ahornkuchen-Kartons als Heimatmitbringsel – verschiedene Füllungen", q: "Momiji manju souvenir Miyajima Japan", time: "mittags" },
     ],
   },
   20: {
     sightseeing: [
-      { name: "Yanaka Viertel Morgenspaziergang", desc: "Letzter Tokio-Morgen im ältesten erhaltenen Stadtteil – Katzen, Tempel, Stille", q: "Yanaka Tokyo morning walk Japan" },
-      { name: "Nezu Shrine Torii-Tunnel", desc: "Rote Torii-Gassen wie mini Fushimi Inari – in Tokio, kaum touristisch", q: "Nezu Shrine Tokyo Japan" },
-      { name: "Shibuya-Abend-Abschied", desc: "Letzte Nacht durch Shibuya – die Energie aufsaugen, ein letztes Mal die Kreuzung", q: "Shibuya night walk Tokyo Japan" },
+      { name: "Yanaka Viertel Morgenspaziergang", desc: "Letzter Tokio-Morgen im ältesten erhaltenen Stadtteil – Katzen, Tempel, Stille", q: "Yanaka Tokyo morning walk Japan", time: "morgens" },
+      { name: "Nezu Shrine Torii-Tunnel", desc: "Rote Torii-Gassen wie mini Fushimi Inari – in Tokio, kaum touristisch", q: "Nezu Shrine Tokyo Japan", time: "morgens" },
+      { name: "Shibuya-Abend-Abschied", desc: "Letzte Nacht durch Shibuya – die Energie aufsaugen, ein letztes Mal die Kreuzung", q: "Shibuya night walk Tokyo Japan", time: "abends" },
     ],
     kultur: [
-      { name: "Tokyo National Museum Ueno", desc: "Größtes Museum Japans: Samurai-Rüstungen, Nō-Theater, Kalligraphie und Skulpturen", q: "Tokyo National Museum Ueno Japan" },
-      { name: "Oedo Onsen Monogatari Odaiba", desc: "Thermalbad-Themenpark im Edo-Stil – letztes großes Onsen-Erlebnis der Reise", q: "Oedo Onsen Monogatari Odaiba Tokyo Japan" },
+      { name: "Tokyo National Museum Ueno", desc: "Größtes Museum Japans: Samurai-Rüstungen, Nō-Theater, Kalligraphie und Skulpturen", q: "Tokyo National Museum Ueno Japan", time: "mittags" },
+      { name: "Oedo Onsen Monogatari Odaiba", desc: "Thermalbad-Themenpark im Edo-Stil – letztes großes Onsen-Erlebnis der Reise", q: "Oedo Onsen Monogatari Odaiba Tokyo Japan", time: "mittags" },
     ],
     essen: [
-      { name: "Fuunji Shinjuku Tsukemen", desc: "Tokios bestes Tsukemen (Dippramen) – letztes Ramen der Reise mit maximalem Impact", q: "Fuunji Ramen Shinjuku Tokyo Japan" },
-      { name: "Abschieds-Dinner Ginza / Shibuya", desc: "Erinnerungswürdiges letztes Abendessen – gerne etwas Besonderes gönnen", q: "Yakitori Birdland Ginza Tokyo Japan" },
-      { name: "Matcha-Latte Café Harajuku", desc: "Ein letzter Matcha in Tokios coolstem Viertel – ruhiges Abschieds-Ritual", q: "Matcha cafe Harajuku Tokyo Japan" },
+      { name: "Matcha-Latte Café Harajuku", desc: "Ein letzter Matcha in Tokios coolstem Viertel – ruhiges Abschieds-Ritual", q: "Matcha cafe Harajuku Tokyo Japan", time: "morgens" },
+      { name: "Fuunji Shinjuku Tsukemen", desc: "Tokios bestes Tsukemen (Dippramen) – letztes Ramen der Reise mit maximalem Impact", q: "Fuunji Ramen Shinjuku Tokyo Japan", time: "mittags" },
+      { name: "Abschieds-Dinner Ginza / Shibuya", desc: "Erinnerungswürdiges letztes Abendessen – gerne etwas Besonderes gönnen", q: "Yakitori Birdland Ginza Tokyo Japan", time: "abends" },
     ],
     shopping: [
-      { name: "Don Quixote Last-Minute Einkauf", desc: "Letzte Mitbringsel: Matcha-KitKat, Wasabi-Snacks, Capsule Toys, japanische Kosmetik", q: "Shibuya Don Quixote shopping Tokyo Japan" },
-      { name: "Ginza Six Luxus-Souvenirs", desc: "Hochwertige japanische Produkte: Kyo-Keramik, Lacklack-Dosen, edle Tees", q: "Ginza Six shopping Tokyo Japan" },
-      { name: "Matcha-KitKat & Omiyage Final", desc: "Narita/Haneda hat auch Auswahl – aber hier in der Stadt ist sie größer und günstiger", q: "Matcha KitKat omiyage Tokyo Japan" },
+      { name: "Don Quixote Last-Minute Einkauf", desc: "Letzte Mitbringsel: Matcha-KitKat, Wasabi-Snacks, Capsule Toys, japanische Kosmetik", q: "Shibuya Don Quixote shopping Tokyo Japan", time: "mittags" },
+      { name: "Ginza Six Luxus-Souvenirs", desc: "Hochwertige japanische Produkte: Kyo-Keramik, Lacklack-Dosen, edle Tees", q: "Ginza Six shopping Tokyo Japan", time: "mittags" },
+      { name: "Matcha-KitKat & Omiyage Final", desc: "Narita/Haneda hat auch Auswahl – aber hier in der Stadt ist sie größer und günstiger", q: "Matcha KitKat omiyage Tokyo Japan", time: "abends" },
     ],
   },
   21: {
     sightseeing: [
-      { name: "Letzter Blick auf Tokio-Bucht (Haneda)", desc: "Vom großen Panoramafenster im Terminal – Skyline, Bucht und der Abflug kommt näher", q: "Haneda Airport view Tokyo Bay Japan" },
+      { name: "Letzter Blick auf Tokio-Bucht (Haneda)", desc: "Vom großen Panoramafenster im Terminal – Skyline, Bucht und der Abflug kommt näher", q: "Haneda Airport view Tokyo Bay Japan", time: "morgens" },
     ],
     kultur: [
-      { name: "Haneda Edo-Markt Terminal 2", desc: "Japanische Kunsthandwerker-Einkaufszone im Flughafen – Keramik, Textilien, Lackwaren", q: "Haneda Airport Edo Market shopping Japan" },
+      { name: "Haneda Edo-Markt Terminal 2", desc: "Japanische Kunsthandwerker-Einkaufszone im Flughafen – Keramik, Textilien, Lackwaren", q: "Haneda Airport Edo Market shopping Japan", time: "morgens" },
     ],
     essen: [
-      { name: "Letzte Onigiri oder Tamago-Sando", desc: "Konbini im Terminal – das perfekte kleine Abschiedsfrühstück vor dem Gate", q: "Haneda Airport breakfast Japan" },
-      { name: "Sushi-Restaurant im Terminal", desc: "Haneda hat ausgezeichnete Sushi-Restaurants – für einen letzten Genussmoment", q: "Haneda Airport sushi restaurant Japan" },
+      { name: "Letzte Onigiri oder Tamago-Sando", desc: "Konbini im Terminal – das perfekte kleine Abschiedsfrühstück vor dem Gate", q: "Haneda Airport breakfast Japan", time: "morgens" },
+      { name: "Sushi-Restaurant im Terminal", desc: "Haneda hat ausgezeichnete Sushi-Restaurants – für einen letzten Genussmoment", q: "Haneda Airport sushi restaurant Japan", time: "morgens" },
     ],
     shopping: [
-      { name: "Haneda Duty-Free Whisky & Sake", desc: "Japanische Whiskys (Nikka, Suntory) und Sake-Flaschen als Heimatmitbringsel", q: "Haneda Airport duty free whisky Japan" },
-      { name: "Haneda Wagashi & japanische Süßigkeiten", desc: "Letzte Chance für Yatsuhashi, Dorayaki-Kartons und Matcha-Desserts für Zuhause", q: "Haneda Airport duty free shopping Japan" },
+      { name: "Haneda Duty-Free Whisky & Sake", desc: "Japanische Whiskys (Nikka, Suntory) und Sake-Flaschen als Heimatmitbringsel", q: "Haneda Airport duty free whisky Japan", time: "morgens" },
+      { name: "Haneda Wagashi & japanische Süßigkeiten", desc: "Letzte Chance für Yatsuhashi, Dorayaki-Kartons und Matcha-Desserts für Zuhause", q: "Haneda Airport duty free shopping Japan", time: "morgens" },
     ],
   },
 };
@@ -822,7 +822,7 @@ export default function App() {
 
           {/* ── Header ─────────────────────────────────────────────────── */}
           <div className="border-b border-black/5 dark:border-white/10 bg-[radial-gradient(circle_at_top_left,_rgba(239,68,68,0.15),_transparent_35%),linear-gradient(135deg,#fff,#faf7f3)] dark:bg-neutral-900 px-5 py-6 md:px-8 md:py-8">
-            <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+            <div className="flex flex-col gap-4">
               <div className="max-w-3xl">
                 <div className="flex items-center justify-between gap-4">
                   <div className="inline-flex items-center gap-2 rounded-full border border-red-100 dark:border-red-900 bg-red-50 dark:bg-red-950/40 px-3 py-1 text-xs font-medium text-red-700 dark:text-red-400">
@@ -847,12 +847,6 @@ export default function App() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:w-[560px]">
-                <StatCard icon={CalendarDays} label="Zeitraum"    value={`${totalNights} Tage`}    sub={trip.dateRange} />
-                <StatCard icon={MapPin}       label="Stops"       value={`${stops.length}`}        sub="Tokio bis Miyajima" />
-                <StatCard icon={Hotel}        label="Unterkünfte" value={`${stops.length} Hotels`} sub="alle fix gebucht" />
-                <StatCard icon={Wallet}       label="Budget"      value={trip.budget.target}       sub="ohne Flüge" />
-              </div>
             </div>
           </div>
 
@@ -878,9 +872,7 @@ export default function App() {
 
           {/* ── Tab: Überblick ──────────────────────────────────────────── */}
           {activeTab === "overview" && (
-            <div className="grid gap-6 px-5 py-6 md:px-8 md:py-8 lg:grid-cols-[1.2fr_0.8fr]">
-
-              {/* Route */}
+            <div className="px-5 py-6 md:px-8 md:py-8">
               <div className="rounded-[28px] border border-black/5 dark:border-white/10 bg-[#fcfbf8] dark:bg-neutral-800 p-5 md:p-6">
                 <SectionTitle eyebrow="Überblick" title="Route & Rhythmus" text="Die Reise wechselt bewusst zwischen Stadterkundung und Onsen-/Naturphasen." />
                 <div className="space-y-3">
@@ -898,49 +890,6 @@ export default function App() {
                       {idx < stops.length - 1 && <ChevronRight className="mt-1 hidden h-4 w-4 text-neutral-400 dark:text-neutral-500 md:block" />}
                     </div>
                   ))}
-                </div>
-              </div>
-
-              <div className="space-y-6">
-                {/* Flights */}
-                <div className="rounded-[28px] border border-black/5 dark:border-white/10 bg-neutral-950 p-5 text-white md:p-6">
-                  <SectionTitle eyebrow="Flüge" title="Eure Eckdaten" text="Alles Wichtige auf einen Blick." dark />
-                  <div className="space-y-4 text-sm text-white/80">
-                    {[
-                      ["Hinflug",  trip.flight.outbound],
-                      ["Rückflug", trip.flight.inbound],
-                      ["Profil",   `${trip.travelers} · ${trip.focus.join(", ")}`],
-                    ].map(([label, val]) => (
-                      <div key={label} className="rounded-2xl bg-white/5 p-4">
-                        <div className="mb-1 text-xs uppercase tracking-[0.18em] text-white/45">{label}</div>
-                        <div>{val}</div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Budget summary */}
-                <div className="rounded-[28px] border border-black/5 dark:border-white/10 bg-white dark:bg-neutral-800 p-5 md:p-6">
-                  <SectionTitle eyebrow="Budget" title="Kostenrahmen" text="Zahlen als Reisekompass für den variablen Teil." />
-                  <div className="space-y-3 text-sm">
-                    {[
-                      ["JR Pass",           trip.budget.railPass],
-                      ["Unterkünfte",       trip.budget.lodging],
-                      ["Essen & Getränke",  trip.budget.food],
-                      ["Eintritte & Onsen", trip.budget.activities],
-                      ["Lokaler Verkehr",   trip.budget.localTransport],
-                      ["Reserve / Shopping",trip.budget.reserve],
-                    ].map(([label, value]) => (
-                      <div key={label} className="flex items-center justify-between rounded-2xl bg-neutral-50 dark:bg-neutral-700 px-4 py-3">
-                        <span className="text-neutral-600 dark:text-neutral-300">{label}</span>
-                        <span className="font-medium text-neutral-900 dark:text-white">{value}</span>
-                      </div>
-                    ))}
-                    <div className="flex items-center justify-between rounded-2xl bg-red-50 dark:bg-red-950/40 px-4 py-3 font-semibold text-red-700 dark:text-red-400">
-                      <span>Gesamtrahmen</span>
-                      <span>{trip.budget.total}</span>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
@@ -1028,8 +977,17 @@ export default function App() {
                                     <div className="space-y-2">
                                       {recs[key].map((rec, i) => (
                                         <div key={i} className="flex items-start justify-between gap-3 rounded-xl bg-white dark:bg-neutral-700 px-3 py-2.5">
-                                          <div className="min-w-0">
-                                            <div className="text-sm font-medium text-neutral-900 dark:text-white leading-tight">{rec.name}</div>
+                                          <div className="min-w-0 flex-1">
+                                            <div className="flex flex-wrap items-center gap-1.5">
+                                              <div className="text-sm font-medium text-neutral-900 dark:text-white leading-tight">{rec.name}</div>
+                                              {rec.time && (
+                                                <span className={`shrink-0 rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide ${
+                                                  rec.time === "morgens" ? "bg-orange-100 dark:bg-orange-900/40 text-orange-700 dark:text-orange-300" :
+                                                  rec.time === "mittags" ? "bg-sky-100 dark:bg-sky-900/40 text-sky-700 dark:text-sky-300" :
+                                                  "bg-indigo-100 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-300"
+                                                }`}>{rec.time}</span>
+                                              )}
+                                            </div>
                                             <div className="mt-0.5 text-xs text-neutral-500 dark:text-neutral-400 leading-snug">{rec.desc}</div>
                                           </div>
                                           <a
