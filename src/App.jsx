@@ -10,13 +10,13 @@ import {
 // ─── Daten ────────────────────────────────────────────────────────────────────
 
 const stops = [
-  { id: "tok1", city: "Tokio",          nights: 6, range: "01.05–07.05", hotel: "Hotel Sunroad Shibuya",              position: [35.6595, 139.7005] },
-  { id: "hak",  city: "Hakone",         nights: 2, range: "07.05–09.05", hotel: "Laforet Hakone Gora Yunosumika",     position: [35.2456, 139.0497] },
-  { id: "kyo",  city: "Kyōto",          nights: 3, range: "09.05–12.05", hotel: "WAYFARER Gojo",                      position: [34.9955, 135.7608] },
-  { id: "osa",  city: "Ōsaka",          nights: 3, range: "12.05–15.05", hotel: "Hotel Abitare Namba West",           position: [34.6623, 135.4903] },
-  { id: "kin",  city: "Kinosaki Onsen", nights: 2, range: "15.05–17.05", hotel: "Onishiya Suishoen",                  position: [35.6256, 134.8125] },
-  { id: "hir",  city: "Hiroshima",      nights: 2, range: "17.05–19.05", hotel: "Hilton Hiroshima",                   position: [34.3887, 132.4667] },
-  { id: "tok2", city: "Tokio",          nights: 2, range: "19.05–21.05", hotel: "Syforme Keikyu-Kamata Residence",    position: [35.5605, 139.7161] },
+  { id: "tok1", city: "Tokio",          nights: 6, range: "01.05–07.05", hotel: "Hotel Sunroad Shibuya",              checkin: "18:00", checkout: "12:00" },
+  { id: "hak",  city: "Hakone",         nights: 2, range: "07.05–09.05", hotel: "Laforet Hakone Gora Yunosumika",     checkin: "15:00", checkout: "11:00" },
+  { id: "kyo",  city: "Kyōto",          nights: 3, range: "09.05–12.05", hotel: "WAYFARER Gojo",                      checkin: "15:00", checkout: "11:00" },
+  { id: "osa",  city: "Ōsaka",          nights: 3, range: "12.05–15.05", hotel: "Hotel Abitare Namba West",           checkin: "16:00", checkout: "10:00" },
+  { id: "kin",  city: "Kinosaki Onsen", nights: 2, range: "15.05–17.05", hotel: "Onishiya Suishoen",                  checkin: "14:00", checkout: "10:00" },
+  { id: "hir",  city: "Hiroshima",      nights: 2, range: "17.05–19.05", hotel: "Hilton Hiroshima",                   checkin: "15:00", checkout: "12:00" },
+  { id: "tok2", city: "Tokio",          nights: 2, range: "19.05–21.05", hotel: "Syforme Keikyu-Kamata Residence",    checkin: "15:00", checkout: "10:00" },
 ];
 
 const trip = {
@@ -735,7 +735,7 @@ const REC_CATEGORIES = [
 const TABS = [
   { id: "overview",  label: "Überblick",  icon: LayoutGrid },
   { id: "itinerary", label: "Tagesplan",  icon: List },
-  { id: "map",       label: "Karte",      icon: Map },
+  { id: "map",       label: "Hotels",     icon: Hotel },
   { id: "budget",    label: "Budget",     icon: Wallet },
   { id: "wishlist",  label: "Wunschziele", icon: Star },
 ];
@@ -1015,48 +1015,39 @@ export default function App() {
             </div>
           )}
 
-          {/* ── Tab: Karte ──────────────────────────────────────────────── */}
+          {/* ── Tab: Hotels ─────────────────────────────────────────────── */}
           {activeTab === "map" && (
             <div className="px-5 py-6 md:px-8 md:py-8">
               <div className="rounded-[28px] border border-black/5 dark:border-white/10 bg-[#fcfbf8] dark:bg-neutral-800 p-5 md:p-6">
-                <SectionTitle eyebrow="Karte" title="Interaktive Reiseroute" text="Klicke auf einen Stopp für Details. Alle Hotels verbunden durch eure Route." />
-                <SvgMap activeStop={activeStop} onSelect={i => setActiveStop(prev => prev === i ? null : i)} />
-
+                <SectionTitle eyebrow="Hotels" title="Unterkünfte der Reise" text="Alle Hotels mit Check-in und Check-out Zeiten auf einen Blick." />
                 <div className="mt-4 grid gap-3 md:grid-cols-2 xl:grid-cols-4">
                   {stops.map((stop, i) => (
-                    <button
+                    <div
                       key={stop.id}
-                      onClick={() => setActiveStop(prev => prev === i ? null : i)}
-                      className={`rounded-[20px] border p-4 text-left transition ${activeStop === i ? "border-red-200 dark:border-red-800 bg-red-50 dark:bg-red-950/30" : "border-black/5 dark:border-white/10 bg-white dark:bg-neutral-700 hover:border-red-100 dark:hover:border-red-900 hover:bg-red-50/50 dark:hover:bg-red-950/20"}`}
+                      className="rounded-[20px] border border-black/5 dark:border-white/10 bg-white dark:bg-neutral-700 p-4"
                     >
-                      <div className="text-xs font-semibold uppercase tracking-[0.16em] text-red-600 dark:text-red-400">Stop {i + 1}</div>
+                      <div className="flex items-start justify-between gap-2">
+                        <div className="text-xs font-semibold uppercase tracking-[0.16em] text-red-600 dark:text-red-400">Hotel {i + 1}</div>
+                        <a
+                          href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(stop.hotel + " " + stop.city + " Japan")}`}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="shrink-0 flex items-center justify-center h-7 w-7 rounded-full bg-red-50 dark:bg-red-950/50 text-red-600 dark:text-red-400 hover:bg-red-100 dark:hover:bg-red-900/50 transition"
+                          title="Auf Google Maps öffnen"
+                        >
+                          <MapPin className="h-3.5 w-3.5" />
+                        </a>
+                      </div>
                       <div className="mt-1 text-sm font-semibold text-neutral-900 dark:text-white">{stop.city}</div>
                       <div className="mt-0.5 text-sm text-neutral-600 dark:text-neutral-300 leading-snug">{stop.hotel}</div>
                       <div className="mt-1 text-xs text-neutral-500 dark:text-neutral-400">{stop.range} · {stop.nights} Nächte</div>
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Food spots */}
-              <div className="mt-6 rounded-[28px] border border-black/5 dark:border-white/10 bg-neutral-950 p-5 text-white md:p-6">
-                <SectionTitle eyebrow="Food" title="Merkliste für Genuss" text="Im Reiseplan genannte Spots als schneller Merkzettel." dark />
-                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 text-sm text-white/80">
-                  {foodSpots.map(group => (
-                    <div key={group.city} className="rounded-2xl bg-white/5 p-4">
-                      <div className="mb-2 text-sm font-semibold text-white">{group.city}</div>
-                      <div className="flex flex-wrap gap-2">
-                        {group.spots.map(spot => (
-                          <a
-                            key={spot}
-                            href={mapsUrl(spot + " " + group.city + " Japan")}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="rounded-full bg-white/10 hover:bg-white/20 px-3 py-1 text-xs text-white/85 transition"
-                          >
-                            {spot} ↗
-                          </a>
-                        ))}
+                      <div className="mt-2 flex gap-3 text-xs">
+                        <span className="flex items-center gap-1 text-emerald-600 dark:text-emerald-400 font-medium">
+                          <span className="text-neutral-400">Check-in</span> {stop.checkin} Uhr
+                        </span>
+                        <span className="flex items-center gap-1 text-orange-600 dark:text-orange-400 font-medium">
+                          <span className="text-neutral-400">Check-out</span> {stop.checkout} Uhr
+                        </span>
                       </div>
                     </div>
                   ))}
