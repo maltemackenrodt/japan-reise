@@ -430,8 +430,6 @@ const dayRecs = {
 // ─── Budget Plan ──────────────────────────────────────────────────────────────
 
 const budgetPlan = [
-  { key: "railPass",       label: "JR Pass",             planned: 1275, icon: Train },
-  { key: "lodging",        label: "Unterkünfte",          planned: 4050, icon: Hotel },
   { key: "food",           label: "Essen & Getränke",     planned: 1950, icon: UtensilsCrossed },
   { key: "activities",     label: "Eintritte & Onsen",    planned: 950,  icon: Bookmark },
   { key: "localTransport", label: "Lokaler Verkehr",      planned: 450,  icon: MapPin },
@@ -472,7 +470,7 @@ const DEFAULT_CHECKLIST = [
 // ─── Storage Keys ────────────────────────────────────────────────────────────
 const STORAGE_KEY  = "japan2026_checks_v2";
 const CUSTOM_KEY   = "japan2026_custom_v2";
-const BUDGET_KEY   = "japan2026_budget_v1";
+const BUDGET_KEY   = "japan2026_budget_v3";
 const DARK_KEY     = "japan2026_dark";
 
 // ─── Helper Components ───────────────────────────────────────────────────────
@@ -644,12 +642,14 @@ export default function App() {
   const [activeStop, setActiveStop]     = useState(null);
   const [newItem, setNewItem]           = useState("");
   const [expandedDays, setExpandedDays] = useState(new Set());
-  const [budgetActual, setBudgetActual] = useState(() => {
+  // budgetEntries: { [key]: [{ id, amount, label }] }
+  const [budgetEntries, setBudgetEntries] = useState(() => {
     try {
       const stored = localStorage.getItem(BUDGET_KEY);
       return stored ? JSON.parse(stored) : {};
     } catch { return {}; }
   });
+  const [newBudgetInputs, setNewBudgetInputs] = useState({});
   const [darkMode, setDarkMode] = useState(() => {
     try { return localStorage.getItem(DARK_KEY) === "true"; } catch { return false; }
   });
@@ -669,7 +669,10 @@ export default function App() {
   );
 
   const totalPlanned = useMemo(() => budgetPlan.reduce((s, c) => s + c.planned, 0), []);
-  const totalActual  = useMemo(() => budgetPlan.reduce((s, c) => s + (parseFloat(budgetActual[c.key]) || 0), 0), [budgetActual]);
+  const totalActual  = useMemo(() =>
+    budgetPlan.reduce((s, c) =>
+      s + (budgetEntries[c.key] || []).reduce((sum, e) => sum + (parseFloat(e.amount) || 0), 0), 0),
+  [budgetEntries]);
 
   const handleAddItem = () => {
     const t = newItem.trim();
@@ -684,9 +687,21 @@ export default function App() {
     });
   };
 
-  const updateBudget = (key, value) => {
-    setBudgetActual(prev => {
-      const next = { ...prev, [key]: value };
+  const addBudgetEntry = (key) => {
+    const input = newBudgetInputs[key] || {};
+    const amount = parseFloat(input.amount);
+    if (!amount || amount <= 0) return;
+    setBudgetEntries(prev => {
+      const next = { ...prev, [key]: [...(prev[key] || []), { id: Date.now() + Math.random(), amount, label: (input.label || "").trim() }] };
+      try { localStorage.setItem(BUDGET_KEY, JSON.stringify(next)); } catch {}
+      return next;
+    });
+    setNewBudgetInputs(prev => ({ ...prev, [key]: { amount: "", label: "" } }));
+  };
+
+  const removeBudgetEntry = (key, id) => {
+    setBudgetEntries(prev => {
+      const next = { ...prev, [key]: (prev[key] || []).filter(e => e.id !== id) };
       try { localStorage.setItem(BUDGET_KEY, JSON.stringify(next)); } catch {}
       return next;
     });
@@ -1100,14 +1115,17 @@ export default function App() {
 
                 {/* Category tracker */}
                 <div className="rounded-[28px] border border-black/5 dark:border-white/10 bg-[#fcfbf8] dark:bg-neutral-800 p-5 md:p-6">
-                  <SectionTitle eyebrow="Budget-Tracker" title="Ist vs. Geplant" text="Trage deine tatsächlichen Ausgaben ein und behalte den Überblick." />
+                  <SectionTitle eyebrow="Budget-Tracker" title="Ausgaben erfassen" text="Füge beliebig viele Einträge pro Kategorie hinzu – alles wird dauerhaft gespeichert." />
                   <div className="space-y-4">
                     {budgetPlan.map(({ key, label, planned, icon: Icon }) => {
-                      const actual = parseFloat(budgetActual[key]) || 0;
+                      const entries = budgetEntries[key] || [];
+                      const actual = entries.reduce((s, e) => s + (parseFloat(e.amount) || 0), 0);
                       const pct = Math.min((actual / planned) * 100, 100);
                       const over = actual > planned;
+                      const inp = newBudgetInputs[key] || {};
                       return (
                         <div key={key} className="rounded-2xl border border-black/5 dark:border-white/10 bg-white dark:bg-neutral-700 p-4">
+                          {/* Header */}
                           <div className="mb-3 flex items-center justify-between gap-3">
                             <div className="flex items-center gap-3">
                               <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-red-50 dark:bg-red-950/50 text-red-600 dark:text-red-400">
@@ -1115,33 +1133,66 @@ export default function App() {
                               </div>
                               <div>
                                 <div className="text-sm font-semibold text-neutral-900 dark:text-white">{label}</div>
-                                <div className="text-xs text-neutral-500 dark:text-neutral-400">Geplant: {planned.toLocaleString("de-DE")} €</div>
+                                <div className="text-xs text-neutral-500 dark:text-neutral-400">Geplant: {planned.toLocaleString("de-DE")} € · Gesamt: <span className={`font-semibold ${over ? "text-red-500" : "text-emerald-600 dark:text-emerald-400"}`}>{actual.toLocaleString("de-DE")} €</span></div>
                               </div>
                             </div>
-                            <div className="flex items-center gap-2">
-                              <input
-                                type="number"
-                                min="0"
-                                step="10"
-                                value={budgetActual[key] ?? ""}
-                                onChange={e => updateBudget(key, e.target.value)}
-                                placeholder="0"
-                                className="w-24 rounded-xl border border-black/10 dark:border-white/10 bg-neutral-50 dark:bg-neutral-600 px-3 py-1.5 text-right text-sm font-medium text-neutral-900 dark:text-white outline-none focus:border-red-300 dark:focus:border-red-700"
-                              />
-                              <span className="text-sm text-neutral-500 dark:text-neutral-400">€</span>
-                            </div>
                           </div>
-                          <div className="h-1.5 overflow-hidden rounded-full bg-neutral-100 dark:bg-neutral-600">
+
+                          {/* Progress bar */}
+                          <div className="mb-3 h-1.5 overflow-hidden rounded-full bg-neutral-100 dark:bg-neutral-600">
                             <div
                               className={`h-1.5 rounded-full transition-all duration-500 ${over ? "bg-red-500" : "bg-emerald-500"}`}
                               style={{ width: `${pct}%` }}
                             />
                           </div>
+
+                          {/* Entry list */}
+                          {entries.length > 0 && (
+                            <div className="mb-3 space-y-1.5">
+                              {entries.map(e => (
+                                <div key={e.id} className="flex items-center justify-between gap-2 rounded-xl bg-neutral-50 dark:bg-neutral-600 px-3 py-2">
+                                  <span className="text-sm text-neutral-700 dark:text-neutral-200">{e.label || "Ausgabe"}</span>
+                                  <div className="flex items-center gap-2">
+                                    <span className="text-sm font-medium text-neutral-900 dark:text-white">{parseFloat(e.amount).toLocaleString("de-DE")} €</span>
+                                    <button onClick={() => removeBudgetEntry(key, e.id)} className="rounded-full p-0.5 text-neutral-300 dark:text-neutral-500 hover:text-red-400 transition">
+                                      <X className="h-3.5 w-3.5" />
+                                    </button>
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                          )}
+
+                          {/* Add entry */}
+                          <div className="flex gap-2">
+                            <input
+                              type="text"
+                              value={inp.label || ""}
+                              onChange={e => setNewBudgetInputs(prev => ({ ...prev, [key]: { ...inp, label: e.target.value } }))}
+                              placeholder="Bezeichnung …"
+                              className="min-w-0 flex-1 rounded-xl border border-black/10 dark:border-white/10 bg-neutral-50 dark:bg-neutral-600 px-3 py-2 text-sm text-neutral-900 dark:text-white outline-none focus:border-red-300 dark:focus:border-red-700"
+                            />
+                            <input
+                              type="number"
+                              min="0"
+                              step="1"
+                              value={inp.amount || ""}
+                              onChange={e => setNewBudgetInputs(prev => ({ ...prev, [key]: { ...inp, amount: e.target.value } }))}
+                              onKeyDown={e => e.key === "Enter" && addBudgetEntry(key)}
+                              placeholder="€"
+                              className="w-20 rounded-xl border border-black/10 dark:border-white/10 bg-neutral-50 dark:bg-neutral-600 px-3 py-2 text-right text-sm font-medium text-neutral-900 dark:text-white outline-none focus:border-red-300 dark:focus:border-red-700"
+                            />
+                            <button
+                              onClick={() => addBudgetEntry(key)}
+                              className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-red-600 text-white hover:bg-red-700 transition"
+                            >
+                              <Plus className="h-4 w-4" />
+                            </button>
+                          </div>
+
                           {actual > 0 && (
-                            <div className={`mt-1.5 text-right text-xs font-medium ${over ? "text-red-600 dark:text-red-400" : "text-emerald-600 dark:text-emerald-400"}`}>
-                              {over
-                                ? `+${(actual - planned).toLocaleString("de-DE")} € über Budget`
-                                : `${(planned - actual).toLocaleString("de-DE")} € noch verfügbar`}
+                            <div className={`mt-2 text-right text-xs font-medium ${over ? "text-red-600 dark:text-red-400" : "text-emerald-600 dark:text-emerald-400"}`}>
+                              {over ? `+${(actual - planned).toLocaleString("de-DE")} € über Budget` : `${(planned - actual).toLocaleString("de-DE")} € noch verfügbar`}
                             </div>
                           )}
                         </div>
