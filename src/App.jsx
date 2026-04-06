@@ -747,6 +747,12 @@ export default function App() {
   const [activeStop, setActiveStop]     = useState(null);
   const [newItem, setNewItem]           = useState("");
   const [expandedDays, setExpandedDays] = useState(new Set());
+  const [expandedCities, setExpandedCities] = useState(new Set());
+  const toggleCity = (city) => setExpandedCities(prev => {
+    const next = new Set(prev);
+    next.has(city) ? next.delete(city) : next.add(city);
+    return next;
+  });
   // budgetEntries: { [key]: [{ id, amount, label }] }
   const [budgetEntries, setBudgetEntries] = useState(() => {
     try {
@@ -1167,48 +1173,62 @@ export default function App() {
                   title="Orte auf eurer Merkliste"
                   text="Alle gespeicherten Spots aus eurer Google-Maps-Liste – nach Stadt gruppiert."
                 />
-                <div className="space-y-8">
-                  {wunschziele.map(group => (
-                    <div key={group.city}>
-                      <div className="mb-3 flex items-center gap-3">
-                        <div className="flex h-8 w-8 items-center justify-center rounded-full bg-neutral-900 dark:bg-neutral-600 text-xs font-bold text-white">
-                          <MapPin className="h-3.5 w-3.5" />
-                        </div>
-                        <h3 className="text-lg font-semibold tracking-tight text-neutral-900 dark:text-white">{group.city}</h3>
-                        <span className="rounded-full bg-neutral-100 dark:bg-neutral-700 px-2.5 py-0.5 text-xs text-neutral-500 dark:text-neutral-400">{group.places.length} Orte</span>
-                      </div>
-                      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-                        {group.places.map(place => (
-                          <a
-                            key={place.name}
-                            href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(place.q)}`}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="group flex flex-col gap-2 rounded-[20px] border border-black/5 dark:border-white/10 bg-white dark:bg-neutral-700 p-4 shadow-sm shadow-black/5 dark:shadow-black/10 hover:border-red-200 dark:hover:border-red-800 hover:shadow-md transition-all"
-                          >
-                            <div className="flex items-start justify-between gap-2">
-                              <div className="min-w-0">
-                                <div className="text-sm font-semibold text-neutral-900 dark:text-white leading-snug group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors">
-                                  {place.name}
-                                </div>
-                                <span className="mt-1 inline-flex rounded-full bg-red-50 dark:bg-red-950/40 px-2.5 py-0.5 text-xs font-medium text-red-700 dark:text-red-400">
-                                  {place.cat}
-                                </span>
-                              </div>
-                              <div className="shrink-0 rounded-xl bg-neutral-50 dark:bg-neutral-600 p-1.5 text-neutral-400 dark:text-neutral-400 group-hover:bg-red-50 dark:group-hover:bg-red-950/40 group-hover:text-red-500 dark:group-hover:text-red-400 transition-colors">
-                                <MapPin className="h-3.5 w-3.5" />
-                              </div>
+                <div className="mt-4 space-y-3">
+                  {wunschziele.map(group => {
+                    const open = expandedCities.has(group.city);
+                    return (
+                      <div key={group.city} className="overflow-hidden rounded-[20px] border border-black/5 dark:border-white/10 bg-white dark:bg-neutral-700">
+                        <button
+                          onClick={() => toggleCity(group.city)}
+                          className="flex w-full items-center justify-between gap-3 px-4 py-4 text-left transition hover:bg-neutral-50 dark:hover:bg-neutral-600 min-h-[56px]"
+                        >
+                          <div className="flex items-center gap-3">
+                            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-neutral-900 dark:bg-neutral-500 text-white">
+                              <MapPin className="h-3.5 w-3.5" />
                             </div>
-                            <div className="flex items-center gap-1.5 text-xs text-neutral-500 dark:text-neutral-400">
-                              <Star className="h-3 w-3 fill-amber-400 text-amber-400" />
-                              <span className="font-medium text-neutral-700 dark:text-neutral-200">{place.rating}</span>
-                              <span>({place.reviews})</span>
+                            <span className="text-base font-semibold text-neutral-900 dark:text-white">{group.city}</span>
+                            <span className="rounded-full bg-neutral-100 dark:bg-neutral-600 px-2.5 py-0.5 text-xs text-neutral-500 dark:text-neutral-400">{group.places.length} Orte</span>
+                          </div>
+                          {open ? <ChevronUp className="h-4 w-4 shrink-0 text-neutral-400" /> : <ChevronDown className="h-4 w-4 shrink-0 text-neutral-400" />}
+                        </button>
+
+                        {open && (
+                          <div className="border-t border-black/5 dark:border-white/10 p-4">
+                            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                              {group.places.map(place => (
+                                <a
+                                  key={place.name}
+                                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(place.q)}`}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                  className="group flex flex-col gap-2 rounded-[16px] border border-black/5 dark:border-white/10 bg-neutral-50 dark:bg-neutral-600 p-4 hover:border-red-200 dark:hover:border-red-800 hover:shadow-md transition-all"
+                                >
+                                  <div className="flex items-start justify-between gap-2">
+                                    <div className="min-w-0">
+                                      <div className="text-sm font-semibold text-neutral-900 dark:text-white leading-snug group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors">
+                                        {place.name}
+                                      </div>
+                                      <span className="mt-1 inline-flex rounded-full bg-red-50 dark:bg-red-950/40 px-2.5 py-0.5 text-xs font-medium text-red-700 dark:text-red-400">
+                                        {place.cat}
+                                      </span>
+                                    </div>
+                                    <div className="shrink-0 rounded-xl bg-white dark:bg-neutral-500 p-1.5 text-neutral-400 group-hover:bg-red-50 dark:group-hover:bg-red-950/40 group-hover:text-red-500 dark:group-hover:text-red-400 transition-colors">
+                                      <MapPin className="h-3.5 w-3.5" />
+                                    </div>
+                                  </div>
+                                  <div className="flex items-center gap-1.5 text-xs text-neutral-500 dark:text-neutral-400">
+                                    <Star className="h-3 w-3 fill-amber-400 text-amber-400" />
+                                    <span className="font-medium text-neutral-700 dark:text-neutral-200">{place.rating}</span>
+                                    <span>({place.reviews})</span>
+                                  </div>
+                                </a>
+                              ))}
                             </div>
-                          </a>
-                        ))}
+                          </div>
+                        )}
                       </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               </div>
             </div>
