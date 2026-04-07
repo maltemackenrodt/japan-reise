@@ -4,7 +4,7 @@ import {
   UtensilsCrossed, Plane, Mountain, Camera, Waves, Hotel,
   Sparkles, Bookmark, Heart, Plus,
   List, X, ChevronDown, ChevronUp,
-  ShoppingBag, Star, Landmark,
+  ShoppingBag, Star, Landmark, BookOpen, Phone,
 } from "lucide-react";
 
 // ─── Daten ────────────────────────────────────────────────────────────────────
@@ -721,6 +721,7 @@ const TABS = [
   { id: "trains",    label: "Züge",        icon: Train },
   { id: "wishlist",  label: "Wunschziele", icon: Star },
   { id: "budget",    label: "Budget",      icon: Wallet },
+  { id: "faq",       label: "FAQ",         icon: BookOpen },
 ];
 
 // ─── App ──────────────────────────────────────────────────────────────────────
@@ -731,6 +732,12 @@ export default function App() {
   const [expandedDays, setExpandedDays] = useState(new Set());
   const [expandedCities, setExpandedCities]   = useState(new Set());
   const [expandedTrains, setExpandedTrains]   = useState(new Set());
+  const [expandedFaqs,   setExpandedFaqs]     = useState(new Set());
+  const toggleFaq = (id) => setExpandedFaqs(prev => {
+    const next = new Set(prev);
+    next.has(id) ? next.delete(id) : next.add(id);
+    return next;
+  });
   const toggleTrain = (id) => setExpandedTrains(prev => {
     const next = new Set(prev);
     next.has(id) ? next.delete(id) : next.add(id);
@@ -1354,6 +1361,193 @@ export default function App() {
                       </div>
                     );
                   })}
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* ── Tab: FAQ ────────────────────────────────────────────────── */}
+          {activeTab === "faq" && (
+            <div className="px-4 py-5 md:px-8 md:py-8">
+              <div className="rounded-[28px] border border-black/25 bg-black/5 p-5 md:p-6">
+                <SectionTitle eyebrow="FAQ" title="Wichtige Infos zur Reise" text="Verhaltenstipps, kulturelle Besonderheiten und Notfallkontakte auf einen Blick." />
+
+                <div className="space-y-3">
+
+                  {/* ── Dos & Don'ts ── */}
+                  {[{ id: "dos" }, { id: "notfall" }].map(({ id }) => {
+                    const open = expandedFaqs.has(id);
+                    const isDos = id === "dos";
+                    return (
+                      <div key={id} className="overflow-hidden rounded-[20px] border border-black/25 bg-white">
+                        <button
+                          onClick={() => toggleFaq(id)}
+                          className="flex w-full items-center justify-between gap-3 px-4 py-4 text-left transition hover:bg-black/5 min-h-[60px]"
+                        >
+                          <div className="flex items-center gap-3">
+                            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-red-600 text-white">
+                              {isDos ? <BookOpen className="h-3.5 w-3.5" /> : <Phone className="h-3.5 w-3.5" />}
+                            </div>
+                            <div>
+                              <div className="text-base font-semibold text-black">
+                                {isDos ? "Dos & Don'ts in Japan" : "Wichtige Nummern & Notfallkontakte"}
+                              </div>
+                              <div className="text-xs text-black/50 mt-0.5">
+                                {isDos ? "Verhaltenstipps, Trinkgeld, kulturelle Besonderheiten" : "Polizei, Krankenwagen, Deutsche Botschaft u. v. m."}
+                              </div>
+                            </div>
+                          </div>
+                          {open ? <ChevronUp className="h-4 w-4 shrink-0 text-black/50" /> : <ChevronDown className="h-4 w-4 shrink-0 text-black/50" />}
+                        </button>
+
+                        {open && isDos && (
+                          <div className="border-t border-black/25 p-4 space-y-4">
+                            {[
+                              {
+                                label: "Öffentliche Verkehrsmittel",
+                                dos: [
+                                  "Handy lautlos schalten, Telefonate vermeiden",
+                                  "Leise sprechen – Stille in Zügen wird erwartet",
+                                  "Rechts stehen auf Rolltreppen (Ausnahme Osaka: links)",
+                                  "An markierten Stellen in der Schlange anstellen",
+                                  "Rucksack absetzen oder nach vorne tragen",
+                                ],
+                                donts: [
+                                  "Nicht telefonieren in der Bahn",
+                                  "Keine laute Musik ohne Kopfhörer",
+                                  "Nicht essen (außer auf Shinkansen-Langstrecken)",
+                                ],
+                              },
+                              {
+                                label: "Restaurant & Essen",
+                                dos: [
+                                  'Vor dem Essen "Itadakimasu" sagen (Dankbarkeit)',
+                                  'Nach dem Essen "Gochisōsama deshita" sagen',
+                                  "Suppe schlürfen ist erwünscht – Zeichen des Genusses",
+                                  "Geld in die Zahlschale legen, nicht direkt in die Hand",
+                                ],
+                                donts: [
+                                  "Kein Trinkgeld – gilt als unhöflich und wird teils zurückgegeben",
+                                  "Nicht beim Gehen essen (außer Streetfood-Stände)",
+                                  "Stäbchen nie senkrecht in Reis stecken (Trauerbrauch)",
+                                  "Essen nie von Stäbchen zu Stäbchen weitergeben (Trauerbrauch)",
+                                ],
+                              },
+                              {
+                                label: "Tempel & Schreine",
+                                dos: [
+                                  "Am Eingang Hände am Temizuya waschen",
+                                  "Shinto-Ritual: 2× verneigen, 2× klatschen, 1× verneigen",
+                                  "Leise und respektvoll verhalten",
+                                  "Spende in den Kasten werfen, nicht hineinlegen",
+                                ],
+                                donts: [
+                                  "Keine lauten Gespräche in Gebetsbereichen",
+                                  "Nicht fotografieren wo Schilder es verbieten",
+                                  "Gebetsbereiche nicht betreten wenn abgesperrt",
+                                ],
+                              },
+                              {
+                                label: "Ryokan & Tatami",
+                                dos: [
+                                  "Straßenschuhe immer im Eingangsbereich ausziehen",
+                                  "Yukata: linke Seite über rechte legen",
+                                  "Hausschuhe beim Verlassen des Tatami-Raums ausziehen",
+                                  "Yukata auch für Abendessen und Onsen-Gang tragen",
+                                ],
+                                donts: [
+                                  "Keine Straßen- oder Hausschuhe auf Tatami",
+                                  "Yukata nicht rechts über links legen (gilt als Trauerkleidung)",
+                                  "Nicht mit dem Handtuch ins Onsen gehen – vorher duschen",
+                                ],
+                              },
+                              {
+                                label: "Allgemeines Verhalten",
+                                dos: [
+                                  "Müll mitnehmen – öffentliche Mülleimer sind selten",
+                                  "Dinge mit beiden Händen übergeben und entgegennehmen",
+                                  "Visitenkarten mit beiden Händen nehmen und kurz betrachten",
+                                  "Geduld und Freundlichkeit zahlen sich immer aus",
+                                  "Masken tragen bei Erkältung – weitgehend übliche Praxis",
+                                ],
+                                donts: [
+                                  "Nicht laut in der Öffentlichkeit – Zurückhaltung wird geschätzt",
+                                  "Kein direkter, langer Augenkontakt mit Fremden",
+                                  "Nicht auf indirekte Ablehnung bestehen – 'Nein' wird selten direkt gesagt",
+                                  "Keine körperliche Nähe / spontane Umarmungen",
+                                ],
+                              },
+                            ].map(cat => (
+                              <div key={cat.label} className="rounded-2xl border border-black/25 bg-black/[0.03] p-4">
+                                <div className="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-red-600">{cat.label}</div>
+                                <div className="grid gap-3 sm:grid-cols-2">
+                                  <div>
+                                    <div className="mb-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-black/50">✓ Dos</div>
+                                    <ul className="space-y-1.5">
+                                      {cat.dos.map((tip, i) => (
+                                        <li key={i} className="flex items-start gap-2 text-xs text-black/75 leading-snug">
+                                          <span className="mt-0.5 h-1.5 w-1.5 shrink-0 rounded-full bg-black/25" />
+                                          {tip}
+                                        </li>
+                                      ))}
+                                    </ul>
+                                  </div>
+                                  <div>
+                                    <div className="mb-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-black/50">✕ Don'ts</div>
+                                    <ul className="space-y-1.5">
+                                      {cat.donts.map((tip, i) => (
+                                        <li key={i} className="flex items-start gap-2 text-xs text-black/75 leading-snug">
+                                          <span className="mt-0.5 h-1.5 w-1.5 shrink-0 rounded-full bg-red-600/50" />
+                                          {tip}
+                                        </li>
+                                      ))}
+                                    </ul>
+                                  </div>
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+
+                        {open && !isDos && (
+                          <div className="border-t border-black/25 p-4 space-y-3">
+                            {[
+                              { label: "Polizei",                   number: "110",              note: "Notruf – kostenlos, landesweit",                            href: null },
+                              { label: "Feuerwehr & Krankenwagen",  number: "119",              note: "Notruf – kostenlos, landesweit",                            href: null },
+                              { label: "Japan Tourist Helpline",    number: "050-3816-2787",    note: "24 h, mehrsprachig (auch Deutsch) – JNTO",                  href: "https://www.jnto.go.jp/eng/basic-info/emergency-info/" },
+                              { label: "Deutsche Botschaft Tokyo",  number: "+81-3-5791-7700",  note: "4-5-10 Minami-Azabu, Minato-ku, Tokyo · Mo–Fr 9–12 & 14–17 Uhr", href: "https://japan.diplo.de" },
+                              { label: "Botschaft Notfalltelefon",  number: "+81-3-5791-7700",  note: "Außerhalb der Bürozeiten: Ansage mit Weiterschaltung",      href: null },
+                              { label: "Konsulat Osaka",            number: "+81-6-6440-5070",  note: "Japanbankstr. 15F, Umeda Sky Building Tower West, Osaka",   href: null },
+                              { label: "Europäischer Notruf-SOS",   number: "112",              note: "Funktioniert auf manchen Mobilnetzen als Notfall-Fallback", href: null },
+                              { label: "Kreditkartensperrung",      number: "→ Banknummer",     note: "Internationale Sperrnummer der eigenen Bank bereithalten",  href: null },
+                            ].map(c => (
+                              <div key={c.label} className="rounded-2xl border border-black/25 bg-black/[0.03] px-4 py-3">
+                                <div className="flex items-start justify-between gap-3">
+                                  <div className="min-w-0">
+                                    <div className="text-xs font-semibold uppercase tracking-[0.14em] text-red-600 mb-0.5">{c.label}</div>
+                                    <div className="text-base font-bold text-black tabular-nums">{c.number}</div>
+                                    <div className="mt-0.5 text-xs text-black/50 leading-snug">{c.note}</div>
+                                  </div>
+                                  {c.href && (
+                                    <a href={c.href} target="_blank" rel="noreferrer"
+                                       className="shrink-0 rounded-full border border-black/25 bg-white px-3 py-1 text-xs font-medium text-red-600 hover:border-red-600/50 transition">
+                                      Web ↗
+                                    </a>
+                                  )}
+                                </div>
+                              </div>
+                            ))}
+
+                            <div className="rounded-2xl bg-red-600/[0.06] border border-red-600/25 px-4 py-3">
+                              <div className="text-xs font-semibold uppercase tracking-[0.14em] text-red-600 mb-1">Tipp</div>
+                              <p className="text-xs text-black/75 leading-snug">Nummern als Screenshot speichern – bei fehlendem Mobilempfang oder leerer Batterie trotzdem griffbereit.</p>
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
+
                 </div>
               </div>
             </div>
