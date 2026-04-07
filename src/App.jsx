@@ -559,11 +559,166 @@ const REC_CATEGORIES = [
   { key: "shopping",    label: "Shopping",     Icon: ShoppingBag,     bg: "bg-black/5",   text: "text-black/75" },
 ];
 
+// ─── Zugverbindungen ──────────────────────────────────────────────────────────
+
+const trainOverview = {
+  hinweis: "Fahrplanstand April 2026. Bei einigen Fernverkehrsabschnitten können Zugnummern oder Minutenlagen bis zum Reisetag geringfügig angepasst werden.",
+  sitzlogik: "Fuji-Blick ostwärts meistens auf der rechten Seite zwischen Odawara und Shizuoka; west- bzw. nordostwärts Richtung Tokyo meist links kurz vor Shin-Yokohama/Tokyo. Romancecar nach Hakone möglichst Fenster rechts.",
+  buchungslinks: [
+    { label: "SmartEX",            href: "https://smart-ex.jp/en/index.php" },
+    { label: "JR West / e5489",    href: "https://www.westjr.co.jp/travel-information/en/tickets-passes/route-search/" },
+    { label: "Odakyu e-Romancecar",href: "https://www.web-odakyu.com/e-romancecar/?language=en" },
+    { label: "Keikyu",             href: "https://norikae.keikyu.co.jp/" },
+  ],
+};
+
+const trainSegments = [
+  {
+    id: 0,
+    route: "Haneda → Tokio (Shibuya)",
+    date: "01.05.2026",
+    hotel: "Hotel Sunroad Shibuya",
+    mapsHref: "https://www.google.com/maps/dir/Haneda+Airport+Terminal+3+Station/Shibuya+Station/",
+    booking: { label: "Keikyu Fahrplansuche (JP)", href: "https://norikae.keikyu.co.jp/hnd-tokyo/norikae/N1?MODE=1&OUTPUT=1&SR=D&USR=PC" },
+    note: null,
+    legs: [
+      { line: "Keikyu Airport Line · Rapid Express", from: "Haneda Airport Terminal 3", to: "Shinagawa",  dep: "11:25", arr: "11:38", train: "—", tip: "Keine Reservierung; am besten vorne im Wagen für kurzen Umstieg." },
+      { line: "JR Yamanote Line",                    from: "Shinagawa",                 to: "Shibuya",    dep: "11:45", arr: "11:58", train: "—", tip: "Beliebig; für Ausstieg in Shibuya nahe der Türen stehen." },
+    ],
+    zwischenstops: [
+      { label: "Haneda T3 → Shinagawa", stops: "Haneda T1/2 → Tenkubashi → Anamori-Inari → Otorii → Kojiya → Keikyu Kamata → Zoshiki → Rokugodote → Keikyu Kawasaki → Hatchonawate → Keikyu Tsurumi → Kagetsu-Sojiji → Namamugi → Keikyu Shinkoyasu → Koyasu → Kanagawa-Shimmachi → Keikyu Higashi-Kanagawa → Kanagawa → Shinagawa" },
+      { label: "Shinagawa → Shibuya",   stops: "Osaki → Gotanda → Meguro → Ebisu → Shibuya" },
+    ],
+  },
+  {
+    id: 1,
+    route: "Tokio (Shibuya) → Hakone (Gora)",
+    date: "07.05.2026",
+    hotel: "Laforet Hakone Gora Yunosumika",
+    mapsHref: "https://www.google.com/maps/dir/Shibuya+Station/Gora+Station/",
+    booking: { label: "Odakyu e-Romancecar", href: "https://www.web-odakyu.com/e-romancecar/?language=en" },
+    note: "Alle Sitze im Romancecar sind reservierungspflichtig.",
+    legs: [
+      { line: "JR Yamanote Line",          from: "Shibuya",        to: "Shinjuku",       dep: "09:31", arr: "09:38", train: "—",        tip: "Beliebig; nahe Tür für schnellen Bahnsteigwechsel." },
+      { line: "Odakyu Romancecar",         from: "Shinjuku Odakyu",to: "Hakone-Yumoto",  dep: "10:00", arr: "11:13", train: "Hakone 3", tip: "Fenster rechts in Fahrtrichtung; gute Chance auf Fuji-Blicke bei klarem Wetter. GSE/Observation-Deck sehr attraktiv, falls verfügbar." },
+      { line: "Hakone Tozan Railway",      from: "Hakone-Yumoto",  to: "Gora",           dep: "11:25", arr: "12:03", train: "—",        tip: "Fenster frei wählen; bergseitige Kurven auf beiden Seiten schön." },
+    ],
+    zwischenstops: [
+      { label: "Shibuya → Shinjuku",         stops: "Harajuku → Yoyogi → Shinjuku" },
+      { label: "Shinjuku → Hakone-Yumoto",   stops: "Machida → Hon-Atsugi → Isehara → Hadano → Odawara → Hakone-Yumoto" },
+      { label: "Hakone-Yumoto → Gora",       stops: "Tonosawa → Deyama → Ohiradai → Miyanoshita → Kowakidani → Chokoku-no-Mori → Gora" },
+    ],
+  },
+  {
+    id: 2,
+    route: "Hakone (Gora) → Kyōto",
+    date: "09.05.2026",
+    hotel: "WAYFARER Gojo",
+    mapsHref: "https://www.google.com/maps/dir/Gora+Station/Kyoto+Station/",
+    booking: { label: "SmartEX (Shinkansen)", href: "https://smart-ex.jp/en/index.php" },
+    note: "Die genaue Hikari-Zugnummer kann bis zum Reisetag geringfügig angepasst werden; hier ist das aktuelle Frühjahrsfenster hinterlegt.",
+    legs: [
+      { line: "Hakone Tozan Railway",               from: "Gora",          to: "Hakone-Yumoto", dep: "09:08",     arr: "09:45",     train: "—",                                   tip: "Beliebig." },
+      { line: "Hakone Tozan · Odawara bound local", from: "Hakone-Yumoto", to: "Odawara",       dep: "09:52",     arr: "10:05",     train: "—",                                   tip: "Beliebig." },
+      { line: "Tokaido Shinkansen · Hikari",        from: "Odawara",       to: "Kyōto",         dep: "ca. 10:11", arr: "ca. 12:05", train: "Hikari (Frühjahrsfahrplan, ~10-Uhr-Fenster)", tip: "Unbedingt Fenster rechts (E-Sitz) in Fahrtrichtung – beste Fuji-Chance kurz hinter Odawara." },
+    ],
+    zwischenstops: [
+      { label: "Gora → Hakone-Yumoto",         stops: "Chokoku-no-Mori → Kowakidani → Miyanoshita → Ohiradai → Deyama → Tonosawa → Hakone-Yumoto" },
+      { label: "Hakone-Yumoto → Odawara",      stops: "Iriuda → Kazamatsuri → Hakone-Itabashi → Odawara" },
+      { label: "Odawara → Kyōto (Shinkansen)", stops: "Atami → Mishima → Shizuoka → Hamamatsu → Nagoya → Maibara → Kyōto" },
+    ],
+  },
+  {
+    id: 3,
+    route: "Kyōto → Ōsaka (Namba)",
+    date: "12.05.2026",
+    hotel: "Hotel Abitare Namba West",
+    mapsHref: "https://www.google.com/maps/dir/Kyoto+Station/Namba+Station/",
+    booking: { label: "NAVITIME Japan", href: "https://www.navitime.co.jp/" },
+    note: null,
+    legs: [
+      { line: "JR Kyoto Line · Special Rapid",  from: "Kyōto",       to: "Osaka",  dep: "09:30", arr: "09:58", train: "—", tip: "Keine Reservierung nötig." },
+      { line: "Osaka Metro Midosuji Line",       from: "Umeda / Osaka",to: "Namba",  dep: "10:05", arr: "10:13", train: "—", tip: "Beliebig; nahe Tür für schnellen Ausstieg." },
+    ],
+    zwischenstops: [
+      { label: "Kyōto → Osaka",      stops: "Takatsuki → Shin-Osaka → Osaka" },
+      { label: "Umeda → Namba",      stops: "Yodoyabashi → Hommachi → Shinsaibashi → Namba" },
+    ],
+  },
+  {
+    id: 4,
+    route: "Ōsaka → Kinosaki Onsen",
+    date: "15.05.2026",
+    hotel: "Onishiya Suishoen",
+    mapsHref: "https://www.google.com/maps/dir/Shin-Osaka+Station/Kinosaki-Onsen+Station/",
+    booking: { label: "JR West / e5489", href: "https://www.westjr.co.jp/travel-information/en/tickets-passes/route-search/" },
+    note: "Reservierung empfehlenswert – der Kounotori ist beliebt.",
+    legs: [
+      { line: "JR Limited Express", from: "Shin-Osaka", to: "Kinosaki Onsen", dep: "10:05", arr: "12:51", train: "Kounotori 5", tip: "Fenster links in Fahrtrichtung für die ruhigeren Landschaftsbilder im späteren Streckenverlauf." },
+    ],
+    zwischenstops: [
+      { label: "Shin-Osaka → Kinosaki Onsen", stops: "Osaka → Amagasaki → Takarazuka → Sanda → Sasayamaguchi → Fukuchiyama → Wadayama → Yabu → Ebara → Toyooka → Kinosaki Onsen" },
+    ],
+  },
+  {
+    id: 5,
+    route: "Kinosaki Onsen → Hiroshima",
+    date: "17.05.2026",
+    hotel: "Hilton Hiroshima",
+    mapsHref: "https://www.google.com/maps/dir/Kinosaki-Onsen+Station/Hiroshima+Station/",
+    booking: { label: "JR West / e5489", href: "https://www.westjr.co.jp/travel-information/en/tickets-passes/route-search/" },
+    note: "Schnellste Tagesverbindung mit Kounotori und anschließendem Shinkansen. Reservierung für beide Abschnitte empfohlen.",
+    legs: [
+      { line: "JR Limited Express",      from: "Kinosaki Onsen", to: "Shin-Osaka", dep: "09:33",     arr: "12:29", train: "Kounotori 12",              tip: "Fenster rechts oder links beide gut; wichtiger ist ein Platz ohne Umstiegsstress nahe Tür." },
+      { line: "Sanyo Shinkansen · Sakura",from: "Shin-Osaka",    to: "Hiroshima",  dep: "ca. 12:39", arr: "14:02", train: "Sakura (ca. 12:39-Abfahrt)", tip: "Fenster links in Fahrtrichtung für Meerseiten-/Stadtblicke; Green Car nur bei Komfortwunsch." },
+    ],
+    zwischenstops: [
+      { label: "Kinosaki Onsen → Shin-Osaka",        stops: "Toyooka → Ebara → Yabu → Wadayama → Fukuchiyama → Sasayamaguchi → Sanda → Takarazuka → Amagasaki → Shin-Osaka" },
+      { label: "Shin-Osaka → Hiroshima (Shinkansen)", stops: "Shin-Kobe → Okayama → Fukuyama → Hiroshima" },
+    ],
+  },
+  {
+    id: 6,
+    route: "Hiroshima → Tokio (Keikyu-Kamata)",
+    date: "19.05.2026",
+    hotel: "Syforme Keikyu-Kamata Residence",
+    mapsHref: "https://www.google.com/maps/dir/Hiroshima+Station/Keikyu-Kamata+Station/",
+    booking: { label: "SmartEX (Shinkansen)", href: "https://smart-ex.jp/en/index.php" },
+    note: "Hinweis: Im ursprünglichen Dokument war einmalig 19.05.2025 angegeben – gemeint ist 19.05.2026.",
+    legs: [
+      { line: "Sanyo/Tokaido Shinkansen · Nozomi", from: "Hiroshima",  to: "Tokyo",         dep: "11:43", arr: "15:36", train: "Nozomi 22", tip: "Fenster links in Fahrtrichtung für die spätere Fuji-Chance vor Tokyo." },
+      { line: "JR Yamanote Line",                  from: "Tokyo",       to: "Shinagawa",     dep: "15:44", arr: "15:54", train: "—",         tip: "Beliebig." },
+      { line: "Keikyu Main Line",                  from: "Shinagawa",   to: "Keikyu Kamata", dep: "16:03", arr: "16:12", train: "—",         tip: "Keine Reservierung nötig." },
+    ],
+    zwischenstops: [
+      { label: "Hiroshima → Tokyo (Nozomi)",   stops: "Okayama → Shin-Kobe → Shin-Osaka → Kyōto → Nagoya → Shin-Yokohama → Tokyo" },
+      { label: "Tokyo → Shinagawa",            stops: "Yurakucho → Shimbashi → Hamamatsucho → Tamachi → Takanawa Gateway → Shinagawa" },
+      { label: "Shinagawa → Keikyu Kamata",    stops: "Aomono-Yokocho → Heiwajima → Keikyu Kamata" },
+    ],
+  },
+  {
+    id: 7,
+    route: "Tokio (Keikyu-Kamata) → Haneda",
+    date: "21.05.2026",
+    hotel: null,
+    mapsHref: "https://www.google.com/maps/dir/Keikyu-Kamata+Station/Haneda+Airport+Terminal+3+Station/",
+    booking: { label: "Keikyu Fahrplansuche (JP)", href: "https://norikae.keikyu.co.jp/" },
+    note: "Sehr frühe, direkte Airport-Verbindung ab 06:30 wie gewünscht.",
+    legs: [
+      { line: "Keikyu Airport Line", from: "Keikyu Kamata", to: "Haneda Airport Terminal 3", dep: "06:30", arr: "06:39", train: "—", tip: "Keine Reservierung nötig." },
+    ],
+    zwischenstops: [
+      { label: "Keikyu Kamata → Haneda T3", stops: "Otorii → Anamori-Inari → Tenkubashi → Haneda Airport Terminal 3" },
+    ],
+  },
+];
+
 // ─── Tabs ─────────────────────────────────────────────────────────────────────
 
 const TABS = [
   { id: "map",       label: "Hotels",      icon: Hotel },
-  { id: "itinerary", label: "Tagesplan",   icon: List },
+  { id: "itinerary", label: "Reiseplan",   icon: List },
+  { id: "trains",    label: "Züge",        icon: Train },
   { id: "wishlist",  label: "Wunschziele", icon: Star },
   { id: "budget",    label: "Budget",      icon: Wallet },
 ];
@@ -574,7 +729,13 @@ export default function App() {
   const [activeTab, setActiveTab]       = useState("map");
   const [selectedCity, setSelectedCity] = useState("Alle");
   const [expandedDays, setExpandedDays] = useState(new Set());
-  const [expandedCities, setExpandedCities] = useState(new Set());
+  const [expandedCities, setExpandedCities]   = useState(new Set());
+  const [expandedTrains, setExpandedTrains]   = useState(new Set());
+  const toggleTrain = (id) => setExpandedTrains(prev => {
+    const next = new Set(prev);
+    next.has(id) ? next.delete(id) : next.add(id);
+    return next;
+  });
   const toggleCity = (city) => setExpandedCities(prev => {
     const next = new Set(prev);
     next.has(city) ? next.delete(city) : next.add(city);
@@ -814,6 +975,168 @@ export default function App() {
             </div>
           )}
 
+
+          {/* ── Tab: Züge ───────────────────────────────────────────────── */}
+          {activeTab === "trains" && (
+            <div className="px-4 py-5 md:px-8 md:py-8">
+              <div className="space-y-5">
+
+                {/* Übersicht / Hinweise */}
+                <div className="rounded-[28px] border border-black/25 bg-black/5 p-5 md:p-6">
+                  <SectionTitle eyebrow="Zugverbindungen" title="Premium Zugbooklet" text="Alle 8 Fahrtabschnitte der Reise – strukturiert mit Zeiten, Zugnummern und Sitzplatz-Tipps." />
+
+                  {/* Buchungslinks */}
+                  <div className="mb-4">
+                    <div className="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-black/50">Buchungslinks</div>
+                    <div className="flex flex-wrap gap-2">
+                      {trainOverview.buchungslinks.map(l => (
+                        <a key={l.label} href={l.href} target="_blank" rel="noreferrer"
+                           className="inline-flex items-center gap-1.5 rounded-full border border-black/25 bg-white px-3 py-1.5 text-xs font-medium text-black/75 hover:border-red-600/50 hover:text-red-600 transition">
+                          <Train className="h-3 w-3 shrink-0" />
+                          {l.label} ↗
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Sitzplatz-Logik */}
+                  <div className="mb-4 rounded-2xl border border-black/25 bg-white p-4">
+                    <div className="mb-1 text-xs font-semibold uppercase tracking-[0.18em] text-red-600">Sitzplatz-Kurzlogik</div>
+                    <p className="text-sm leading-relaxed text-black/75">{trainOverview.sitzlogik}</p>
+                  </div>
+
+                  {/* Hinweis */}
+                  <div className="rounded-2xl bg-red-600/[0.06] border border-red-600/25 px-4 py-3">
+                    <div className="text-xs font-semibold uppercase tracking-[0.18em] text-red-600 mb-1">Hinweis</div>
+                    <p className="text-sm text-black/75">{trainOverview.hinweis}</p>
+                  </div>
+                </div>
+
+                {/* Accordion: Fahrtabschnitte 0–7 */}
+                <div className="rounded-[28px] border border-black/25 bg-black/5 p-5 md:p-6">
+                  <div className="mb-4">
+                    <div className="text-xs font-semibold uppercase tracking-[0.22em] text-red-600 mb-1">Fahrtabschnitte</div>
+                    <h2 className="text-2xl font-semibold tracking-tight text-black">Abschnitte 0 – 7</h2>
+                  </div>
+                  <div className="space-y-3">
+                    {trainSegments.map(seg => {
+                      const open = expandedTrains.has(seg.id);
+                      return (
+                        <div key={seg.id} className="overflow-hidden rounded-[20px] border border-black/25 bg-white">
+
+                          {/* Header row */}
+                          <button
+                            onClick={() => toggleTrain(seg.id)}
+                            className="flex w-full items-center justify-between gap-3 px-4 py-4 text-left transition hover:bg-black/5 min-h-[60px]"
+                          >
+                            <div className="flex items-center gap-3 min-w-0">
+                              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-red-600 text-xs font-bold text-white">
+                                {seg.id}
+                              </div>
+                              <div className="min-w-0">
+                                <div className="text-base font-semibold text-black leading-snug truncate">{seg.route}</div>
+                                <div className="text-xs text-black/50 mt-0.5">{seg.date}</div>
+                              </div>
+                            </div>
+                            <div className="flex items-center gap-2 shrink-0">
+                              <a
+                                href={seg.mapsHref}
+                                target="_blank"
+                                rel="noreferrer"
+                                onClick={e => e.stopPropagation()}
+                                className="flex items-center justify-center h-7 w-7 rounded-full bg-red-600/[0.08] text-red-600 hover:bg-red-600/25 transition"
+                                title="Google Maps"
+                              >
+                                <MapPin className="h-3.5 w-3.5" />
+                              </a>
+                              {open ? <ChevronUp className="h-4 w-4 text-black/50" /> : <ChevronDown className="h-4 w-4 text-black/50" />}
+                            </div>
+                          </button>
+
+                          {/* Expanded content */}
+                          {open && (
+                            <div className="border-t border-black/25 p-4 space-y-4">
+
+                              {/* Meta: Hotel + Booking */}
+                              <div className="flex flex-wrap gap-2 items-center">
+                                {seg.hotel && (
+                                  <span className="inline-flex items-center gap-1.5 rounded-full bg-black/[0.06] px-3 py-1 text-xs text-black/75">
+                                    <Hotel className="h-3 w-3 shrink-0 text-black/50" /> {seg.hotel}
+                                  </span>
+                                )}
+                                <a
+                                  href={seg.booking.href}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                  className="inline-flex items-center gap-1.5 rounded-full border border-black/25 bg-white px-3 py-1 text-xs font-medium text-red-600 hover:border-red-600/50 hover:bg-red-600/[0.06] transition"
+                                >
+                                  <Train className="h-3 w-3 shrink-0" /> {seg.booking.label} ↗
+                                </a>
+                              </div>
+
+                              {/* Hinweis / Note */}
+                              {seg.note && (
+                                <div className="rounded-xl bg-red-600/[0.06] border border-red-600/25 px-3 py-2.5">
+                                  <p className="text-xs text-black/75 leading-snug">{seg.note}</p>
+                                </div>
+                              )}
+
+                              {/* Legs table */}
+                              <div>
+                                <div className="mb-2 text-xs font-semibold uppercase tracking-[0.16em] text-black/50">Verbindung im Detail</div>
+                                <div className="space-y-2">
+                                  {seg.legs.map((leg, i) => (
+                                    <div key={i} className="rounded-2xl border border-black/25 bg-black/[0.03] p-3">
+                                      <div className="flex flex-wrap items-start justify-between gap-2 mb-2">
+                                        <div className="flex items-center gap-2 min-w-0">
+                                          <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-red-600/[0.12] text-red-600">
+                                            <Train className="h-2.5 w-2.5" />
+                                          </div>
+                                          <span className="text-xs font-semibold text-black leading-tight">{leg.line}</span>
+                                        </div>
+                                        {leg.train !== "—" && (
+                                          <span className="shrink-0 rounded-full bg-red-600/[0.08] px-2.5 py-0.5 text-[10px] font-semibold text-red-600">{leg.train}</span>
+                                        )}
+                                      </div>
+                                      <div className="grid grid-cols-[auto_1fr_auto_1fr] items-center gap-x-2 gap-y-1 text-sm mb-2">
+                                        <span className="font-semibold text-red-600 tabular-nums">{leg.dep}</span>
+                                        <span className="text-black/75 text-xs leading-tight">{leg.from}</span>
+                                        <span className="font-semibold text-black/50 tabular-nums text-right">{leg.arr}</span>
+                                        <span className="text-black/75 text-xs leading-tight">{leg.to}</span>
+                                      </div>
+                                      <div className="flex items-start gap-1.5 rounded-xl bg-white px-3 py-2">
+                                        <span className="mt-0.5 text-red-600 text-[10px] font-bold shrink-0">💺</span>
+                                        <span className="text-xs text-black/75 leading-snug">{leg.tip}</span>
+                                      </div>
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+
+                              {/* Intermediate stops */}
+                              <div>
+                                <div className="mb-2 text-xs font-semibold uppercase tracking-[0.16em] text-black/50">Zwischenstationen</div>
+                                <div className="space-y-2">
+                                  {seg.zwischenstops.map((z, i) => (
+                                    <div key={i} className="rounded-xl border border-black/25 bg-black/[0.03] px-3 py-2.5">
+                                      <div className="text-[10px] font-semibold uppercase tracking-[0.14em] text-black/50 mb-1">{z.label}</div>
+                                      <p className="text-xs text-black/75 leading-relaxed">{z.stops}</p>
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+
+                            </div>
+                          )}
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          )}
 
           {/* ── Tab: Budget ─────────────────────────────────────────────── */}
           {activeTab === "budget" && (
