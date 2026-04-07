@@ -684,7 +684,7 @@ const trainSegments = [
     hotel: "Syforme Keikyu-Kamata Residence",
     mapsHref: "https://www.google.com/maps/dir/Hiroshima+Station/Keikyu-Kamata+Station/",
     booking: { label: "SmartEX (Shinkansen)", href: "https://smart-ex.jp/en/index.php" },
-    note: "Hinweis: Im ursprünglichen Dokument war einmalig 19.05.2025 angegeben – gemeint ist 19.05.2026.",
+    note: null,
     legs: [
       { line: "Sanyo/Tokaido Shinkansen · Nozomi", from: "Hiroshima",  to: "Tokyo",         dep: "11:43", arr: "15:36", train: "Nozomi 22", tip: "Fenster links in Fahrtrichtung für die spätere Fuji-Chance vor Tokyo." },
       { line: "JR Yamanote Line",                  from: "Tokyo",       to: "Shinagawa",     dep: "15:44", arr: "15:54", train: "—",         tip: "Beliebig." },
