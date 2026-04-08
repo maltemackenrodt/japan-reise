@@ -1390,7 +1390,7 @@ export default function App() {
                             </div>
                             <div>
                               <div className="text-base font-semibold text-black">
-                                {isDos ? "Dos & Don'ts in Japan" : "Wichtige Nummern & Notfallkontakte"}
+                                {isDos ? "Dos und Donts in Japan" : "Wichtige Nummern & Notfallkontakte"}
                               </div>
                               <div className="text-xs text-black/50 mt-0.5">
                                 {isDos ? "Verhaltenstipps, Trinkgeld, kulturelle Besonderheiten" : "Polizei, Krankenwagen, Deutsche Botschaft u. v. m."}
@@ -1475,6 +1475,26 @@ export default function App() {
                                   "Kein direkter, langer Augenkontakt mit Fremden",
                                   "Nicht auf indirekte Ablehnung bestehen – 'Nein' wird selten direkt gesagt",
                                   "Keine körperliche Nähe / spontane Umarmungen",
+                                ],
+                              },
+                              {
+                                label: "Onsen",
+                                dos: [
+                                  "Vor dem Einstieg gründlich duschen und den Körper waschen",
+                                  "Langes Haar hochbinden oder mit Handtuch befestigen",
+                                  "Kleines Handtuch mitbringen – zum Abdecken auf dem Kopf ablegen",
+                                  "Ruhig und entspannt verhalten – Onsen ist ein Ruheplatz",
+                                  "Verschiedene Becken ausprobieren – oft unterschiedliche Temperaturen",
+                                  "Nach dem Bad sanft abtrocknen, Yukata anziehen und Wasser trinken",
+                                ],
+                                donts: [
+                                  "Kein Handtuch ins Wasser tauchen",
+                                  "Nicht mit Badebekleidung ins Onsen – traditionell nackt",
+                                  "Sichtbare Tätowierungen sind in vielen Onsen verboten – vorab prüfen",
+                                  "Nicht untertauchen oder plantschen",
+                                  "Kein Shampoo oder Seife im Becken benutzen",
+                                  "Nicht zu lange im heißen Wasser bleiben – Kreislauf beachten",
+                                  "Fotografieren im Badebereich ist streng verboten",
                                 ],
                               },
                             ].map(cat => (
