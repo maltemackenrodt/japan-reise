@@ -19,50 +19,30 @@ const stops = [
   { id: "tok2", city: "Tokio",          nights: 2, range: "19.05–21.05", hotel: "Syforme Keikyu-Kamata Residence",    checkin: "15:00", checkout: "10:00" },
 ];
 
-const trip = {
-  title: "Japan 2026",
-  subtitle: "21 Tage Rundreise für zwei",
-  travelers: "Ehepaar, Anfang 40",
-  focus: ["Großstadtkultur", "Kulinarik", "Onsen/Ryokan", "Natur", "Fotografie"],
-  dateRange: "01.05.2026 – 21.05.2026",
-  flight: {
-    outbound: "01.05.2026 · Frankfurt → Tokio-Haneda · Ankunft 09:50",
-    inbound:  "21.05.2026 · Tokio-Haneda → Frankfurt · Abflug 09:50",
-  },
-  budget: {
-    target:         "ca. 7.500 € variabel",
-    railPass:       "1.250–1.300 €",
-    lodging:        "3.800–4.300 €",
-    food:           "1.800–2.100 €",
-    activities:     "800–1.100 €",
-    localTransport: "350–550 €",
-    reserve:        "600–900 €",
-    total:          "ca. 7.600–8.300 €",
-  },
-};
+const TRIP_TITLE = "Japan 2026";
 
 const itinerary = [
-  { day: 1,  date: "Fr, 01.05.2026", city: "Tokio",            title: "Ankunft in Haneda & Shibuya",        transport: "Flugankunft · Transfer",           hotel: "Hotel Sunroad Shibuya",           highlights: ["Immigration & Gepäck","eSIM / IC-Card organisieren","Shibuya Scramble","Hachikō","erste Izakaya"],       vibe: "sanfter Start",          icon: Plane },
-  { day: 2,  date: "Sa, 02.05.2026", city: "Tokio",            title: "Shibuya, Harajuku & Shinjuku",       transport: "Metro / zu Fuß",                   hotel: "Hotel Sunroad Shibuya",           highlights: ["Meiji-Schrein","Yoyogi-Park","Takeshita-dōri","Omotesandō","Shinjuku bei Nacht"],                          vibe: "urban & ikonisch",       icon: Camera },
-  { day: 3,  date: "So, 03.05.2026", city: "Tokio",            title: "Asakusa, Ueno & Akihabara",          transport: "Metro / zu Fuß",                   hotel: "Hotel Sunroad Shibuya",           highlights: ["Sensō-ji","Altstadtgassen","Sumida-Fluss","Ueno-Park","Akihabara"],                                          vibe: "klassisch & nerdy",      icon: Sparkles },
-  { day: 4,  date: "Mo, 04.05.2026", city: "Tokio",            title: "Odaiba, Technik & Kunst",            transport: "Metro / Bahn",                     hotel: "Hotel Sunroad Shibuya",           highlights: ["teamLab Planets","Miraikan","Buchtspaziergang","Rainbow-Bridge-Fotos"],                                      vibe: "immersiv",               icon: Bookmark },
-  { day: 5,  date: "Di, 05.05.2026", city: "Tokio",            title: "Szenige Viertel & Shopping",         transport: "Metro / zu Fuß",                   hotel: "Hotel Sunroad Shibuya",           highlights: ["Shimokitazawa","Nakameguro","Daikanyama","Cafés & Boutiquen"],                                                vibe: "entspannt & fotogen",    icon: Heart },
-  { day: 6,  date: "Mi, 06.05.2026", city: "Tokio",            title: "Reservetag & Lieblingsorte",         transport: "Flexibel",                         hotel: "Hotel Sunroad Shibuya",           highlights: ["Lieblingsviertel erneut","optionales Museum","ruhiger Abend"],                                                vibe: "frei & flexibel",        icon: CalendarDays },
-  { day: 7,  date: "Do, 07.05.2026", city: "Hakone",           title: "Tokio → Hakone",                     transport: "JR bis Odawara · Hakone-Transfer", hotel: "Laforet Hakone Gora Yunosumika",  highlights: ["Check-out","Anreise","erstes Onsen","entspannter Abend"],                                                      vibe: "runterkommen",           icon: Train },
-  { day: 8,  date: "Fr, 08.05.2026", city: "Hakone",           title: "Fuji-Region, Museum & Ashi-See",     transport: "Hakone Free Pass / lokal",         hotel: "Laforet Hakone Gora Yunosumika",  highlights: ["Open-Air Museum","Owakudani","Boot am Ashi-See","Fuji-Blicke","Onsen"],                                       vibe: "Natur & Kunst",          icon: Mountain },
-  { day: 9,  date: "Sa, 09.05.2026", city: "Kyōto",            title: "Hakone → Kyōto",                     transport: "Odawara → Kyōto per Shinkansen",   hotel: "WAYFARER Gojo",                   highlights: ["letzter Onsen","Anreise","Kamogawa","Ponto-chō","Abendessen in Gion"],                                        vibe: "sanfter Kulturwechsel",  icon: Train },
-  { day: 10, date: "So, 10.05.2026", city: "Kyōto",            title: "Kyōto Ost: Klassiker & Altstadt",    transport: "Bahn / Bus / zu Fuß",              hotel: "WAYFARER Gojo",                   highlights: ["Fushimi Inari","Kiyomizu-dera","Sannenzaka","Ninenzaka","Gion"],                                               vibe: "ikonisch & traditionell",icon: Camera },
-  { day: 11, date: "Mo, 11.05.2026", city: "Kyōto",            title: "Arashiyama & leichte Wanderung",     transport: "Bahn / zu Fuß",                    hotel: "WAYFARER Gojo",                   highlights: ["Bambuswald","Tenryū-ji","Togetsukyō","leichte Wanderung","Dinner nahe Nishiki"],                               vibe: "grün & ruhig",           icon: Mountain },
-  { day: 12, date: "Di, 12.05.2026", city: "Ōsaka",            title: "Kyōto → Ōsaka",                      transport: "JR nach Ōsaka",                    hotel: "Hotel Abitare Namba West",        highlights: ["Souvenirs","Check-in","Dōtonbori","Streetfood-Tour"],                                                          vibe: "laut & lecker",          icon: UtensilsCrossed },
-  { day: 13, date: "Mi, 13.05.2026", city: "Ōsaka",            title: "Burg, Skyline & Umeda",              transport: "Metro / zu Fuß",                   hotel: "Hotel Abitare Namba West",        highlights: ["Ōsaka Castle","Park","Cafés","Umeda","Sky Building bei Sunset"],                                               vibe: "Urban Panorama",         icon: Camera },
-  { day: 14, date: "Do, 14.05.2026", city: "Ōsaka",            title: "Museum, Alltagskultur & Retro-Neon", transport: "Metro / zu Fuß",                   hotel: "Hotel Abitare Namba West",        highlights: ["Housing and Living Museum","Tenjibashi-suji","Shinsekai","Tsūtenkaku","Kushikatsu"],                          vibe: "retro & lebendig",       icon: Sparkles },
-  { day: 15, date: "Fr, 15.05.2026", city: "Kinosaki Onsen",   title: "Ōsaka → Kinosaki Onsen",             transport: "Limited Express",                  hotel: "Onishiya Suishoen",               highlights: ["Anreise","Onsen-Hopping","Kanalspaziergang","Yukata-Fotos"],                                                    vibe: "romantisch",             icon: Waves },
-  { day: 16, date: "Sa, 16.05.2026", city: "Kinosaki Onsen",   title: "Wellness & leichte Wanderung",       transport: "zu Fuß / lokal",                   hotel: "Onishiya Suishoen",               highlights: ["weitere Bäder","leichte Wanderung","Kaiseki-Dinner","Nachtfotos"],                                             vibe: "wellness",               icon: Waves },
-  { day: 17, date: "So, 17.05.2026", city: "Hiroshima",        title: "Kinosaki → Hiroshima",               transport: "JR / Shinkansen",                  hotel: "Hilton Hiroshima",                highlights: ["lange Transferetappe","Hondōri","Hiroshima-Style Okonomiyaki"],                                                vibe: "ankommen & eintauchen",  icon: Train },
-  { day: 18, date: "Mo, 18.05.2026", city: "Hiroshima",        title: "Geschichte & Gedenken",              transport: "Straßenbahn / zu Fuß",             hotel: "Hilton Hiroshima",                highlights: ["Friedenspark","Atombomben-Dom","Friedensmuseum","optionales Schloss"],                                         vibe: "ruhig & nachdenklich",   icon: Bookmark },
-  { day: 19, date: "Di, 19.05.2026", city: "Miyajima / Tokio", title: "Miyajima & zurück nach Tokio",       transport: "JR + Fähre · abends Shinkansen",   hotel: "Syforme Keikyu-Kamata Residence", highlights: ["Itsukushima-Schrein","Mount Misen","Lunch auf Miyajima","später Check-in"],                                    vibe: "großer Schlusspunkt",    icon: Train },
-  { day: 20, date: "Mi, 20.05.2026", city: "Tokio",            title: "Final Touch in Tokio",               transport: "Metro / zu Fuß",                   hotel: "Syforme Keikyu-Kamata Residence", highlights: ["letzte Museen","Spa / Onsen","Shopping","Abschieds-Dinner"],                                                   vibe: "genießen",               icon: Heart },
-  { day: 21, date: "Do, 21.05.2026", city: "Tokio-Haneda",     title: "Rückflug",                           transport: "Hotel → Haneda",                   hotel: "—",                               highlights: ["früher Check-out","Transfer zum Flughafen","Abflug 09:50"],                                                    vibe: "Heimreise",              icon: Plane },
+  { day: 1,  date: "Fr, 01.05.2026", city: "Tokio",            title: "Ankunft in Haneda & Shibuya",        transport: "Flugankunft · Transfer",           hotel: "Hotel Sunroad Shibuya",       vibe: "sanfter Start",          icon: Plane },
+  { day: 2,  date: "Sa, 02.05.2026", city: "Tokio",            title: "Shibuya, Harajuku & Shinjuku",       transport: "Metro / zu Fuß",                   hotel: "Hotel Sunroad Shibuya",                          vibe: "urban & ikonisch",       icon: Camera },
+  { day: 3,  date: "So, 03.05.2026", city: "Tokio",            title: "Asakusa, Ueno & Akihabara",          transport: "Metro / zu Fuß",                   hotel: "Hotel Sunroad Shibuya",                                          vibe: "klassisch & nerdy",      icon: Sparkles },
+  { day: 4,  date: "Mo, 04.05.2026", city: "Tokio",            title: "Odaiba, Technik & Kunst",            transport: "Metro / Bahn",                     hotel: "Hotel Sunroad Shibuya",                                      vibe: "immersiv",               icon: Bookmark },
+  { day: 5,  date: "Di, 05.05.2026", city: "Tokio",            title: "Szenige Viertel & Shopping",         transport: "Metro / zu Fuß",                   hotel: "Hotel Sunroad Shibuya",                                                vibe: "entspannt & fotogen",    icon: Heart },
+  { day: 6,  date: "Mi, 06.05.2026", city: "Tokio",            title: "Reservetag & Lieblingsorte",         transport: "Flexibel",                         hotel: "Hotel Sunroad Shibuya",                                                vibe: "frei & flexibel",        icon: CalendarDays },
+  { day: 7,  date: "Do, 07.05.2026", city: "Hakone",           title: "Tokio → Hakone",                     transport: "JR bis Odawara · Hakone-Transfer", hotel: "Laforet Hakone Gora Yunosumika",                                                      vibe: "runterkommen",           icon: Train },
+  { day: 8,  date: "Fr, 08.05.2026", city: "Hakone",           title: "Fuji-Region, Museum & Ashi-See",     transport: "Hakone Free Pass / lokal",         hotel: "Laforet Hakone Gora Yunosumika",                                       vibe: "Natur & Kunst",          icon: Mountain },
+  { day: 9,  date: "Sa, 09.05.2026", city: "Kyōto",            title: "Hakone → Kyōto",                     transport: "Odawara → Kyōto per Shinkansen",   hotel: "WAYFARER Gojo",                                        vibe: "sanfter Kulturwechsel",  icon: Train },
+  { day: 10, date: "So, 10.05.2026", city: "Kyōto",            title: "Kyōto Ost: Klassiker & Altstadt",    transport: "Bahn / Bus / zu Fuß",              hotel: "WAYFARER Gojo",                                               vibe: "ikonisch & traditionell",icon: Camera },
+  { day: 11, date: "Mo, 11.05.2026", city: "Kyōto",            title: "Arashiyama & leichte Wanderung",     transport: "Bahn / zu Fuß",                    hotel: "WAYFARER Gojo",                               vibe: "grün & ruhig",           icon: Mountain },
+  { day: 12, date: "Di, 12.05.2026", city: "Ōsaka",            title: "Kyōto → Ōsaka",                      transport: "JR nach Ōsaka",                    hotel: "Hotel Abitare Namba West",                                                          vibe: "laut & lecker",          icon: UtensilsCrossed },
+  { day: 13, date: "Mi, 13.05.2026", city: "Ōsaka",            title: "Burg, Skyline & Umeda",              transport: "Metro / zu Fuß",                   hotel: "Hotel Abitare Namba West",                                               vibe: "Urban Panorama",         icon: Camera },
+  { day: 14, date: "Do, 14.05.2026", city: "Ōsaka",            title: "Museum, Alltagskultur & Retro-Neon", transport: "Metro / zu Fuß",                   hotel: "Hotel Abitare Namba West",                          vibe: "retro & lebendig",       icon: Sparkles },
+  { day: 15, date: "Fr, 15.05.2026", city: "Kinosaki Onsen",   title: "Ōsaka → Kinosaki Onsen",             transport: "Limited Express",                  hotel: "Onishiya Suishoen",                                                    vibe: "romantisch",             icon: Waves },
+  { day: 16, date: "Sa, 16.05.2026", city: "Kinosaki Onsen",   title: "Wellness & leichte Wanderung",       transport: "zu Fuß / lokal",                   hotel: "Onishiya Suishoen",                                             vibe: "wellness",               icon: Waves },
+  { day: 17, date: "So, 17.05.2026", city: "Hiroshima",        title: "Kinosaki → Hiroshima",               transport: "JR / Shinkansen",                  hotel: "Hilton Hiroshima",                                                vibe: "ankommen & eintauchen",  icon: Train },
+  { day: 18, date: "Mo, 18.05.2026", city: "Hiroshima",        title: "Geschichte & Gedenken",              transport: "Straßenbahn / zu Fuß",             hotel: "Hilton Hiroshima",                                         vibe: "ruhig & nachdenklich",   icon: Bookmark },
+  { day: 19, date: "Di, 19.05.2026", city: "Miyajima / Tokio", title: "Miyajima & zurück nach Tokio",       transport: "JR + Fähre · abends Shinkansen",   hotel: "Syforme Keikyu-Kamata Residence",                                    vibe: "großer Schlusspunkt",    icon: Train },
+  { day: 20, date: "Mi, 20.05.2026", city: "Tokio",            title: "Final Touch in Tokio",               transport: "Metro / zu Fuß",                   hotel: "Syforme Keikyu-Kamata Residence",                                                   vibe: "genießen",               icon: Heart },
+  { day: 21, date: "Do, 21.05.2026", city: "Tokio-Haneda",     title: "Rückflug",                           transport: "Hotel → Haneda",                   hotel: "—",                                                    vibe: "Heimreise",              icon: Plane },
 ];
 
 // ─── Tagesempfehlungen ────────────────────────────────────────────────────────
@@ -496,10 +476,10 @@ const dayRecs = {
 // ─── Budget Plan ──────────────────────────────────────────────────────────────
 
 const budgetPlan = [
-  { key: "food",           label: "Essen & Getränke",     planned: 1950, icon: UtensilsCrossed },
-  { key: "activities",     label: "Eintritte & Onsen",    planned: 950,  icon: Bookmark },
-  { key: "localTransport", label: "Lokaler Verkehr",      planned: 450,  icon: MapPin },
-  { key: "reserve",        label: "Reserve / Shopping",   planned: 750,  icon: ShoppingBag },
+  { key: "food",           label: "Essen & Getränke",     planned: 2500, icon: UtensilsCrossed },
+  { key: "activities",     label: "Eintritte & Onsen",    planned: 500,  icon: Bookmark },
+  { key: "localTransport", label: "Transport",            planned: 450,  icon: MapPin },
+  { key: "reserve",        label: "Shopping & Reserve",   planned: 750,  icon: ShoppingBag },
 ];
 
 
@@ -847,7 +827,7 @@ export default function App() {
             {/* Header */}
             <div className="relative flex items-center border-b border-black/25 px-5 py-4 md:px-8 md:py-6">
               <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-10 w-10 rounded-full bg-red-600 pointer-events-none md:h-14 md:w-14" />
-              <h1 className="text-2xl font-bold tracking-tight text-red-600 md:text-3xl">{trip.title}</h1>
+              <h1 className="text-2xl font-bold tracking-tight text-red-600 md:text-3xl">{TRIP_TITLE}</h1>
             </div>
             {/* Tab Bar */}
             <div className="border-b border-black/25 px-2 md:px-8">
@@ -1031,7 +1011,7 @@ export default function App() {
 
                 {/* Übersicht / Hinweise */}
                 <div className="rounded-[28px] border border-black/25 bg-black/5 p-5 md:p-6">
-                  <SectionTitle eyebrow="Zugverbindungen" title="Premium Zugbooklet" text="Alle 8 Fahrtabschnitte der Reise – strukturiert mit Zeiten, Zugnummern und Sitzplatz-Tipps." />
+                  <SectionTitle eyebrow="Zugverbindungen" title="Gute Fahrt!" text="Alle 8 Fahrtabschnitte der Reise – strukturiert mit Zeiten, Zugnummern und Sitzplatz-Tipps." />
 
                   {/* Buchungslinks */}
                   <div className="mb-4">
@@ -1283,54 +1263,37 @@ export default function App() {
 
                 {/* Summary */}
                 <div className="space-y-6">
-                  <div className="rounded-[28px] border border-black/25 bg-black p-5 md:p-6 text-white">
+                  <div className="rounded-[28px] border border-black/25 bg-black/5 p-5 md:p-6">
                     <SectionTitle eyebrow="Gesamtübersicht" title="Dein Budgetstatus" />
-                    <div className="space-y-4">
+                    <div className="space-y-3">
                       {[
-                        { label: "Geplant gesamt", value: totalPlanned, color: "text-white/75" },
-                        { label: "Ausgegeben bisher", value: totalActual, color: totalActual > totalPlanned ? "text-red-600" : "text-red-600" },
-                        { label: "Verbleibend", value: totalPlanned - totalActual, color: totalActual > totalPlanned ? "text-red-600" : "text-red-600" },
-                      ].map(({ label, value, color }) => (
-                        <div key={label} className="flex items-center justify-between rounded-2xl bg-white/5 px-4 py-3">
-                          <span className="text-sm text-white/50">{label}</span>
-                          <span className={`text-lg font-semibold ${color}`}>
+                        { label: "Geplant gesamt",    value: totalPlanned },
+                        { label: "Ausgegeben bisher", value: totalActual },
+                        { label: "Verbleibend",       value: totalPlanned - totalActual },
+                      ].map(({ label, value }) => (
+                        <div key={label} className="flex items-center justify-between rounded-2xl bg-white border border-black/25 px-4 py-3">
+                          <span className="text-sm text-black/50">{label}</span>
+                          <span className="text-lg font-semibold text-red-600">
                             {value < 0 ? "-" : ""}{Math.abs(value).toLocaleString("de-DE")} €
                           </span>
                         </div>
                       ))}
                     </div>
 
-                    <div className="mt-5">
-                      <div className="mb-2 flex justify-between text-xs text-white/50">
+                    <div className="mt-4">
+                      <div className="mb-2 flex justify-between text-xs text-black/50">
                         <span>Fortschritt</span>
                         <span>{Math.round((totalActual / totalPlanned) * 100)} %</span>
                       </div>
-                      <div className="h-3 overflow-hidden rounded-full bg-white/10">
+                      <div className="h-2 overflow-hidden rounded-full bg-black/[0.07]">
                         <div
-                          className={`h-3 rounded-full transition-all duration-700 ${totalActual > totalPlanned ? "bg-red-600/[0.08]0" : "bg-black/50"}`}
+                          className="h-2 rounded-full bg-red-600/50 transition-all duration-700"
                           style={{ width: `${Math.min((totalActual / totalPlanned) * 100, 100)}%` }}
                         />
                       </div>
                     </div>
                   </div>
 
-                  {/* Budget tips */}
-                  <div className="rounded-[28px] border border-black/25 bg-white p-5 md:p-6">
-                    <SectionTitle eyebrow="Tipps" title="Budget-Hinweise" />
-                    <div className="space-y-3 text-sm">
-                      {[
-                        ["Ryokan-Essen", "Hakone und Kinosaki: Kaiseki ist im Preis inkl. – kein Extra-Budget nötig."],
-                        ["Cash Reserve", "200–300 € als Bargeld immer dabei, besonders in Kinosaki und Hakone."],
-                        ["JR Pass", "Bereits vor Reiseantritt online kaufen – in Japan teurer oder nicht erhältlich."],
-                        ["Konbini spart", "Frühstück und Snacks im Konbini: ~10–15 € pro Tag statt 30 € im Café."],
-                      ].map(([t, desc]) => (
-                        <div key={t} className="rounded-2xl bg-black/5 px-4 py-3">
-                          <div className="font-medium text-black">{t}</div>
-                          <div className="mt-0.5 text-black/75">{desc}</div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
                 </div>
 
               </div>
