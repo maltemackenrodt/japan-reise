@@ -774,6 +774,7 @@ export default function App() {
   const [expandedCities, setExpandedCities]   = useState(new Set());
   const [expandedTrains, setExpandedTrains]   = useState(new Set());
   const [expandedFaqs,   setExpandedFaqs]     = useState(new Set());
+  const toggleDay   = makeToggle(setExpandedDays);
   const toggleCity  = makeToggle(setExpandedCities);
   const toggleTrain = makeToggle(setExpandedTrains);
   const toggleFaq   = makeToggle(setExpandedFaqs);
@@ -794,8 +795,6 @@ export default function App() {
     budgetPlan.reduce((s, c) =>
       s + (budgetEntries[c.key] || []).reduce((sum, e) => sum + (parseFloat(e.amount) || 0), 0), 0),
   [budgetEntries]);
-
-  const toggleDay = makeToggle(setExpandedDays);
 
   const addBudgetEntry = (key) => {
     const input = newBudgetInputs[key] || {};
@@ -822,12 +821,12 @@ export default function App() {
       <div className="md:mx-auto md:max-w-7xl md:px-6 md:py-8">
         <div className="overflow-clip bg-white md:rounded-[32px] md:border md:border-black/25 md:shadow-xl md:shadow-black/25">
 
-          {/* ── Sticky Header + Tab Bar ─────────────────────────────────── */}
           <div className="sticky top-0 z-10 bg-white/95 backdrop-blur">
             {/* Header */}
-            <div className="relative flex items-center border-b border-black/25 px-5 py-4 md:px-8 md:py-6">
+            <div className="relative flex items-center justify-between border-b border-black/25 px-5 py-4 md:px-8 md:py-6">
               <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-10 w-10 rounded-full bg-red-600 pointer-events-none md:h-14 md:w-14" />
-              <h1 className="text-2xl font-bold tracking-tight text-red-600 md:text-3xl">{TRIP_TITLE}</h1>
+              <h1 className="text-2xl font-bold tracking-tight text-black md:text-3xl">{TRIP_TITLE}</h1>
+              <span className="text-xl font-bold tracking-tight text-black md:text-2xl">日本 2026</span>
             </div>
             {/* Tab Bar */}
             <div className="border-b border-black/25 px-2 md:px-8">
@@ -851,7 +850,6 @@ export default function App() {
           </div>
 
 
-          {/* ── Tab: Tagesplan ──────────────────────────────────────────── */}
           {activeTab === "itinerary" && (
             <div className="px-4 py-5 md:px-8 md:py-8">
               <div className="rounded-[28px] border border-black/25 bg-black/5 p-5 md:p-6">
@@ -928,11 +926,7 @@ export default function App() {
                                             <div className="flex flex-wrap items-center gap-1.5">
                                               <div className="text-sm font-medium text-black leading-tight">{rec.name}</div>
                                               {rec.time && (
-                                                <span className={`shrink-0 rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide ${
-                                                  rec.time === "morgens" ? "bg-black/[0.07] text-black/75" :
-                                                  rec.time === "mittags" ? "bg-black/[0.07] text-black/75" :
-                                                  "bg-black/[0.07] text-black/75"
-                                                }`}>{rec.time}</span>
+                                                <span className="shrink-0 rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide bg-black/[0.07] text-black/75">{rec.time}</span>
                                               )}
                                             </div>
                                             <div className="mt-0.5 text-xs text-black/50 leading-snug">{rec.desc}</div>
@@ -962,7 +956,6 @@ export default function App() {
             </div>
           )}
 
-          {/* ── Tab: Hotels ─────────────────────────────────────────────── */}
           {activeTab === "map" && (
             <div className="px-4 py-5 md:px-8 md:py-8">
               <div className="rounded-[28px] border border-black/25 bg-black/5 p-5 md:p-6">
@@ -1004,7 +997,6 @@ export default function App() {
           )}
 
 
-          {/* ── Tab: Züge ───────────────────────────────────────────────── */}
           {activeTab === "trains" && (
             <div className="px-4 py-5 md:px-8 md:py-8">
               <div className="space-y-5">
@@ -1166,7 +1158,6 @@ export default function App() {
             </div>
           )}
 
-          {/* ── Tab: Budget ─────────────────────────────────────────────── */}
           {activeTab === "budget" && (
             <div className="px-4 py-5 md:px-8 md:py-8">
               <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
@@ -1191,7 +1182,7 @@ export default function App() {
                               </div>
                               <div>
                                 <div className="text-sm font-semibold text-black">{label}</div>
-                                <div className="text-xs text-black/50">Geplant: {planned.toLocaleString("de-DE")} € · Gesamt: <span className={`font-semibold ${over ? "text-red-600" : "text-red-600"}`}>{actual.toLocaleString("de-DE")} €</span></div>
+                                <div className="text-xs text-black/50">Geplant: {planned.toLocaleString("de-DE")} € · Gesamt: <span className="font-semibold text-red-600">{actual.toLocaleString("de-DE")} €</span></div>
                               </div>
                             </div>
                           </div>
@@ -1199,7 +1190,7 @@ export default function App() {
                           {/* Progress bar */}
                           <div className="mb-3 h-1.5 overflow-hidden rounded-full bg-black/[0.07]">
                             <div
-                              className={`h-1.5 rounded-full transition-all duration-500 ${over ? "bg-red-600/[0.08]0" : "bg-black/50"}`}
+                              className={`h-1.5 rounded-full transition-all duration-500 ${over ? "bg-red-600" : "bg-black/50"}`}
                               style={{ width: `${pct}%` }}
                             />
                           </div>
@@ -1251,7 +1242,7 @@ export default function App() {
                           </div>
 
                           {actual > 0 && (
-                            <div className={`mt-2 text-right text-xs font-medium ${over ? "text-red-600" : "text-red-600"}`}>
+                            <div className="mt-2 text-right text-xs font-medium text-red-600">
                               {over ? `+${(actual - planned).toLocaleString("de-DE")} € über Budget` : `${(planned - actual).toLocaleString("de-DE")} € noch verfügbar`}
                             </div>
                           )}
@@ -1300,7 +1291,6 @@ export default function App() {
             </div>
           )}
 
-          {/* ── Tab: Wunschziele ────────────────────────────────────────── */}
           {activeTab === "wishlist" && (
             <div className="px-4 py-5 md:px-8 md:py-8">
               <div className="rounded-[28px] border border-black/25 bg-black/5 p-5 md:p-6">
@@ -1370,7 +1360,6 @@ export default function App() {
             </div>
           )}
 
-          {/* ── Tab: FAQ ────────────────────────────────────────────────── */}
           {activeTab === "faq" && (
             <div className="px-4 py-5 md:px-8 md:py-8">
               <div className="rounded-[28px] border border-black/25 bg-black/5 p-5 md:p-6">
@@ -1378,7 +1367,6 @@ export default function App() {
 
                 <div className="space-y-3">
 
-                  {/* ── Dos & Don'ts ── */}
                   {[{ id: "dos" }, { id: "notfall" }].map(({ id }) => {
                     const open = expandedFaqs.has(id);
                     const isDos = id === "dos";
