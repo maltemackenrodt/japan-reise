@@ -840,7 +840,7 @@ export default function App() {
   return (
     <div className="min-h-screen bg-white text-black" style={{ paddingBottom: "env(safe-area-inset-bottom)" }}>
       <div className="md:mx-auto md:max-w-7xl md:px-6 md:py-8">
-        <div className="overflow-hidden bg-white md:rounded-[32px] md:border md:border-black/25 md:shadow-xl md:shadow-black/25">
+        <div className="overflow-clip bg-white md:rounded-[32px] md:border md:border-black/25 md:shadow-xl md:shadow-black/25">
 
           {/* ── Sticky Header + Tab Bar ─────────────────────────────────── */}
           <div className="sticky top-0 z-10 bg-white/95 backdrop-blur">
