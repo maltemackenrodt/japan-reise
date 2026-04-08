@@ -553,11 +553,72 @@ function SectionTitle({ eyebrow, title, text }) {
 // ─── Recommendation Categories ───────────────────────────────────────────────
 
 const REC_CATEGORIES = [
-  { key: "sightseeing", label: "Sightseeing", Icon: Camera,          bg: "bg-black/5",   text: "text-black/75" },
-  { key: "kultur",      label: "Kultur",      Icon: Landmark,        bg: "bg-black/5",   text: "text-black/75" },
-  { key: "essen",       label: "Essen",        Icon: UtensilsCrossed, bg: "bg-black/5",   text: "text-black/75" },
-  { key: "shopping",    label: "Shopping",     Icon: ShoppingBag,     bg: "bg-black/5",   text: "text-black/75" },
+  { key: "sightseeing", label: "Sightseeing", Icon: Camera },
+  { key: "kultur",      label: "Kultur",      Icon: Landmark },
+  { key: "essen",       label: "Essen",       Icon: UtensilsCrossed },
+  { key: "shopping",    label: "Shopping",    Icon: ShoppingBag },
 ];
+
+// ─── FAQ Data ─────────────────────────────────────────────────────────────────
+
+const FAQ_DOS_CATEGORIES = [
+  {
+    label: "Öffentliche Verkehrsmittel",
+    dos:   ["Handy lautlos schalten, Telefonate vermeiden", "Leise sprechen – Stille in Zügen wird erwartet", "Rechts stehen auf Rolltreppen (Ausnahme Osaka: links)", "An markierten Stellen in der Schlange anstellen", "Rucksack absetzen oder nach vorne tragen"],
+    donts: ["Nicht telefonieren in der Bahn", "Keine laute Musik ohne Kopfhörer", "Nicht essen (außer auf Shinkansen-Langstrecken)"],
+  },
+  {
+    label: "Restaurant & Essen",
+    dos:   ['Vor dem Essen "Itadakimasu" sagen (Dankbarkeit)', 'Nach dem Essen "Gochisōsama deshita" sagen', "Suppe schlürfen ist erwünscht – Zeichen des Genusses", "Geld in die Zahlschale legen, nicht direkt in die Hand"],
+    donts: ["Kein Trinkgeld – gilt als unhöflich und wird teils zurückgegeben", "Nicht beim Gehen essen (außer Streetfood-Stände)", "Stäbchen nie senkrecht in Reis stecken (Trauerbrauch)", "Essen nie von Stäbchen zu Stäbchen weitergeben (Trauerbrauch)"],
+  },
+  {
+    label: "Tempel & Schreine",
+    dos:   ["Am Eingang Hände am Temizuya waschen", "Shinto-Ritual: 2× verneigen, 2× klatschen, 1× verneigen", "Leise und respektvoll verhalten", "Spende in den Kasten werfen, nicht hineinlegen"],
+    donts: ["Keine lauten Gespräche in Gebetsbereichen", "Nicht fotografieren wo Schilder es verbieten", "Gebetsbereiche nicht betreten wenn abgesperrt"],
+  },
+  {
+    label: "Ryokan & Tatami",
+    dos:   ["Straßenschuhe immer im Eingangsbereich ausziehen", "Yukata: linke Seite über rechte legen", "Hausschuhe beim Verlassen des Tatami-Raums ausziehen", "Yukata auch für Abendessen und Onsen-Gang tragen"],
+    donts: ["Keine Straßen- oder Hausschuhe auf Tatami", "Yukata nicht rechts über links legen (gilt als Trauerkleidung)", "Nicht mit dem Handtuch ins Onsen gehen – vorher duschen"],
+  },
+  {
+    label: "Allgemeines Verhalten",
+    dos:   ["Müll mitnehmen – öffentliche Mülleimer sind selten", "Dinge mit beiden Händen übergeben und entgegennehmen", "Visitenkarten mit beiden Händen nehmen und kurz betrachten", "Geduld und Freundlichkeit zahlen sich immer aus", "Masken tragen bei Erkältung – weitgehend übliche Praxis"],
+    donts: ["Nicht laut in der Öffentlichkeit – Zurückhaltung wird geschätzt", "Kein direkter, langer Augenkontakt mit Fremden", "Nicht auf indirekte Ablehnung bestehen – 'Nein' wird selten direkt gesagt", "Keine körperliche Nähe / spontane Umarmungen"],
+  },
+  {
+    label: "Onsen",
+    dos:   ["Vor dem Einstieg gründlich duschen und den Körper waschen", "Langes Haar hochbinden oder mit Handtuch befestigen", "Kleines Handtuch mitbringen – zum Abdecken auf dem Kopf ablegen", "Ruhig und entspannt verhalten – Onsen ist ein Ruheplatz", "Verschiedene Becken ausprobieren – oft unterschiedliche Temperaturen", "Nach dem Bad sanft abtrocknen, Yukata anziehen und Wasser trinken"],
+    donts: ["Kein Handtuch ins Wasser tauchen", "Nicht mit Badebekleidung ins Onsen – traditionell nackt", "Sichtbare Tätowierungen sind in vielen Onsen verboten – vorab prüfen", "Nicht untertauchen oder plantschen", "Kein Shampoo oder Seife im Becken benutzen", "Nicht zu lange im heißen Wasser bleiben – Kreislauf beachten", "Fotografieren im Badebereich ist streng verboten"],
+  },
+];
+
+const EMERGENCY_CONTACTS = [
+  { label: "Polizei",                  number: "110",             note: "Notruf – kostenlos, landesweit",                                href: null },
+  { label: "Feuerwehr & Krankenwagen", number: "119",             note: "Notruf – kostenlos, landesweit",                                href: null },
+  { label: "Japan Tourist Helpline",   number: "050-3816-2787",   note: "24 h, mehrsprachig (auch Deutsch) – JNTO",                     href: "https://www.jnto.go.jp/eng/basic-info/emergency-info/" },
+  { label: "Deutsche Botschaft Tokyo", number: "+81-3-5791-7700", note: "4-5-10 Minami-Azabu, Minato-ku, Tokyo · Mo–Fr 9–12 & 14–17 Uhr", href: "https://japan.diplo.de" },
+  { label: "Botschaft Notfalltelefon", number: "+81-3-5791-7700", note: "Außerhalb der Bürozeiten: Ansage mit Weiterschaltung",          href: null },
+  { label: "Konsulat Osaka",           number: "+81-6-6440-5070", note: "Japanbankstr. 15F, Umeda Sky Building Tower West, Osaka",       href: null },
+  { label: "Europäischer Notruf-SOS",  number: "112",             note: "Funktioniert auf manchen Mobilnetzen als Notfall-Fallback",     href: null },
+  { label: "Kreditkartensperrung",     number: "→ Banknummer",    note: "Internationale Sperrnummer der eigenen Bank bereithalten",     href: null },
+];
+
+// ─── Module-level derived constants ──────────────────────────────────────────
+
+const cities       = ["Alle", ...Array.from(new Set(itinerary.map(d => d.city)))];
+const totalPlanned = budgetPlan.reduce((s, c) => s + c.planned, 0);
+const mapsUrl      = (q) => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`;
+
+// ─── Toggle factory ───────────────────────────────────────────────────────────
+
+const makeToggle = (setter) => (key) =>
+  setter(prev => {
+    const next = new Set(prev);
+    next.has(key) ? next.delete(key) : next.add(key);
+    return next;
+  });
 
 // ─── Zugverbindungen ──────────────────────────────────────────────────────────
 
@@ -720,8 +781,8 @@ const TABS = [
   { id: "itinerary", label: "Reiseplan",   icon: List },
   { id: "trains",    label: "Züge",        icon: Train },
   { id: "wishlist",  label: "Wunschziele", icon: Star },
-  { id: "budget",    label: "Budget",      icon: Wallet },
   { id: "faq",       label: "FAQ",         icon: BookOpen },
+  { id: "budget",    label: "Budget",      icon: Wallet },
 ];
 
 // ─── App ──────────────────────────────────────────────────────────────────────
@@ -733,21 +794,9 @@ export default function App() {
   const [expandedCities, setExpandedCities]   = useState(new Set());
   const [expandedTrains, setExpandedTrains]   = useState(new Set());
   const [expandedFaqs,   setExpandedFaqs]     = useState(new Set());
-  const toggleFaq = (id) => setExpandedFaqs(prev => {
-    const next = new Set(prev);
-    next.has(id) ? next.delete(id) : next.add(id);
-    return next;
-  });
-  const toggleTrain = (id) => setExpandedTrains(prev => {
-    const next = new Set(prev);
-    next.has(id) ? next.delete(id) : next.add(id);
-    return next;
-  });
-  const toggleCity = (city) => setExpandedCities(prev => {
-    const next = new Set(prev);
-    next.has(city) ? next.delete(city) : next.add(city);
-    return next;
-  });
+  const toggleCity  = makeToggle(setExpandedCities);
+  const toggleTrain = makeToggle(setExpandedTrains);
+  const toggleFaq   = makeToggle(setExpandedFaqs);
   const [budgetEntries, setBudgetEntries] = useState(() => {
     try {
       const stored = localStorage.getItem(BUDGET_KEY);
@@ -756,25 +805,17 @@ export default function App() {
   });
   const [newBudgetInputs, setNewBudgetInputs] = useState({});
 
-  const cities      = useMemo(() => ["Alle", ...Array.from(new Set(itinerary.map(d => d.city)))], []);
   const visibleDays = useMemo(
     () => selectedCity === "Alle" ? itinerary : itinerary.filter(d => d.city === selectedCity),
     [selectedCity]
   );
 
-  const totalPlanned = useMemo(() => budgetPlan.reduce((s, c) => s + c.planned, 0), []);
-  const totalActual  = useMemo(() =>
+  const totalActual = useMemo(() =>
     budgetPlan.reduce((s, c) =>
       s + (budgetEntries[c.key] || []).reduce((sum, e) => sum + (parseFloat(e.amount) || 0), 0), 0),
   [budgetEntries]);
 
-  const toggleDay = (day) => {
-    setExpandedDays(prev => {
-      const next = new Set(prev);
-      if (next.has(day)) next.delete(day); else next.add(day);
-      return next;
-    });
-  };
+  const toggleDay = makeToggle(setExpandedDays);
 
   const addBudgetEntry = (key) => {
     const input = newBudgetInputs[key] || {};
@@ -796,36 +837,36 @@ export default function App() {
     });
   };
 
-  const mapsUrl = (q) => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`;
-
   return (
-    <div className="min-h-screen bg-white text-black pb-safe" style={{ paddingBottom: "env(safe-area-inset-bottom)" }}>
+    <div className="min-h-screen bg-white text-black" style={{ paddingBottom: "env(safe-area-inset-bottom)" }}>
       <div className="md:mx-auto md:max-w-7xl md:px-6 md:py-8">
         <div className="overflow-hidden bg-white md:rounded-[32px] md:border md:border-black/25 md:shadow-xl md:shadow-black/25">
 
-          {/* ── Header ─────────────────────────────────────────────────── */}
-          <div className="relative flex items-center border-b border-black/25 bg-white px-5 py-5 md:px-8 md:py-7">
-            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-10 w-10 rounded-full bg-red-600 opacity-[0.07] pointer-events-none md:h-14 md:w-14" />
-            <h1 className="text-2xl font-bold tracking-tight text-red-600 md:text-3xl">{trip.title}</h1>
-          </div>
-
-          {/* ── Tab Bar ─────────────────────────────────────────────────── */}
-          <div className="sticky top-0 z-10 border-b border-black/25 bg-white/95 backdrop-blur px-2 md:px-8">
-            <div className="flex gap-0.5 overflow-x-auto py-2 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-              {TABS.map(tab => {
-                const Icon = tab.icon;
-                const active = activeTab === tab.id;
-                return (
-                  <button
-                    key={tab.id}
-                    onClick={() => setActiveTab(tab.id)}
-                    className={`flex shrink-0 items-center gap-1.5 rounded-xl px-3 py-2.5 text-sm font-medium transition min-h-[44px] md:px-4 ${active ? "bg-red-600/[0.08] text-red-600" : "text-black/50 hover:bg-black/5 hover:text-black/75"}`}
-                  >
-                    <Icon className="h-4 w-4 shrink-0" />
-                    {tab.label}
-                  </button>
-                );
-              })}
+          {/* ── Sticky Header + Tab Bar ─────────────────────────────────── */}
+          <div className="sticky top-0 z-10 bg-white/95 backdrop-blur">
+            {/* Header */}
+            <div className="relative flex items-center border-b border-black/25 px-5 py-4 md:px-8 md:py-6">
+              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-10 w-10 rounded-full bg-red-600 pointer-events-none md:h-14 md:w-14" />
+              <h1 className="text-2xl font-bold tracking-tight text-red-600 md:text-3xl">{trip.title}</h1>
+            </div>
+            {/* Tab Bar */}
+            <div className="border-b border-black/25 px-2 md:px-8">
+              <div className="grid grid-cols-3 gap-1 p-2 md:flex md:gap-0.5 md:py-2 md:px-0">
+                {TABS.map(tab => {
+                  const Icon = tab.icon;
+                  const active = activeTab === tab.id;
+                  return (
+                    <button
+                      key={tab.id}
+                      onClick={() => setActiveTab(tab.id)}
+                      className={`flex items-center justify-center gap-1.5 rounded-xl px-2 py-2.5 text-xs font-medium transition min-h-[44px] w-full md:w-auto md:shrink-0 md:px-4 md:text-sm md:justify-start ${active ? "bg-red-600/[0.08] text-red-600" : "text-black/50 hover:bg-black/5 hover:text-black/75"}`}
+                    >
+                      <Icon className="h-4 w-4 shrink-0" />
+                      {tab.label}
+                    </button>
+                  );
+                })}
+              </div>
             </div>
           </div>
 
@@ -895,9 +936,9 @@ export default function App() {
 
                             {expanded && (
                               <div className="mt-3 space-y-3">
-                                {REC_CATEGORIES.filter(cat => recs[cat.key] && recs[cat.key].length > 0).map(({ key, label, Icon: CatIcon, bg, text }) => (
-                                  <div key={key} className={`rounded-2xl border border-black/25 ${bg} p-3`}>
-                                    <div className={`mb-2 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] ${text}`}>
+                                {REC_CATEGORIES.filter(cat => recs[cat.key] && recs[cat.key].length > 0).map(({ key, label, Icon: CatIcon }) => (
+                                  <div key={key} className="rounded-2xl border border-black/25 bg-black/5 p-3">
+                                    <div className="mb-2 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-black/75">
                                       <CatIcon className="h-3.5 w-3.5" /> {label}
                                     </div>
                                     <div className="space-y-2">
@@ -1402,107 +1443,12 @@ export default function App() {
 
                         {open && isDos && (
                           <div className="border-t border-black/25 p-4 space-y-4">
-                            {[
-                              {
-                                label: "Öffentliche Verkehrsmittel",
-                                dos: [
-                                  "Handy lautlos schalten, Telefonate vermeiden",
-                                  "Leise sprechen – Stille in Zügen wird erwartet",
-                                  "Rechts stehen auf Rolltreppen (Ausnahme Osaka: links)",
-                                  "An markierten Stellen in der Schlange anstellen",
-                                  "Rucksack absetzen oder nach vorne tragen",
-                                ],
-                                donts: [
-                                  "Nicht telefonieren in der Bahn",
-                                  "Keine laute Musik ohne Kopfhörer",
-                                  "Nicht essen (außer auf Shinkansen-Langstrecken)",
-                                ],
-                              },
-                              {
-                                label: "Restaurant & Essen",
-                                dos: [
-                                  'Vor dem Essen "Itadakimasu" sagen (Dankbarkeit)',
-                                  'Nach dem Essen "Gochisōsama deshita" sagen',
-                                  "Suppe schlürfen ist erwünscht – Zeichen des Genusses",
-                                  "Geld in die Zahlschale legen, nicht direkt in die Hand",
-                                ],
-                                donts: [
-                                  "Kein Trinkgeld – gilt als unhöflich und wird teils zurückgegeben",
-                                  "Nicht beim Gehen essen (außer Streetfood-Stände)",
-                                  "Stäbchen nie senkrecht in Reis stecken (Trauerbrauch)",
-                                  "Essen nie von Stäbchen zu Stäbchen weitergeben (Trauerbrauch)",
-                                ],
-                              },
-                              {
-                                label: "Tempel & Schreine",
-                                dos: [
-                                  "Am Eingang Hände am Temizuya waschen",
-                                  "Shinto-Ritual: 2× verneigen, 2× klatschen, 1× verneigen",
-                                  "Leise und respektvoll verhalten",
-                                  "Spende in den Kasten werfen, nicht hineinlegen",
-                                ],
-                                donts: [
-                                  "Keine lauten Gespräche in Gebetsbereichen",
-                                  "Nicht fotografieren wo Schilder es verbieten",
-                                  "Gebetsbereiche nicht betreten wenn abgesperrt",
-                                ],
-                              },
-                              {
-                                label: "Ryokan & Tatami",
-                                dos: [
-                                  "Straßenschuhe immer im Eingangsbereich ausziehen",
-                                  "Yukata: linke Seite über rechte legen",
-                                  "Hausschuhe beim Verlassen des Tatami-Raums ausziehen",
-                                  "Yukata auch für Abendessen und Onsen-Gang tragen",
-                                ],
-                                donts: [
-                                  "Keine Straßen- oder Hausschuhe auf Tatami",
-                                  "Yukata nicht rechts über links legen (gilt als Trauerkleidung)",
-                                  "Nicht mit dem Handtuch ins Onsen gehen – vorher duschen",
-                                ],
-                              },
-                              {
-                                label: "Allgemeines Verhalten",
-                                dos: [
-                                  "Müll mitnehmen – öffentliche Mülleimer sind selten",
-                                  "Dinge mit beiden Händen übergeben und entgegennehmen",
-                                  "Visitenkarten mit beiden Händen nehmen und kurz betrachten",
-                                  "Geduld und Freundlichkeit zahlen sich immer aus",
-                                  "Masken tragen bei Erkältung – weitgehend übliche Praxis",
-                                ],
-                                donts: [
-                                  "Nicht laut in der Öffentlichkeit – Zurückhaltung wird geschätzt",
-                                  "Kein direkter, langer Augenkontakt mit Fremden",
-                                  "Nicht auf indirekte Ablehnung bestehen – 'Nein' wird selten direkt gesagt",
-                                  "Keine körperliche Nähe / spontane Umarmungen",
-                                ],
-                              },
-                              {
-                                label: "Onsen",
-                                dos: [
-                                  "Vor dem Einstieg gründlich duschen und den Körper waschen",
-                                  "Langes Haar hochbinden oder mit Handtuch befestigen",
-                                  "Kleines Handtuch mitbringen – zum Abdecken auf dem Kopf ablegen",
-                                  "Ruhig und entspannt verhalten – Onsen ist ein Ruheplatz",
-                                  "Verschiedene Becken ausprobieren – oft unterschiedliche Temperaturen",
-                                  "Nach dem Bad sanft abtrocknen, Yukata anziehen und Wasser trinken",
-                                ],
-                                donts: [
-                                  "Kein Handtuch ins Wasser tauchen",
-                                  "Nicht mit Badebekleidung ins Onsen – traditionell nackt",
-                                  "Sichtbare Tätowierungen sind in vielen Onsen verboten – vorab prüfen",
-                                  "Nicht untertauchen oder plantschen",
-                                  "Kein Shampoo oder Seife im Becken benutzen",
-                                  "Nicht zu lange im heißen Wasser bleiben – Kreislauf beachten",
-                                  "Fotografieren im Badebereich ist streng verboten",
-                                ],
-                              },
-                            ].map(cat => (
+                            {FAQ_DOS_CATEGORIES.map(cat => (
                               <div key={cat.label} className="rounded-2xl border border-black/25 bg-black/[0.03] p-4">
                                 <div className="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-red-600">{cat.label}</div>
                                 <div className="grid gap-3 sm:grid-cols-2">
                                   <div>
-                                    <div className="mb-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-black/50">✓ Dos</div>
+                                    <div className="mb-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-black/50">DOS</div>
                                     <ul className="space-y-1.5">
                                       {cat.dos.map((tip, i) => (
                                         <li key={i} className="flex items-start gap-2 text-xs text-black/75 leading-snug">
@@ -1513,7 +1459,7 @@ export default function App() {
                                     </ul>
                                   </div>
                                   <div>
-                                    <div className="mb-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-black/50">✕ Don'ts</div>
+                                    <div className="mb-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-black/50">DONTS</div>
                                     <ul className="space-y-1.5">
                                       {cat.donts.map((tip, i) => (
                                         <li key={i} className="flex items-start gap-2 text-xs text-black/75 leading-snug">
@@ -1531,16 +1477,7 @@ export default function App() {
 
                         {open && !isDos && (
                           <div className="border-t border-black/25 p-4 space-y-3">
-                            {[
-                              { label: "Polizei",                   number: "110",              note: "Notruf – kostenlos, landesweit",                            href: null },
-                              { label: "Feuerwehr & Krankenwagen",  number: "119",              note: "Notruf – kostenlos, landesweit",                            href: null },
-                              { label: "Japan Tourist Helpline",    number: "050-3816-2787",    note: "24 h, mehrsprachig (auch Deutsch) – JNTO",                  href: "https://www.jnto.go.jp/eng/basic-info/emergency-info/" },
-                              { label: "Deutsche Botschaft Tokyo",  number: "+81-3-5791-7700",  note: "4-5-10 Minami-Azabu, Minato-ku, Tokyo · Mo–Fr 9–12 & 14–17 Uhr", href: "https://japan.diplo.de" },
-                              { label: "Botschaft Notfalltelefon",  number: "+81-3-5791-7700",  note: "Außerhalb der Bürozeiten: Ansage mit Weiterschaltung",      href: null },
-                              { label: "Konsulat Osaka",            number: "+81-6-6440-5070",  note: "Japanbankstr. 15F, Umeda Sky Building Tower West, Osaka",   href: null },
-                              { label: "Europäischer Notruf-SOS",   number: "112",              note: "Funktioniert auf manchen Mobilnetzen als Notfall-Fallback", href: null },
-                              { label: "Kreditkartensperrung",      number: "→ Banknummer",     note: "Internationale Sperrnummer der eigenen Bank bereithalten",  href: null },
-                            ].map(c => (
+                            {EMERGENCY_CONTACTS.map(c => (
                               <div key={c.label} className="rounded-2xl border border-black/25 bg-black/[0.03] px-4 py-3">
                                 <div className="flex items-start justify-between gap-3">
                                   <div className="min-w-0">
